@@ -8,8 +8,10 @@
  */
 
 package Interface;
+import Business.BusinessLogic;
 import java.io.*;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,12 +25,14 @@ public class FrmFile extends javax.swing.JFrame {
     
     private JFileChooser _FileChooser;
     private File SelectFile;
+    private BusinessLogic _BusinessLogic;
     
 
     public FrmFile() {
         initComponents();
         _FileChooser = new JFileChooser();
         _FileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        _BusinessLogic = new BusinessLogic();
     }
 
     /**
@@ -43,6 +47,7 @@ public class FrmFile extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         btnAbrir = new javax.swing.JButton();
         _FilePath = new javax.swing.JTextField();
+        btnPatronSimple = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +64,13 @@ public class FrmFile extends javax.swing.JFrame {
             }
         });
 
+        btnPatronSimple.setText("Patron Simple");
+        btnPatronSimple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatronSimpleActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,6 +78,7 @@ public class FrmFile extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPatronSimple)
                     .addComponent(btnAbrir)
                     .addComponent(_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -77,7 +90,9 @@ public class FrmFile extends javax.swing.JFrame {
                 .addComponent(btnAbrir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPatronSimple)
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,6 +109,15 @@ public class FrmFile extends javax.swing.JFrame {
     private void _FilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__FilePathActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event__FilePathActionPerformed
+
+    private void btnPatronSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatronSimpleActionPerformed
+        if(!_FilePath.getText().equals("")){
+            _BusinessLogic.setDirectoryPath(_FilePath.getText());
+            _BusinessLogic.EjecutarPatronSimple();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio");
+        }
+    }//GEN-LAST:event_btnPatronSimpleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +157,7 @@ public class FrmFile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField _FilePath;
     private javax.swing.JButton btnAbrir;
+    private javax.swing.JButton btnPatronSimple;
     private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }
