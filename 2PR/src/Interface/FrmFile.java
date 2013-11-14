@@ -10,6 +10,8 @@
 package Interface;
 import Business.BusinessLogic;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -113,7 +115,11 @@ public class FrmFile extends javax.swing.JFrame {
     private void btnPatronSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatronSimpleActionPerformed
         if(!_FilePath.getText().equals("")){
             _BusinessLogic.setDirectoryPath(_FilePath.getText());
-            _BusinessLogic.EjecutarPatronSimple();
+            try {
+                _BusinessLogic.EjecutarPatronSimple();
+            } catch (IOException ex) {
+                Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio");
         }

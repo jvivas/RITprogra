@@ -60,7 +60,7 @@ public class PatronSimpleControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         for(int fileLine = 0; fileLine < pFileLines.size(); fileLine++){
-            
+            System.out.println(pFileLines.get(fileLine)+"\n");
         }
     }
     
