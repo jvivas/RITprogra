@@ -55,6 +55,7 @@ public class DirectoryProcessor {
            _FilesInDirectory.add(_ListOfFiles[i].getName());
          } else if(_ListOfFiles[i].isDirectory()){
            _SubDirectories.add(_ListOfFiles[i].getName());
+             System.out.println(_ListOfFiles[i].getName());
          }
         }
     }

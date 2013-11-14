@@ -40,7 +40,7 @@ public class PatronSimpleControl {
             DirectoryProcessor subDirectoryProcessor;
             //Por cada Subdirectorio en el Directorio seleccionado
             for(int subDirectory = 0; subDirectory < subDirectories.size(); subDirectory++){
-                subDirectoryProcessor = new DirectoryProcessor(subDirectories.get(subDirectory));
+                subDirectoryProcessor = new DirectoryProcessor(_DirectoryPath +"/" +subDirectories.get(subDirectory));
                 subDirectoryProcessor.ReadDirectory();
                 ArrayList<String> subFiles = subDirectoryProcessor.getFilesInDirectory();
                 //POr cada archivo en el subdirectorio
@@ -52,7 +52,7 @@ public class PatronSimpleControl {
                 }
             }
         } else {
-            //Ocurrio un error mientras se le
+            //Ocurrio un error y no se pudo abrir el directorio
         }
     }
     
