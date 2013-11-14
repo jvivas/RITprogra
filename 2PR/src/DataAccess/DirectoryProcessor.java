@@ -9,6 +9,7 @@
 
 package DataAccess;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,8 +17,11 @@ import java.io.*;
  */
 public class DirectoryProcessor {
     
+    //Declaracion de variables
     String _DirectoryPath = ".";
     int _OpenDirectorySuccess = 0;
+    ArrayList<String> _SubDirectories = new ArrayList<String>();
+    ArrayList<String> _FilesInDirectory = new ArrayList<String>();
     
     String files;
     File _Folder = new File(_DirectoryPath);
@@ -47,9 +51,26 @@ public class DirectoryProcessor {
 
          if (_ListOfFiles[i].isFile()) 
          {
-         files = _ListOfFiles[i].getName();
-         System.out.println(files);
-            }
+           System.out.println("File Found: " + _ListOfFiles[i].getName());
+           _FilesInDirectory.add(_ListOfFiles[i].getName());
+         } else if(_ListOfFiles[i].isDirectory()){
+           _SubDirectories.add(_ListOfFiles[i].getName());
+         }
         }
     }
+
+    public int getOpenDirectorySuccess() {
+        return _OpenDirectorySuccess;
+    }
+
+    public ArrayList<String> getSubDirectories() {
+        return _SubDirectories;
+    }
+
+    public ArrayList<String> getFilesInDirectory() {
+        return _FilesInDirectory;
+    }
+    
+    
+    
 }

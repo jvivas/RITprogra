@@ -6,6 +6,8 @@
 
 package Business;
 
+import java.io.IOException;
+
 /**
  *
  * @author eavendano
@@ -30,7 +32,7 @@ public class BusinessLogic {
     }
     
     //Metodo para ejecutar el control del patron simple
-    public void EjecutarPatronSimple(){
+    public void EjecutarPatronSimple() throws IOException{
         this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath);
         this._PatronSimpleControl.EjecutarBusqueda();
     }

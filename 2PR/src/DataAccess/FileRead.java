@@ -11,6 +11,7 @@ package DataAccess;
 
 import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +24,7 @@ public class FileRead {
     int _FileReadSuccess = 0;
     BufferedReader _BufferedReader;
     DataInputStream _DataInputStream;
+    ArrayList<String> _FileLines;
     
     // Constructor de la clase
     public FileRead(String pFilePath) throws FileNotFoundException {
@@ -37,13 +39,14 @@ public class FileRead {
         }
     }
     
-    public void Read() throws IOException{
+    public void ReadLines() throws IOException{
+        _FileLines = new ArrayList<String>();
         String strLine;
         strLine = "";
         try{
             while ((strLine = _BufferedReader.readLine()) != null)   {
-                // Separar la linea y tratarla
-                System.out.println (strLine);
+                //Recuperar las lineas del archivo
+                _FileLines.add(strLine);
             }
             _DataInputStream.close();
             _FileReadSuccess = 0;
@@ -51,6 +54,10 @@ public class FileRead {
             _FileReadSuccess = -1;
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getFileLines() {
+        return _FileLines;
     }
     
     
