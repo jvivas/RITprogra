@@ -39,7 +39,12 @@ public class BusinessLogic {
     //Metodo para ejecutar el control del patron simple
     public void EjecutarPatronSimple() throws IOException{
         this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,_UserPattern);
-        this._PatronSimpleControl.EjecutarBusqueda();
+        boolean patternValidation = _PatronSimpleControl.ValidatePattern();
+        if(patternValidation){
+            this._PatronSimpleControl.EjecutarBusqueda();
+        } else {
+            //El patron no es correcto
+        }
     }
     
     
