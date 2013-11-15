@@ -8,8 +8,11 @@
  */
 
 package DataAccess;
+import java.awt.List;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  *
@@ -60,6 +63,10 @@ public class DirectoryProcessor {
         }
     }
 
+    public void SortFilesList(){
+        Collections.sort(_FilesInDirectory);
+    }
+    
     public int getOpenDirectorySuccess() {
         return _OpenDirectorySuccess;
     }
@@ -69,6 +76,7 @@ public class DirectoryProcessor {
     }
 
     public ArrayList<String> getFilesInDirectory() {
+        SortFilesList();
         return _FilesInDirectory;
     }
     

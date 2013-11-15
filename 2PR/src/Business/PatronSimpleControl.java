@@ -23,11 +23,13 @@ public class PatronSimpleControl {
     DirectoryProcessor _DirectoryProcessor;
     FileRead _FileRead;
     String _DirectoryPath = ".";
+    Boolean _CaseSensitive = false;
 
     //Constructor
-    public PatronSimpleControl(String pDirectoryPath) {
+    public PatronSimpleControl(String pDirectoryPath, Boolean pCaseSensitive) {
         this._DirectoryPath = pDirectoryPath;
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
+        this._CaseSensitive = pCaseSensitive;
     }
     
     
@@ -36,34 +38,57 @@ public class PatronSimpleControl {
         if(openDirectorySuccess == 0){
             //Tuvo éxito
             this._DirectoryProcessor.ReadDirectory();
-            ArrayList<String> subDirectories = _DirectoryProcessor.getSubDirectories();
-            DirectoryProcessor subDirectoryProcessor;
-            //Por cada Subdirectorio en el Directorio seleccionado
-            for(int subDirectory = 0; subDirectory < subDirectories.size(); subDirectory++){
-                subDirectoryProcessor = new DirectoryProcessor(_DirectoryPath +"/" +subDirectories.get(subDirectory));
-                subDirectoryProcessor.ReadDirectory();
-                ArrayList<String> subFiles = subDirectoryProcessor.getFilesInDirectory();
-                //POr cada archivo en el subdirectorio
-                for(int subFile = 0; subFile < subFiles.size(); subFile++){
-                    String fileName = subFiles.get(subFile);
-                    _FileRead = new FileRead(fileName);
+            ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
+            //Por cada archivo en el directorio
+            for(int subFile = 0; subFile < subFiles.size(); subFile++){
+                System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
+                String fileName = subFiles.get(subFile);
+                _FileRead = new FileRead(_DirectoryPath+"/"+fileName);
+                if(_FileRead.getFileOpenSuccess() == 0){
                     _FileRead.ReadLines();
-                    ProcessFileLines(_FileRead.getFileLines(),subDirectories.get(subDirectory),subFiles.get(subFile));
+                    if(_FileRead.getFileReadSuccess() == 0){
+                        ProcessFileLines(_FileRead.getFileLines(),_DirectoryPath,subFiles.get(subFile));
+                    } else {
+                        System.err.println("No se pudo leer el archivo: " + fileName + "\n");
+                    }
+                } else {
+                    System.err.println("No se pudo abrir el archivo: " + fileName + "\n");
                 }
             }
         } else {
             //Ocurrio un error y no se pudo abrir el directorio
         }
+        
+        System.out.println("Final de la Ejecucion de la busqueda.");
     }
     
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
-        for(int fileLine = 0; fileLine < pFileLines.size(); fileLine++){
-            System.out.println(pFileLines.get(fileLine)+"\n");
+        for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
+            if(fileLineNumber == 0){
+                String[] tokenList;
+                String fileLine = pFileLines.get(fileLineNumber);
+                tokenList = fileLine.split("\\s++");
+                for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
+                    String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
+                    System.out.println("token: " + tokenPrepared + "\n");
+                }
+            }
         }
     }
     
+    //Metodo para pre procesar el token que se busca
+    public String PrepareToken(String pToken){
+        String tokenResult = "";
+        if(this._CaseSensitive)
+            tokenResult = pToken.toLowerCase();
+        else
+            tokenResult = pToken;
+        
+        return tokenResult;
+    }
+
     //Metodo de busqueda para el patron horsepool
     public void HorsepoolMethod(){
         

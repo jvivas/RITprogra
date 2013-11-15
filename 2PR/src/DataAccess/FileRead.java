@@ -59,6 +59,14 @@ public class FileRead {
     public ArrayList<String> getFileLines() {
         return _FileLines;
     }
+
+    public int getFileOpenSuccess() {
+        return _FileOpenSuccess;
+    }
+
+    public int getFileReadSuccess() {
+        return _FileReadSuccess;
+    }
     
     
     
