@@ -16,6 +16,7 @@ public class BusinessLogic {
     
     //Declaracion de variables
     String _DirectoryPath = ".";
+    String _UserPattern = "";
     //Control para el caso de buscar palabras en los directorios
     PatronSimpleControl _PatronSimpleControl;
     
@@ -30,10 +31,14 @@ public class BusinessLogic {
     public void setDirectoryPath(String _DirectoryPath) {
         this._DirectoryPath = _DirectoryPath;
     }
+
+    public void setPatronUsuario(String _UserPattern) {
+        this._UserPattern = _UserPattern;
+    }
     
     //Metodo para ejecutar el control del patron simple
     public void EjecutarPatronSimple() throws IOException{
-        this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,true);
+        this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,_UserPattern);
         this._PatronSimpleControl.EjecutarBusqueda();
     }
     

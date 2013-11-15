@@ -50,6 +50,8 @@ public class FrmFile extends javax.swing.JFrame {
         btnAbrir = new javax.swing.JButton();
         _FilePath = new javax.swing.JTextField();
         btnPatronSimple = new javax.swing.JButton();
+        lblPalabra = new javax.swing.JLabel();
+        txfPalabra = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,16 +75,20 @@ public class FrmFile extends javax.swing.JFrame {
             }
         });
 
+        lblPalabra.setText("Palabra");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPalabra)
                     .addComponent(btnPatronSimple)
                     .addComponent(btnAbrir)
-                    .addComponent(_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addComponent(txfPalabra))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,8 +99,12 @@ public class FrmFile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(_FilePath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPalabra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txfPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPatronSimple)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,14 +124,19 @@ public class FrmFile extends javax.swing.JFrame {
 
     private void btnPatronSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatronSimpleActionPerformed
         if(!_FilePath.getText().equals("")){
-            _BusinessLogic.setDirectoryPath(_FilePath.getText());
-            try {
-                _BusinessLogic.EjecutarPatronSimple();
-            } catch (IOException ex) {
-                Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+            if(!txfPalabra.getText().equals("")){
+                _BusinessLogic.setDirectoryPath(_FilePath.getText());
+                _BusinessLogic.setPatronUsuario(txfPalabra.getText());
+                try {
+                    _BusinessLogic.EjecutarPatronSimple();
+                } catch (IOException ex) {
+                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio");
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio.");
         }
     }//GEN-LAST:event_btnPatronSimpleActionPerformed
 
@@ -165,5 +180,7 @@ public class FrmFile extends javax.swing.JFrame {
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnPatronSimple;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel lblPalabra;
+    private javax.swing.JTextField txfPalabra;
     // End of variables declaration//GEN-END:variables
 }

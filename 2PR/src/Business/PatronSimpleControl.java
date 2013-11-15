@@ -23,15 +23,21 @@ public class PatronSimpleControl {
     DirectoryProcessor _DirectoryProcessor;
     FileRead _FileRead;
     String _DirectoryPath = ".";
-    Boolean _CaseSensitive = false;
+    String _UserPattern = "";
+    boolean _CaseSensitive = false;
 
     //Constructor
-    public PatronSimpleControl(String pDirectoryPath, Boolean pCaseSensitive) {
+    public PatronSimpleControl(String pDirectoryPath, String pUserPattern) {
         this._DirectoryPath = pDirectoryPath;
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
-        this._CaseSensitive = pCaseSensitive;
+        this._UserPattern = pUserPattern;
     }
     
+    
+    public boolean ValidatePattern(){
+        boolean patternResult = false;
+        return patternResult;
+    }
     
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
         int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
