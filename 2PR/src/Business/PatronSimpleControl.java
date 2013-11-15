@@ -31,12 +31,23 @@ public class PatronSimpleControl {
         this._DirectoryPath = pDirectoryPath;
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
         this._UserPattern = pUserPattern;
+        this._CaseSensitive = GetIgnoreCase();
     }
     
     
     public boolean ValidatePattern(){
-        boolean patternResult = false;
+        boolean patternResult = true;
         return patternResult;
+    }
+    
+    public boolean GetIgnoreCase(){
+        boolean ignoreCaseResult = false;
+        String lastChars = this._UserPattern.substring(this._UserPattern.length()-2, this._UserPattern.length());
+        if(lastChars.equals("@i")){
+            ignoreCaseResult = true;
+            this._UserPattern = this._UserPattern.substring(0, this._UserPattern.length()-2);
+        }
+        return ignoreCaseResult;
     }
     
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{

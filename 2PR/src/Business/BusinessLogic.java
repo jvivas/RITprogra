@@ -44,6 +44,7 @@ public class BusinessLogic {
             this._PatronSimpleControl.EjecutarBusqueda();
         } else {
             //El patron no es correcto
+            System.out.println("El patron no es el correcto");
         }
     }
     
