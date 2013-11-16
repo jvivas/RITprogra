@@ -12,6 +12,8 @@ import DataAccess.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -25,6 +27,7 @@ public class PatronSimpleControl {
     String _DirectoryPath = ".";
     String _UserPattern = "";
     boolean _CaseSensitive = false;
+    String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
 
     //Constructor
     public PatronSimpleControl(String pDirectoryPath, String pUserPattern) {
@@ -32,11 +35,21 @@ public class PatronSimpleControl {
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
         this._UserPattern = pUserPattern;
         this._CaseSensitive = GetIgnoreCase();
+        System.out.println("User Pattern: " + _UserPattern);
     }
     
     
     public boolean ValidatePattern(){
-        boolean patternResult = true;
+        boolean patternResult = false;
+        Pattern pattern = Pattern.compile(_Regex);
+        Matcher matcher = pattern.matcher(_UserPattern);
+        if (matcher.find( )) {
+            patternResult = true;
+            System.out.println("Match Regex");
+        } else {
+            patternResult = false;
+            System.out.println("No Match");
+        }
         return patternResult;
     }
     
@@ -45,7 +58,7 @@ public class PatronSimpleControl {
         String lastChars = this._UserPattern.substring(this._UserPattern.length()-2, this._UserPattern.length());
         if(lastChars.equals("@i")){
             ignoreCaseResult = true;
-            this._UserPattern = this._UserPattern.substring(0, this._UserPattern.length()-2);
+            this._UserPattern = this._UserPattern.substring(0, this._UserPattern.length()-2).toLowerCase();
         }
         return ignoreCaseResult;
     }
@@ -83,11 +96,11 @@ public class PatronSimpleControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-            if(fileLineNumber == 0){
-                String[] tokenList;
-                String fileLine = pFileLines.get(fileLineNumber);
-                tokenList = fileLine.split("\\s++");
-                for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
+            String[] tokenList;
+            String fileLine = pFileLines.get(fileLineNumber);
+            tokenList = fileLine.split("\\s++");
+            for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
+                if(fileLineNumber == 0){
                     String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
                     System.out.println("token: " + tokenPrepared + "\n");
                 }
