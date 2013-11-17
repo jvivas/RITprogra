@@ -23,6 +23,7 @@ public class DirectoryProcessor {
     //Declaracion de variables
     String _DirectoryPath = ".";
     int _OpenDirectorySuccess = 0;
+    int _AmountFilesFound = 0;
     ArrayList<String> _SubDirectories = new ArrayList<String>();
     ArrayList<String> _FilesInDirectory = new ArrayList<String>();
     
@@ -49,18 +50,21 @@ public class DirectoryProcessor {
 
     //Metodo para cargar los directorios que tiene el directorio
     public void ReadDirectory(){
+        _AmountFilesFound = 0;
         for (int i = 0; i < _ListOfFiles.length; i++) 
         {
 
          if (_ListOfFiles[i].isFile()) 
          {
            System.out.println("File Found: " + _ListOfFiles[i].getName());
+           _AmountFilesFound++;
            _FilesInDirectory.add(_ListOfFiles[i].getName());
          } else if(_ListOfFiles[i].isDirectory()){
            _SubDirectories.add(_ListOfFiles[i].getName());
              System.out.println(_ListOfFiles[i].getName());
          }
         }
+        System.out.println("Amount of Files Found: " + _AmountFilesFound);
     }
 
     public void SortFilesList(){

@@ -9,11 +9,17 @@
 
 package Interface;
 import Business.BusinessLogic;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.concurrent.Executor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -28,6 +34,7 @@ public class FrmFile extends javax.swing.JFrame {
     private JFileChooser _FileChooser;
     private File SelectFile;
     private BusinessLogic _BusinessLogic;
+    Executor executor = java.util.concurrent.Executors.newSingleThreadExecutor();
     
 
     public FrmFile() {
@@ -35,6 +42,9 @@ public class FrmFile extends javax.swing.JFrame {
         _FileChooser = new JFileChooser();
         _FileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         _BusinessLogic = new BusinessLogic();
+        this.lblImg.setVisible(false);
+        //this.pnlImageIcon.add(picLabel);
+        //this.pnlImageIcon.repaint();
     }
 
     /**
@@ -52,6 +62,7 @@ public class FrmFile extends javax.swing.JFrame {
         btnPatronSimple = new javax.swing.JButton();
         lblPalabra = new javax.swing.JLabel();
         txfPalabra = new javax.swing.JTextField();
+        lblImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +88,8 @@ public class FrmFile extends javax.swing.JFrame {
 
         lblPalabra.setText("Palabra");
 
+        lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ajax-loader.gif"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +98,10 @@ public class FrmFile extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPalabra)
-                    .addComponent(btnPatronSimple)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnPatronSimple)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblImg))
                     .addComponent(btnAbrir)
                     .addComponent(_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                     .addComponent(txfPalabra))
@@ -103,8 +119,10 @@ public class FrmFile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txfPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPatronSimple)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPatronSimple)
+                    .addComponent(lblImg))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,21 +141,29 @@ public class FrmFile extends javax.swing.JFrame {
     }//GEN-LAST:event__FilePathActionPerformed
 
     private void btnPatronSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatronSimpleActionPerformed
+        this.btnPatronSimple.setEnabled(false);
+        lblImg.setVisible(true);
+        
         if(!_FilePath.getText().equals("")){
             if(!txfPalabra.getText().equals("")){
                 _BusinessLogic.setDirectoryPath(_FilePath.getText());
                 _BusinessLogic.setPatronUsuario(txfPalabra.getText());
                 try {
+                    System.out.println("Hola Mundo!!!");
                     _BusinessLogic.EjecutarPatronSimple();
-                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(rootPane, "Busqueda Finalizada!", "Finalizacion de la busqueda.", 1);
+                } catch (Exception ex) {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
-            } else {
+            }else {
                 JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio.");
         }
+        this.btnPatronSimple.setEnabled(true);
+        lblImg.setVisible(false);
     }//GEN-LAST:event_btnPatronSimpleActionPerformed
 
     /**
@@ -180,6 +206,7 @@ public class FrmFile extends javax.swing.JFrame {
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnPatronSimple;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblPalabra;
     private javax.swing.JTextField txfPalabra;
     // End of variables declaration//GEN-END:variables

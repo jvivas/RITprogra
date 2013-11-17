@@ -27,6 +27,7 @@ public class PatronSimpleControl {
     String _DirectoryPath = ".";
     String _UserPattern = "";
     boolean _CaseSensitive = false;
+    boolean _TokenValidRegex = false;
     String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
 
     //Constructor
@@ -38,12 +39,11 @@ public class PatronSimpleControl {
         System.out.println("User Pattern: " + _UserPattern);
     }
     
-    
     public boolean ValidatePattern(){
         boolean patternResult = false;
         Pattern pattern = Pattern.compile(_Regex);
         Matcher matcher = pattern.matcher(_UserPattern);
-        if (matcher.find( )) {
+        if (matcher.matches()) {
             patternResult = true;
             System.out.println("Match Regex");
         } else {
@@ -53,43 +53,65 @@ public class PatronSimpleControl {
         return patternResult;
     }
     
+    public boolean ValidateToken(String pTokenValidate){
+        boolean patternResult = false;
+        Pattern pattern = Pattern.compile(_Regex);
+        Matcher matcher = pattern.matcher(pTokenValidate);
+        if (matcher.matches( )) {
+            patternResult = true;
+            //System.out.println("Match Token Regex");
+        } else {
+            patternResult = false;
+            //System.out.println("No Token Match");
+        }
+        return patternResult;
+    }
+    
     public boolean GetIgnoreCase(){
         boolean ignoreCaseResult = false;
-        String lastChars = this._UserPattern.substring(this._UserPattern.length()-2, this._UserPattern.length());
-        if(lastChars.equals("@i")){
-            ignoreCaseResult = true;
-            this._UserPattern = this._UserPattern.substring(0, this._UserPattern.length()-2).toLowerCase();
+        if(_UserPattern.length() >= 2){
+            String lastChars = this._UserPattern.substring(this._UserPattern.length()-2, this._UserPattern.length());
+            if(lastChars.equals("@i")){
+                ignoreCaseResult = true;
+                this._UserPattern = this._UserPattern.substring(0, this._UserPattern.length()-2).toLowerCase();
+            }
+        } else {
+            ignoreCaseResult = false;
         }
         return ignoreCaseResult;
     }
     
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
-        int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
-        if(openDirectorySuccess == 0){
-            //Tuvo éxito
-            this._DirectoryProcessor.ReadDirectory();
-            ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
-            //Por cada archivo en el directorio
-            for(int subFile = 0; subFile < subFiles.size(); subFile++){
-                System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
-                String fileName = subFiles.get(subFile);
-                _FileRead = new FileRead(_DirectoryPath+"/"+fileName);
-                if(_FileRead.getFileOpenSuccess() == 0){
-                    _FileRead.ReadLines();
-                    if(_FileRead.getFileReadSuccess() == 0){
-                        ProcessFileLines(_FileRead.getFileLines(),_DirectoryPath,subFiles.get(subFile));
+        if(_UserPattern.length() > 0){
+            int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
+            if(openDirectorySuccess == 0){
+                //Tuvo éxito
+                this._DirectoryProcessor.ReadDirectory();
+                ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
+                //Por cada archivo en el directorio
+                for(int subFile = 0; subFile < subFiles.size(); subFile++){
+                    System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
+                    String fileName = subFiles.get(subFile);
+                    _FileRead = new FileRead(_DirectoryPath+"/"+fileName);
+                    if(_FileRead.getFileOpenSuccess() == 0){
+                        _FileRead.ReadLines();
+                        if(_FileRead.getFileReadSuccess() == 0){
+                            ProcessFileLines(_FileRead.getFileLines(),_DirectoryPath,subFiles.get(subFile));
+                        } else {
+                            System.err.println("No se pudo leer el archivo: " + fileName + "\n");
+                        }
                     } else {
-                        System.err.println("No se pudo leer el archivo: " + fileName + "\n");
+                        System.err.println("No se pudo abrir el archivo: " + fileName + "\n");
                     }
-                } else {
-                    System.err.println("No se pudo abrir el archivo: " + fileName + "\n");
                 }
+            } else {
+                //Ocurrio un error y no se pudo abrir el directorio
             }
+
+            System.out.println("Final de la Ejecucion de la busqueda.");
         } else {
-            //Ocurrio un error y no se pudo abrir el directorio
+            System.out.println("Final de la Ejecucion de la busqueda.");
         }
-        
-        System.out.println("Final de la Ejecucion de la busqueda.");
     }
     
     //Metodo para procesar las lineas de texto del archivo
@@ -100,8 +122,8 @@ public class PatronSimpleControl {
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
             for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
-                if(fileLineNumber == 0){
-                    String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
+                String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
+                if(ValidateToken(tokenPrepared) && tokenPrepared.length() >= _UserPattern.length()){
                     System.out.println("token: " + tokenPrepared + "\n");
                 }
             }
