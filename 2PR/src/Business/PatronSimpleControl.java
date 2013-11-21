@@ -29,6 +29,9 @@ public class PatronSimpleControl {
     boolean _CaseSensitive = false;
     boolean _TokenValidRegex = false;
     String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
+    ArrayList<String> _ListOfLetters = new ArrayList<String>();
+    ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
+    ArrayList<String> _MatchLineInfo = new ArrayList<String>();
 
     //Constructor
     public PatronSimpleControl(String pDirectoryPath, String pUserPattern) {
@@ -117,17 +120,23 @@ public class PatronSimpleControl {
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
+        HorsepoolTable();
+        System.out.println(this._ListOfLetters.toString());
+        System.out.println(this._RegressionIndex.toString());
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
             String[] tokenList;
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
+            //La siguiente linea solamente se ha agregado para el procesamiento del Horsepool
             for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
                 String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
                 if(ValidateToken(tokenPrepared) && tokenPrepared.length() >= _UserPattern.length()){
                     System.out.println("token: " + tokenPrepared + "\n");
+                    HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
                 }
             }
         }
+        System.out.println(this._MatchLineInfo.toString());
     }
     
     //Metodo para pre procesar el token que se busca
@@ -141,10 +150,72 @@ public class PatronSimpleControl {
         return tokenResult;
     }
 
-    //Metodo de busqueda para el patron horsepool
-    public void HorsepoolMethod(){
-        
+    //Metodo para preparar la tabla de procesamiento del horsepool
+    public void HorsepoolTable(){
+        int lengthOfUserPattern = this._UserPattern.length()-1;
+        int regressionValue = 1;
+        ArrayList<String> listOfLetters = new ArrayList<String>();
+        ArrayList<Integer> regressionIndex = new ArrayList<Integer>();
+        while(lengthOfUserPattern >= 1){
+            String letterFound = this._UserPattern.substring(lengthOfUserPattern-1,lengthOfUserPattern);
+            if(!listOfLetters.contains(letterFound)){
+                //La letra no estaba tomada en cuenta por lo que se tiene que agregar
+                listOfLetters.add(letterFound);
+                regressionIndex.add(regressionValue);
+                regressionValue++;
+                lengthOfUserPattern--;
+            } else {
+                //La letra ya estaba pero la cantidad de campos siguie aumentando.
+                regressionValue++;
+                lengthOfUserPattern--;
+            }
+        }
+        listOfLetters.add("eop");
+        regressionIndex.add(regressionValue++);
+        this._ListOfLetters = listOfLetters;
+        this._RegressionIndex = regressionIndex;
     }
     
-    
+    //Metodo de busqueda para el patron horsepool
+    public void HorsepoolMethod(String pToken, String pDirectoryName, String pFileName, int pFileLine){
+        int lengthOfToken = pToken.length();
+        int lengthOfPattern = this._UserPattern.length();
+        int scannedIndexToken = 0;
+        int scannedIndexPattern = 0;
+        int startComparing = 0;
+        int cuantityOfMatchesOnToken = 0;
+        while(scannedIndexToken < lengthOfToken){
+            String patternCompare = this._UserPattern.substring(scannedIndexPattern, scannedIndexPattern+1);
+            String tokenCompare = pToken.substring(scannedIndexToken, scannedIndexToken+1);
+            if(patternCompare.equals(tokenCompare) &&  scannedIndexPattern+1 == lengthOfPattern) {
+                cuantityOfMatchesOnToken++;
+                scannedIndexPattern = 0;
+                scannedIndexToken++;
+                startComparing = scannedIndexToken;
+            } else if(patternCompare.equals(tokenCompare)) {
+                //Solo mover los indices
+                scannedIndexPattern++;
+                scannedIndexToken++;
+            } else if(!patternCompare.equals(tokenCompare)){
+                int indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+lengthOfPattern-1, startComparing+lengthOfPattern));
+                //Obtener la cantidad de veces que se tiene que desplazar
+                int regressionIndex = 0;
+                if(indexOfPatternCompared == -1){
+                    indexOfPatternCompared = this._ListOfLetters.indexOf("eop");
+                }
+                regressionIndex = this._RegressionIndex.get(indexOfPatternCompared);
+                //Se tiene que mover startIndex + regressionIndex
+                if(startComparing + regressionIndex + lengthOfPattern - 1 < lengthOfToken){
+                    scannedIndexPattern = 0;
+                    scannedIndexToken = startComparing+regressionIndex;
+                    startComparing = scannedIndexToken;
+                } else {
+                    break;
+                }   
+            }
+        }
+        if(cuantityOfMatchesOnToken > 0){
+            this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
+        }
+    }
 }
