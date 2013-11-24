@@ -162,27 +162,27 @@ public class PatronOpcionesControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         String[] tokenOpcional = this._PatternOptions.split("");
-        for(int indexOfOption = 1; indexOfOption < tokenOpcional.length; indexOfOption++){
-            BuildMaskTable(tokenOpcional[indexOfOption]);
-            for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-                int cuantityOfMathcedTokens = 0;
-                String[] tokenList;
-                String fileLine = pFileLines.get(fileLineNumber);
-                tokenList = fileLine.split("\\s++");
-                for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
-                    String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
-                    if(tokenPrepared.length() >= _PatternHead.length()+_PatternTail.length()+1){
-                        //System.out.println("token: " + tokenPrepared + "\n");
+        for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
+            int cuantityOfMathcedTokens = 0;
+            String[] tokenList;
+            String fileLine = pFileLines.get(fileLineNumber);
+            tokenList = fileLine.split("\\s++");
+            for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
+                String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
+                if(tokenPrepared.length() >= _PatternHead.length()+_PatternTail.length()+1){
+                    //System.out.println("token: " + tokenPrepared + "\n");
+                    for(int indexOfOption = 1; indexOfOption < tokenOpcional.length; indexOfOption++){
+                        BuildMaskTable(tokenOpcional[indexOfOption]);
                         int matchedToken = ShiftAndMethod(this._PatternHead + tokenOpcional[indexOfOption] + this._PatternTail, tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
                         if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
                             cuantityOfMathcedTokens++;
                         }
                     }
                 }
-                if(cuantityOfMathcedTokens >= 1){
-                    this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
-                    _MatchesInFileLine++;
-                }
+            }
+            if(cuantityOfMathcedTokens >= 1){
+                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
+                _MatchesInFileLine++;
             }
         }
         //System.out.println(this._MatchLineInfo.toString());
