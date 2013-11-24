@@ -32,6 +32,8 @@ public class PatronSimpleControl {
     ArrayList<String> _ListOfLetters = new ArrayList<String>();
     ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
+    int _ProcessOperationState = 0;
+    int _WordAppearances = 0;
 
     //Constructor
     public PatronSimpleControl(String pDirectoryPath, String pUserPattern) {
@@ -85,6 +87,8 @@ public class PatronSimpleControl {
     }
     
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
+        this._ProcessOperationState = 0;
+        this._WordAppearances = 0;
         if(_UserPattern.length() > 0){
             int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
             if(openDirectorySuccess == 0){
@@ -100,20 +104,26 @@ public class PatronSimpleControl {
                         _FileRead.ReadLines();
                         if(_FileRead.getFileReadSuccess() == 0){
                             ProcessFileLines(_FileRead.getFileLines(),_DirectoryPath,subFiles.get(subFile));
+                            this._ProcessOperationState = 1;
                         } else {
                             System.err.println("No se pudo leer el archivo: " + fileName + "\n");
+                            this._ProcessOperationState = -1;
                         }
                     } else {
                         System.err.println("No se pudo abrir el archivo: " + fileName + "\n");
+                        this._ProcessOperationState = -1;
                     }
                 }
             } else {
                 //Ocurrio un error y no se pudo abrir el directorio
+                System.out.println("Ocurrio un error y no se pudo abrir el directorio");
+                this._ProcessOperationState = -1;
             }
 
             System.out.println("Final de la Ejecucion de la busqueda.");
         } else {
-            System.out.println("Final de la Ejecucion de la busqueda.");
+            System.out.println("Largo de patron invalido.");
+            this._ProcessOperationState = -1;
         }
     }
     
@@ -136,7 +146,7 @@ public class PatronSimpleControl {
                 }
             }
         }
-        System.out.println(this._MatchLineInfo.toString());
+        //System.out.println(this._MatchLineInfo.toString());
     }
     
     //Metodo para pre procesar el token que se busca
@@ -215,7 +225,21 @@ public class PatronSimpleControl {
             }
         }
         if(cuantityOfMatchesOnToken > 0){
+            this._WordAppearances++;
             this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
         }
     }
+
+    public ArrayList<String> getMatchLineInfo() {
+        return _MatchLineInfo;
+    }
+
+    public int getProcessOperationState() {
+        return _ProcessOperationState;
+    }
+
+    public int getWordAppearances() {
+        return _WordAppearances;
+    }
+    
 }

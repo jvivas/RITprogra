@@ -149,9 +149,15 @@ public class FrmFile extends javax.swing.JFrame {
                 _BusinessLogic.setDirectoryPath(_FilePath.getText());
                 _BusinessLogic.setPatronUsuario(txfPalabra.getText());
                 try {
-                    System.out.println("Hola Mundo!!!");
-                    _BusinessLogic.EjecutarPatronSimple();
-                    JOptionPane.showMessageDialog(rootPane, "Busqueda Finalizada!", "Finalizacion de la busqueda.", 1);
+                    String executionResult = _BusinessLogic.EjecutarPatronSimple();
+                    JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                    if(this._BusinessLogic.getProcessOperationState() == 1){
+                        FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
+                        frmSearchResult.InsertWordAppearances(this._BusinessLogic.getWordAppeareances());
+                        frmSearchResult.setVisible(true);
+                    } else {
+                    }
                 } catch (Exception ex) {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
