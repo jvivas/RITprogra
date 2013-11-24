@@ -27,14 +27,21 @@ public class PatronOpcionesControl {
     String _UserPattern = "";
     boolean _CaseSensitive = false;
     boolean _TokenValidRegex = false;
-    String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ\\[\\]]+";
-    String _RegexOption = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
+    String _RegexNormal = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
+    String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]*\\[[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+\\][\\w_ñÑáéíóúüÁÉÍÓÚÜ]*";
+    String _RegexOption = "\\[[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+\\]";
+    String _RegexHead = "\\[[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
+    String _RegexTail = "\\][\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
     ArrayList<String> _ListOfLetters = new ArrayList<String>();
     ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
     int _MatchesInFileLine = 0;
+    String _PatternHead = "";
+    String _PatternTail = "";
+    String _PatternOptions = "";
+    ArrayList<boolean[]> _MaskTableList = new ArrayList<boolean[]>();
 
     //Constructor
     public PatronOpcionesControl(String pDirectoryPath, String pUserPattern) {
@@ -42,7 +49,7 @@ public class PatronOpcionesControl {
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
         this._UserPattern = pUserPattern;
         this._CaseSensitive = GetIgnoreCase();
-        System.out.println("User Pattern: " + _UserPattern);
+        //System.out.println("User Pattern: " + _UserPattern);
     }
     
     public boolean ValidatePattern(){
@@ -50,11 +57,32 @@ public class PatronOpcionesControl {
         Pattern pattern = Pattern.compile(_Regex);
         Matcher matcher = pattern.matcher(_UserPattern);
         if (matcher.matches()) {
-            patternResult = true;
-            System.out.println("Match Regex");
+            try{
+                String head = "";
+                String tail = "";
+                String options = "";
+                String[] tokenPattern = _UserPattern.split(_RegexHead);
+                head = tokenPattern[0];
+                tokenPattern = _UserPattern.split("\\]");
+                if(tokenPattern.length > 1)
+                    tail = tokenPattern[1];
+                else 
+                    tail = "";
+                tokenPattern = _UserPattern.split("\\[");
+                tokenPattern = tokenPattern[1].split("\\]");
+                options = tokenPattern[0];
+                this._PatternHead = head;
+                this._PatternTail = tail;
+                this._PatternOptions = options;
+                patternResult = true;
+            //System.out.println("Match Regex");
+            } catch(Exception e){
+                e.printStackTrace();
+                patternResult = false;
+            }
         } else {
             patternResult = false;
-            System.out.println("No Match");
+            //System.out.println("No Match");
         }
         return patternResult;
     }
@@ -133,28 +161,28 @@ public class PatronOpcionesControl {
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
-        HorsepoolTable();
-        //System.out.println(this._ListOfLetters.toString());
-        //System.out.println(this._RegressionIndex.toString());
-        for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-            int cuantityOfMathcedTokens = 0;
-            String[] tokenList;
-            String fileLine = pFileLines.get(fileLineNumber);
-            tokenList = fileLine.split("\\s++");
-            for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
-                String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
-                //if(ValidateToken(tokenPrepared) && tokenPrepared.length() >= _UserPattern.length()){
-                if(tokenPrepared.length() >= _UserPattern.length()){
-                    //System.out.println("token: " + tokenPrepared + "\n");
-                    int matchedToken = HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
-                    if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
-                        cuantityOfMathcedTokens++;
+        String[] tokenOpcional = this._PatternOptions.split("");
+        for(int indexOfOption = 1; indexOfOption < tokenOpcional.length; indexOfOption++){
+            BuildMaskTable(tokenOpcional[indexOfOption]);
+            for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
+                int cuantityOfMathcedTokens = 0;
+                String[] tokenList;
+                String fileLine = pFileLines.get(fileLineNumber);
+                tokenList = fileLine.split("\\s++");
+                for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
+                    String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
+                    if(tokenPrepared.length() >= _PatternHead.length()+_PatternTail.length()+1){
+                        //System.out.println("token: " + tokenPrepared + "\n");
+                        int matchedToken = ShiftAndMethod(this._PatternHead + tokenOpcional[indexOfOption] + this._PatternTail, tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
+                        if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
+                            cuantityOfMathcedTokens++;
+                        }
                     }
                 }
-            }
-            if(cuantityOfMathcedTokens >= 1){
-                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
-                _MatchesInFileLine++;
+                if(cuantityOfMathcedTokens >= 1){
+                    this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
+                    _MatchesInFileLine++;
+                }
             }
         }
         //System.out.println(this._MatchLineInfo.toString());
@@ -172,75 +200,106 @@ public class PatronOpcionesControl {
     }
 
     //Metodo para preparar la tabla de procesamiento del horsepool
-    public void HorsepoolTable(){
-        int lengthOfUserPattern = this._UserPattern.length()-1;
-        int regressionValue = 1;
+    public void BuildMaskTable(String pOptionLetter){
         ArrayList<String> listOfLetters = new ArrayList<String>();
-        ArrayList<Integer> regressionIndex = new ArrayList<Integer>();
-        while(lengthOfUserPattern >= 1){
-            String letterFound = this._UserPattern.substring(lengthOfUserPattern-1,lengthOfUserPattern);
+        this._MaskTableList = new ArrayList<boolean[]>();
+        this._ListOfLetters = new ArrayList<String>();
+        //Primero hacer un for para la cabeza
+        for(int patternSubStrIndex = 0; patternSubStrIndex < _PatternHead.length(); patternSubStrIndex++){
+            String letterFound = this._PatternHead.substring(patternSubStrIndex, patternSubStrIndex+1);
             if(!listOfLetters.contains(letterFound)){
-                //La letra no estaba tomada en cuenta por lo que se tiene que agregar
-                listOfLetters.add(letterFound);
-                regressionIndex.add(regressionValue);
-                regressionValue++;
-                lengthOfUserPattern--;
-            } else {
-                //La letra ya estaba pero la cantidad de campos siguie aumentando.
-                regressionValue++;
-                lengthOfUserPattern--;
+               listOfLetters.add(letterFound);
+            }
+        }
+        //Se busca que la letra este en la lista de letras
+        if(!listOfLetters.contains(pOptionLetter)){
+           listOfLetters.add(pOptionLetter);
+        }
+        //Por ultimo se hacer un for para la cola
+        for(int patternSubStrIndex = 0; patternSubStrIndex < _PatternTail.length(); patternSubStrIndex++){
+            String letterFound = this._PatternTail.substring(patternSubStrIndex, patternSubStrIndex+1);
+            if(!listOfLetters.contains(letterFound)){
+               listOfLetters.add(letterFound);
             }
         }
         listOfLetters.add("eop");
-        regressionIndex.add(regressionValue++);
+        //Una vez que se sabe cuales son las letras se procede a armar un arreglo para cada letra
+        for(int i = 0; i < listOfLetters.size(); i++){
+            boolean[] temporalMaskTable = new boolean[_PatternHead.length()+_PatternTail.length()+1];
+            //For para encontrar los indices de la letra en la cabeza
+            int indexOfPatternBuild = 0;
+            for(int patternSubStrIndex = 0; patternSubStrIndex < _PatternHead.length(); patternSubStrIndex++){
+                String letterFound = this._PatternHead.substring(patternSubStrIndex, patternSubStrIndex+1);
+                if(letterFound.equals(listOfLetters.get(i))){
+                    temporalMaskTable[indexOfPatternBuild] = true;
+                    indexOfPatternBuild++;
+                } else {
+                    temporalMaskTable[indexOfPatternBuild] = false;
+                    indexOfPatternBuild++;
+                }
+            }
+            //Indice del patron opcional
+            if(pOptionLetter.equals(listOfLetters.get(i))){
+                temporalMaskTable[indexOfPatternBuild] = true;
+                indexOfPatternBuild++;
+            } else {
+                temporalMaskTable[indexOfPatternBuild] = false;
+                indexOfPatternBuild++;
+            }
+            //For para encontrar los indices de la letra en la cola
+            for(int patternSubStrIndex = 0; patternSubStrIndex < _PatternTail.length(); patternSubStrIndex++){
+                String letterFound = this._PatternTail.substring(patternSubStrIndex, patternSubStrIndex+1);
+                if(letterFound.equals(listOfLetters.get(i))){
+                    temporalMaskTable[indexOfPatternBuild] = true;
+                    indexOfPatternBuild++;
+                } else {
+                    temporalMaskTable[indexOfPatternBuild] = false;
+                    indexOfPatternBuild++;
+                }
+            }
+            //Cuando se tienen todos los inices se guarda la lista
+            this._MaskTableList.add(temporalMaskTable);
+        }
         this._ListOfLetters = listOfLetters;
-        this._RegressionIndex = regressionIndex;
     }
     
     //Metodo de busqueda para el patron horsepool
-    public int HorsepoolMethod(String pToken, String pDirectoryName, String pFileName, int pFileLine){
-        int lengthOfToken = pToken.length();
-        int lengthOfPattern = this._UserPattern.length();
-        int scannedIndexToken = 0;
-        int scannedIndexPattern = 0;
-        int startComparing = 0;
-        int cuantityOfMatchesOnToken = 0;
+    public int ShiftAndMethod(String patternOption, String pToken, String pDirectoryName, String pFileName, int pFileLine){
         int cuantityOfMatchesInLine = 0;
-        while(scannedIndexToken < lengthOfToken){
-            String patternCompare = this._UserPattern.substring(scannedIndexPattern, scannedIndexPattern+1);
-            String tokenCompare = pToken.substring(scannedIndexToken, scannedIndexToken+1);
-            if(patternCompare.equals(tokenCompare) &&  scannedIndexPattern+1 == lengthOfPattern) {
-                cuantityOfMatchesOnToken++;
-                scannedIndexPattern = 0;
-                scannedIndexToken++;
-                startComparing = scannedIndexToken;
-            } else if(patternCompare.equals(tokenCompare)) {
-                //Solo mover los indices
-                scannedIndexPattern++;
-                scannedIndexToken++;
-            } else if(!patternCompare.equals(tokenCompare)){
-                int indexOfPatternCompared = 0;
-                if(scannedIndexPattern == 0 && startComparing == 0){
-                    indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+lengthOfPattern-1, startComparing+lengthOfPattern));
-                } else {
-                    indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+scannedIndexPattern-1, startComparing+scannedIndexPattern));
-                }
-                //Obtener la cantidad de veces que se tiene que desplazar
-                int regressionIndex = 0;
-                if(indexOfPatternCompared == -1){
+        int cuantityOfMatchesOnToken = 0;
+        boolean[] letterMask = new boolean[this._PatternHead.length()+this._PatternTail.length()+1];
+        boolean[] acumulatedMask = new boolean[this._PatternHead.length()+this._PatternTail.length()+1];
+        for(int z = 0; z < acumulatedMask.length; z++){
+            acumulatedMask[z] = false;
+        }
+        for(int indexOfToken = 0; indexOfToken < pToken.length(); indexOfToken++){
+            //Buscar el index de la letra del token
+            int indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(indexOfToken, indexOfToken+1));
+            //En caso de que la letra no exista traerse el vector de solo falsos
+            if(indexOfPatternCompared == -1){
                     indexOfPatternCompared = this._ListOfLetters.indexOf("eop");
-                }
-                regressionIndex = this._RegressionIndex.get(indexOfPatternCompared);
-                //Se tiene que mover startIndex + regressionIndex
-                if(startComparing + regressionIndex + lengthOfPattern - 1 < lengthOfToken){
-                    scannedIndexPattern = 0;
-                    scannedIndexToken = startComparing+regressionIndex;
-                    startComparing = scannedIndexToken;
+            }
+            letterMask = this._MaskTableList.get(indexOfPatternCompared);
+            //Aplicar el shift
+            boolean[] auxiliarShiftMask = new boolean[this._PatternHead.length()+this._PatternTail.length()+1];
+            for(int z = 0; z < auxiliarShiftMask.length; z++){
+                if(z == 0){
+                    auxiliarShiftMask[z] = true;
                 } else {
-                    break;
-                }   
+                    auxiliarShiftMask[z] = acumulatedMask[z-1];
+                }
+            }
+            acumulatedMask = auxiliarShiftMask;
+            //Aplicar el and a las mascaras
+            for(int z = 0; z < acumulatedMask.length; z++){
+                acumulatedMask[z] = acumulatedMask[z] && letterMask[z];
+            }
+            if(acumulatedMask[acumulatedMask.length-1] && indexOfToken >= patternOption.length()-1){
+                //System.out.println("Matches!!");
+                cuantityOfMatchesOnToken++;
             }
         }
+        
         if(cuantityOfMatchesOnToken > 0){
             if(cuantityOfMatchesInLine == 0){
                 cuantityOfMatchesInLine++;
