@@ -23,7 +23,8 @@ public class BusinessLogic {
     DinamicaControl _DinamicaControl;
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
-    int _WordAppeareances = 0;
+    ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
+    ArrayList<Integer> _MatchesInFileLIne = new ArrayList<Integer>();
     
     //Constructor
     public BusinessLogic() {
@@ -44,36 +45,46 @@ public class BusinessLogic {
     //Metodo para ejecutar el control del patron simple
     public String EjecutarPatronSimple() throws IOException{
         this._ProcessOperationState = 0;
-        this._WordAppeareances = 0;
+        this._WordAppeareances = new ArrayList<Integer>();
+        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
-        this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,_UserPattern);
-        if(_PatronSimpleControl.ValidatePattern()){
-            this._PatronSimpleControl.EjecutarBusqueda();
-            if(this._PatronSimpleControl.getProcessOperationState() == -1){
-               executionResult = "Error en la busqueda.";
-               this._ProcessOperationState = -1;
-            } else if(this._PatronSimpleControl.getProcessOperationState() == 1){
-                executionResult = "Busqueda exitosa!";
-                this._MatchLineInfo = new ArrayList<String>();
-                this._MatchLineInfo = this._PatronSimpleControl.getMatchLineInfo();
-                this._WordAppeareances = this._PatronSimpleControl.getWordAppearances();
-                this._ProcessOperationState = 1;
+        String[] tokenPattern = this._UserPattern.split("\\s+");
+        for(int i = 0; i < tokenPattern.length; i++){
+            this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,tokenPattern[i]);
+            if(_PatronSimpleControl.ValidatePattern()){
+                this._PatronSimpleControl.EjecutarBusqueda();
+                if(this._PatronSimpleControl.getProcessOperationState() == -1){
+                   executionResult = "Error en la busqueda.";
+                   this._ProcessOperationState = -1;
+                } else if(this._PatronSimpleControl.getProcessOperationState() == 1){
+                    executionResult = "Busqueda exitosa!";
+                    for(int j = 0; j < this._PatronSimpleControl.getMatchLineInfo().size(); j++){
+                        this._MatchLineInfo.add(this._PatronSimpleControl.getMatchLineInfo().get(j));
+                    }
+                    this._MatchLineInfo.add("--");
+                    this._WordAppeareances.add(this._PatronSimpleControl.getWordAppearances());
+                    this._MatchesInFileLIne.add(this._PatronSimpleControl.getMatchesInFileLine());
+                    this._ProcessOperationState = 1;
+                } else {
+                    executionResult = "Error Desconocido.";
+                    this._ProcessOperationState = -1;
+                }
             } else {
-                executionResult = "Error Desconocido.";
+                //El patron no es correcto
+                executionResult = "El patron no es el correcto";
                 this._ProcessOperationState = -1;
             }
-        } else {
-            //El patron no es correcto
-            executionResult = "El patron no es el correcto";
-            this._ProcessOperationState = -1;
         }
         return executionResult;
     }
 
-        //Metodo para ejecutar el control del patron simple
+    //Metodo para ejecutar el control del patron simple
     public String EjecutarProgDinamica() throws IOException{
         this._ProcessOperationState = 0;
-        this._WordAppeareances = 0;
+        this._WordAppeareances = new ArrayList<Integer>();
+        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         this._DinamicaControl = new DinamicaControl(_DirectoryPath,_UserPattern);
         if(_DinamicaControl.ValidatePattern()){
@@ -84,8 +95,12 @@ public class BusinessLogic {
             } else if(this._DinamicaControl.getProcessOperationState() == 1){
                 executionResult = "Busqueda exitosa!";
                 this._MatchLineInfo = new ArrayList<String>();
-                this._MatchLineInfo = this._DinamicaControl.getMatchLineInfo();
-                this._WordAppeareances = this._DinamicaControl.getWordAppearances();
+                for(int j = 0; j < this._PatronSimpleControl.getMatchLineInfo().size(); j++){
+                        this._MatchLineInfo.add(this._DinamicaControl.getMatchLineInfo().get(j));
+                    }
+                    this._MatchLineInfo.add("--");
+                    this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
+                    this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
                 this._ProcessOperationState = 1;
             } else {
                 executionResult = "Error Desconocido.";
@@ -107,8 +122,12 @@ public class BusinessLogic {
         return _MatchLineInfo;
     }
 
-    public int getWordAppeareances() {
+    public ArrayList<Integer> getWordAppeareances() {
         return _WordAppeareances;
+    }
+
+    public ArrayList<Integer> getMatchesInFileLIne() {
+        return _MatchesInFileLIne;
     }
     
 }

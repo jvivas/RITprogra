@@ -34,6 +34,7 @@ public class DinamicaControl {
     int _ContadorApariciones = 0;
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
+    int _MatchesInFileLine = 0;
 
     //Constructor
     public DinamicaControl(String pDirectoryPath, String pUserPattern) {
@@ -105,11 +106,16 @@ public class DinamicaControl {
     
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
+        int cuantityOfMathcedTokens = 0;    
         //Por cada linea del archivo separarla para luego procesar los patrones
         int counterPerDoc = 0;
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
             String fileLine = pFileLines.get(fileLineNumber);
             counterPerDoc += DynamicTable(fileLine);
+            if(counterPerDoc >= 1){
+                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
+                _MatchesInFileLine++;
+            }
         }
         //this._ListOfApariciones.add(contadorAparicionesPorDoc);
         //this._ListOfFiles.add(pFileName);  
@@ -192,6 +198,10 @@ public class DinamicaControl {
 
     public int getWordAppearances() {
         return _WordAppearances;
+    }
+    
+    public int getMatchesInFileLine() {
+        return _MatchesInFileLine;
     }
 }
 

@@ -165,13 +165,14 @@ public class FrmFile extends javax.swing.JFrame {
                 _BusinessLogic.setPatronUsuario(txfPalabra.getText());
                 try {
                     String executionResult = _BusinessLogic.EjecutarPatronSimple();
-                    JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                     if(this._BusinessLogic.getProcessOperationState() == 1){
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                         FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
                         frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
-                        frmSearchResult.InsertWordAppearances(this._BusinessLogic.getWordAppeareances());
                         frmSearchResult.setVisible(true);
                     } else {
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
@@ -189,7 +190,7 @@ public class FrmFile extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.btnPatronSimple.setEnabled(false);
+        this.jButton1.setEnabled(false);
         lblImg.setVisible(true);
         
         if(!_FilePath.getText().equals("")){
@@ -198,15 +199,15 @@ public class FrmFile extends javax.swing.JFrame {
                 _BusinessLogic.setPatronUsuario(txfPalabra.getText());
                 try {
                     //String executionResult = _BusinessLogic.EjecutarProgDinamica();
-                    String executionResult = "Busqueda";
-                    _BusinessLogic.EjecutarProgDinamica();
-                    JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                    String executionResult = _BusinessLogic.EjecutarProgDinamica();
                     if(this._BusinessLogic.getProcessOperationState() == 1){
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                         FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
                         frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
-                        frmSearchResult.InsertWordAppearances(this._BusinessLogic.getWordAppeareances());
                         frmSearchResult.setVisible(true);
                     } else {
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
@@ -218,7 +219,7 @@ public class FrmFile extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio.");
         }
-        this.btnPatronSimple.setEnabled(true);
+        this.jButton1.setEnabled(true);
         lblImg.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

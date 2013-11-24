@@ -15,6 +15,8 @@ import java.util.ArrayList;
 public class FrmSearchResult extends javax.swing.JFrame {
 
     ArrayList<String> _SearchResult = new ArrayList<String>();
+    ArrayList<Integer> _WordApearances = new ArrayList<Integer>();
+    ArrayList<Integer> _MatchesInFileLIne = new ArrayList<Integer>();
     
     /**
      * Creates new form FrmSearchResult
@@ -24,10 +26,17 @@ public class FrmSearchResult extends javax.swing.JFrame {
     }
     
     public void InsertResult(ArrayList<String> pSearchResult){
+        int appearancesIndex = 0;
         for(int i = 0; i < pSearchResult.size(); i++){
-            this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + pSearchResult.get(i) + "\n");
+            if(pSearchResult.get(i).equals("--")){
+                this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + "\nGrand Total: " +this._MatchesInFileLIne.get(appearancesIndex) + " match(es) found."+ "\n************************\n\n");
+                appearancesIndex++;
+            } else {
+                this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + pSearchResult.get(i) + "\n");
+            }
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -108,7 +117,11 @@ public class FrmSearchResult extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaSearchResult;
     // End of variables declaration//GEN-END:variables
 
-    public void InsertWordAppearances(int wordAppeareances) {
-        this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + "\nThe word appeared in total: " + wordAppeareances + " times.\n");
+    public void InsertWordAppearances(ArrayList<Integer> wordAppeareances) {
+        this._WordApearances = wordAppeareances;
+    }
+
+    public void setMatchesInFileLIne(ArrayList<Integer> _MatchesInFileLIne) {
+        this._MatchesInFileLIne = _MatchesInFileLIne;
     }
 }
