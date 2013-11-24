@@ -34,6 +34,7 @@ public class PatronSimpleControl {
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
+    int _MatchesInFileLine = 0;
 
     //Constructor
     public PatronSimpleControl(String pDirectoryPath, String pUserPattern) {
@@ -89,6 +90,7 @@ public class PatronSimpleControl {
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
         this._ProcessOperationState = 0;
         this._WordAppearances = 0;
+        this._MatchesInFileLine = 0;
         if(_UserPattern.length() > 0){
             int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
             if(openDirectorySuccess == 0){
@@ -97,7 +99,7 @@ public class PatronSimpleControl {
                 ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
                 //Por cada archivo en el directorio
                 for(int subFile = 0; subFile < subFiles.size(); subFile++){
-                    System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
+                    //System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
                     String fileName = subFiles.get(subFile);
                     _FileRead = new FileRead(_DirectoryPath+"/"+fileName);
                     if(_FileRead.getFileOpenSuccess() == 0){
@@ -131,19 +133,27 @@ public class PatronSimpleControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         HorsepoolTable();
-        System.out.println(this._ListOfLetters.toString());
-        System.out.println(this._RegressionIndex.toString());
+        //System.out.println(this._ListOfLetters.toString());
+        //System.out.println(this._RegressionIndex.toString());
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
+            int cuantityOfMathcedTokens = 0;
             String[] tokenList;
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
-            //La siguiente linea solamente se ha agregado para el procesamiento del Horsepool
             for(int tokenIndex = 0; tokenIndex < tokenList.length; tokenIndex++){
                 String tokenPrepared = PrepareToken(tokenList[tokenIndex]);
-                if(ValidateToken(tokenPrepared) && tokenPrepared.length() >= _UserPattern.length()){
-                    System.out.println("token: " + tokenPrepared + "\n");
-                    HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
+                //if(ValidateToken(tokenPrepared) && tokenPrepared.length() >= _UserPattern.length()){
+                if(tokenPrepared.length() >= _UserPattern.length()){
+                    //System.out.println("token: " + tokenPrepared + "\n");
+                    int matchedToken = HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
+                    if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
+                        cuantityOfMathcedTokens++;
+                    }
                 }
+            }
+            if(cuantityOfMathcedTokens >= 1){
+                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
+                _MatchesInFileLine++;
             }
         }
         //System.out.println(this._MatchLineInfo.toString());
@@ -187,13 +197,14 @@ public class PatronSimpleControl {
     }
     
     //Metodo de busqueda para el patron horsepool
-    public void HorsepoolMethod(String pToken, String pDirectoryName, String pFileName, int pFileLine){
+    public int HorsepoolMethod(String pToken, String pDirectoryName, String pFileName, int pFileLine){
         int lengthOfToken = pToken.length();
         int lengthOfPattern = this._UserPattern.length();
         int scannedIndexToken = 0;
         int scannedIndexPattern = 0;
         int startComparing = 0;
         int cuantityOfMatchesOnToken = 0;
+        int cuantityOfMatchesInLine = 0;
         while(scannedIndexToken < lengthOfToken){
             String patternCompare = this._UserPattern.substring(scannedIndexPattern, scannedIndexPattern+1);
             String tokenCompare = pToken.substring(scannedIndexToken, scannedIndexToken+1);
@@ -230,9 +241,13 @@ public class PatronSimpleControl {
             }
         }
         if(cuantityOfMatchesOnToken > 0){
+            if(cuantityOfMatchesInLine == 0){
+                cuantityOfMatchesInLine++;
+            }
             this._WordAppearances++;
-            this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
+            //this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
         }
+        return cuantityOfMatchesInLine;
     }
 
     public ArrayList<String> getMatchLineInfo() {
@@ -245,6 +260,10 @@ public class PatronSimpleControl {
 
     public int getWordAppearances() {
         return _WordAppearances;
+    }
+
+    public int getMatchesInFileLine() {
+        return _MatchesInFileLine;
     }
     
 }
