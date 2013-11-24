@@ -63,6 +63,7 @@ public class FrmFile extends javax.swing.JFrame {
         lblPalabra = new javax.swing.JLabel();
         txfPalabra = new javax.swing.JTextField();
         lblImg = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +91,13 @@ public class FrmFile extends javax.swing.JFrame {
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ajax-loader.gif"))); // NOI18N
 
+        jButton1.setText("Programación Dinámica");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +106,15 @@ public class FrmFile extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblPalabra)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPatronSimple)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblImg))
                     .addComponent(btnAbrir)
                     .addComponent(_FilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
-                    .addComponent(txfPalabra))
+                    .addComponent(txfPalabra)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnPatronSimple, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblImg)))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,10 +129,15 @@ public class FrmFile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txfPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPatronSimple)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPatronSimple)
-                    .addComponent(lblImg))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblImg))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,6 +187,41 @@ public class FrmFile extends javax.swing.JFrame {
         lblImg.setVisible(false);
     }//GEN-LAST:event_btnPatronSimpleActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.btnPatronSimple.setEnabled(false);
+        lblImg.setVisible(true);
+        
+        if(!_FilePath.getText().equals("")){
+            if(!txfPalabra.getText().equals("")){
+                _BusinessLogic.setDirectoryPath(_FilePath.getText());
+                _BusinessLogic.setPatronUsuario(txfPalabra.getText());
+                try {
+                    //String executionResult = _BusinessLogic.EjecutarProgDinamica();
+                    String executionResult = "Busqueda";
+                    _BusinessLogic.EjecutarProgDinamica();
+                    JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                    if(this._BusinessLogic.getProcessOperationState() == 1){
+                        FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
+                        frmSearchResult.InsertWordAppearances(this._BusinessLogic.getWordAppeareances());
+                        frmSearchResult.setVisible(true);
+                    } else {
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                }
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio.");
+        }
+        this.btnPatronSimple.setEnabled(true);
+        lblImg.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,6 +262,7 @@ public class FrmFile extends javax.swing.JFrame {
     private javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnPatronSimple;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblPalabra;
     private javax.swing.JTextField txfPalabra;

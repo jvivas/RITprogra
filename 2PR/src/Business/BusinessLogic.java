@@ -20,6 +20,7 @@ public class BusinessLogic {
     String _UserPattern = "";
     //Control para el caso de buscar palabras en los directorios
     PatronSimpleControl _PatronSimpleControl;
+    DinamicaControl _DinamicaControl;
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
     int _WordAppeareances = 0;
@@ -69,6 +70,17 @@ public class BusinessLogic {
         return executionResult;
     }
 
+        //Metodo para ejecutar el control del patron simple
+    public void EjecutarProgDinamica() throws IOException{
+        this._DinamicaControl = new DinamicaControl(_DirectoryPath,_UserPattern);
+        if(_DinamicaControl.ValidatePattern()){
+            this._DinamicaControl.EjecutarBusqueda();
+        } else {
+            //El patron no es correcto
+            System.out.println("El patron no es el correcto");
+        }
+    }
+    
     public int getProcessOperationState() {
         return _ProcessOperationState;
     }
