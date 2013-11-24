@@ -207,7 +207,12 @@ public class PatronSimpleControl {
                 scannedIndexPattern++;
                 scannedIndexToken++;
             } else if(!patternCompare.equals(tokenCompare)){
-                int indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+lengthOfPattern-1, startComparing+lengthOfPattern));
+                int indexOfPatternCompared = 0;
+                if(scannedIndexPattern == 0 && startComparing == 0){
+                    indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+lengthOfPattern-1, startComparing+lengthOfPattern));
+                } else {
+                    indexOfPatternCompared = this._ListOfLetters.indexOf(pToken.substring(startComparing+scannedIndexPattern-1, startComparing+scannedIndexPattern));
+                }
                 //Obtener la cantidad de veces que se tiene que desplazar
                 int regressionIndex = 0;
                 if(indexOfPatternCompared == -1){
