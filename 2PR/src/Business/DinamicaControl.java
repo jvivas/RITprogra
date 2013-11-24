@@ -25,14 +25,15 @@ public class DinamicaControl {
     DirectoryProcessor _DirectoryProcessor;
     FileRead _FileRead;
     String _DirectoryPath = ".";
-    String _UserPattern = "";
-    boolean _CaseSensitive = false;
+    String _UserPattern = "";    
     boolean _TokenValidRegex = false;
-    String _Regex = "[\\w]+#[0-9]";
-    ArrayList<String> _ListOfFiles = new ArrayList<String>();
-    ArrayList<Integer> _ListOfApariciones = new ArrayList<Integer>();    
-    int _NumeroErrores;
-    int _ContadorApariciones;
+    String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+#[0-9]";
+    ArrayList<String> _MatchLineInfo = new ArrayList<String>();
+    ArrayList<Integer> _ListOfApariciones = new ArrayList<Integer>();  
+    int _NumeroErrores = 0;
+    int _ContadorApariciones = 0;
+    int _ProcessOperationState = 0;
+    int _WordAppearances = 0;
 
     //Constructor
     public DinamicaControl(String pDirectoryPath, String pUserPattern) {
@@ -59,21 +60,11 @@ public class DinamicaControl {
         return patternResult;
     }
     
-    public boolean ValidateToken(String pTokenValidate){
-        boolean patternResult = false;
-        Pattern pattern = Pattern.compile(_Regex);
-        Matcher matcher = pattern.matcher(pTokenValidate);
-        if (matcher.matches( )) {
-            patternResult = true;
-            //System.out.println("Match Token Regex");
-        } else {
-            patternResult = false;
-            //System.out.println("No Token Match");
-        }
-        return patternResult;
-    }
         
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
+        this._ProcessOperationState = 0;        
+        this._ContadorApariciones = 0;
+        this._WordAppearances = 0;
         if(_UserPattern.length() > 0){
             int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
             if(openDirectorySuccess == 0){
@@ -89,34 +80,43 @@ public class DinamicaControl {
                         _FileRead.ReadLines();                        
                         if(_FileRead.getFileReadSuccess() == 0){
                             ProcessFileLines(_FileRead.getFileLines(),_DirectoryPath,subFiles.get(subFile));
+                            this._ProcessOperationState = 1;
                         } else {
                             System.err.println("No se pudo leer el archivo: " + fileName + "\n");
+                            this._ProcessOperationState = -1;
+                            
                         }
                     } else {
                         System.err.println("No se pudo abrir el archivo: " + fileName + "\n");
+                        this._ProcessOperationState = -1;
                     }
                 }
             } else {
                 //Ocurrio un error y no se pudo abrir el directorio
+                System.out.println("Ocurrio un error y no se pudo abrir el directorio");
+                this._ProcessOperationState = -1;
             }
-
             System.out.println("Final de la Ejecucion de la busqueda.");
         } else {
-            System.out.println("Final de la Ejecucion de la busqueda.");
+            System.out.println("Largo de patron invalido.");
+            this._ProcessOperationState = -1;
         }
     }
     
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
-        int contadorAparicionesPorDoc = 0;
+        int counterPerDoc = 0;
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
             String fileLine = pFileLines.get(fileLineNumber);
-            contadorAparicionesPorDoc += DynamicTable(fileLine);
+            counterPerDoc += DynamicTable(fileLine);
         }
-        this._ListOfApariciones.add(contadorAparicionesPorDoc);
-        this._ListOfFiles.add(pFileName);   
-        System.out.println("En el archivo " + pFileName + " aparece " + contadorAparicionesPorDoc);
+        //this._ListOfApariciones.add(contadorAparicionesPorDoc);
+        //this._ListOfFiles.add(pFileName);  
+        if(counterPerDoc != 0){     
+            this._WordAppearances++;
+            this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName  + " on this word: " + _UserPattern +" " + counterPerDoc + " times.");
+        }
     }
     
     // Imprimir matriz
@@ -178,9 +178,20 @@ public class DinamicaControl {
                 }
            }
             
-         }          
-        //ImprimirMatriz(table,pToken);
-        //System.out.println("Apariciones = " + conteoApariciones);
+         }
         return conteoApariciones;
     }
+    
+    public ArrayList<String> getMatchLineInfo() {
+        return _MatchLineInfo;
+    }
+
+    public int getProcessOperationState() {
+        return _ProcessOperationState;
+    }
+
+    public int getWordAppearances() {
+        return _WordAppearances;
+    }
 }
+

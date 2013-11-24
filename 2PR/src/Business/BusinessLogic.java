@@ -71,14 +71,32 @@ public class BusinessLogic {
     }
 
         //Metodo para ejecutar el control del patron simple
-    public void EjecutarProgDinamica() throws IOException{
+    public String EjecutarProgDinamica() throws IOException{
+        this._ProcessOperationState = 0;
+        this._WordAppeareances = 0;
+        String executionResult = "";
         this._DinamicaControl = new DinamicaControl(_DirectoryPath,_UserPattern);
         if(_DinamicaControl.ValidatePattern()){
             this._DinamicaControl.EjecutarBusqueda();
+            if(this._DinamicaControl.getProcessOperationState() == -1){
+               executionResult = "Error en la busqueda.";
+               this._ProcessOperationState = -1;
+            } else if(this._DinamicaControl.getProcessOperationState() == 1){
+                executionResult = "Busqueda exitosa!";
+                this._MatchLineInfo = new ArrayList<String>();
+                this._MatchLineInfo = this._DinamicaControl.getMatchLineInfo();
+                this._WordAppeareances = this._DinamicaControl.getWordAppearances();
+                this._ProcessOperationState = 1;
+            } else {
+                executionResult = "Error Desconocido.";
+                this._ProcessOperationState = -1;
+            }
         } else {
             //El patron no es correcto
-            System.out.println("El patron no es el correcto");
+            executionResult = "El patron no es el correcto";
+            this._ProcessOperationState = -1;
         }
+        return executionResult;
     }
     
     public int getProcessOperationState() {

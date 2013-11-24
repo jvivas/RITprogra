@@ -55,16 +55,14 @@ public class DirectoryProcessor {
         {
 
          if (_ListOfFiles[i].isFile()) 
-         {
-           System.out.println("File Found: " + _ListOfFiles[i].getName());
+         {           
            _AmountFilesFound++;
            _FilesInDirectory.add(_ListOfFiles[i].getName());
          } else if(_ListOfFiles[i].isDirectory()){
            _SubDirectories.add(_ListOfFiles[i].getName());
              System.out.println(_ListOfFiles[i].getName());
          }
-        }
-        System.out.println("Amount of Files Found: " + _AmountFilesFound);
+        }        
     }
 
     public void SortFilesList(){
