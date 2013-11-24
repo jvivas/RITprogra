@@ -29,7 +29,7 @@ public class FrmSearchResult extends javax.swing.JFrame {
         int appearancesIndex = 0;
         for(int i = 0; i < pSearchResult.size(); i++){
             if(pSearchResult.get(i).equals("--")){
-                this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + "\nGrand Total: " +this._MatchesInFileLIne.get(appearancesIndex) + " match(es) found."+ "\n************************\n\n");
+                this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + "\nGrand Total: "  + " match(es) found."+ "\n************************\n\n");
                 appearancesIndex++;
             } else {
                 this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + pSearchResult.get(i) + "\n");

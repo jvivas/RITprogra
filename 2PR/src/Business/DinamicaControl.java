@@ -34,7 +34,7 @@ public class DinamicaControl {
     int _ContadorApariciones = 0;
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
-    int _MatchesInFileLine = 0;
+    String _MatchedWord;
 
     //Constructor
     public DinamicaControl(String pDirectoryPath, String pUserPattern) {
@@ -106,16 +106,11 @@ public class DinamicaControl {
     
     //Metodo para procesar las lineas de texto del archivo
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
-        int cuantityOfMathcedTokens = 0;    
         //Por cada linea del archivo separarla para luego procesar los patrones
         int counterPerDoc = 0;
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
             String fileLine = pFileLines.get(fileLineNumber);
-            counterPerDoc += DynamicTable(fileLine);
-            if(counterPerDoc >= 1){
-                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
-                _MatchesInFileLine++;
-            }
+            counterPerDoc += DynamicTable(fileLine,pFileName);
         }
         //this._ListOfApariciones.add(contadorAparicionesPorDoc);
         //this._ListOfFiles.add(pFileName);  
@@ -139,7 +134,7 @@ public class DinamicaControl {
     }
     
     // Preparar tabla para ejecutar programacion dinamica
-    public int DynamicTable(String pToken){
+    public int DynamicTable(String pToken,String pFileName){
         int lengthOfUserPattern = this._UserPattern.length() + 1;
         int lengthOfText = pToken.length()+ 1;        
         int table[][] = new int[lengthOfUserPattern][lengthOfText];             
@@ -153,39 +148,40 @@ public class DinamicaControl {
                 }
             }
         }
-        return DynamicMethod(pToken,table,lengthOfUserPattern,lengthOfText);
+        return DynamicMethod(pToken,table,lengthOfUserPattern,lengthOfText,pFileName);
     }
         
     // Metodo de programacion dinamica
-    public int DynamicMethod(String pToken,int[][] table,int lengthOfUserPattern,int lengthOfText){                                                
+    public int DynamicMethod(String pToken,int[][] pTable,int pLengthOfUserPattern,int pLengthOfText,String pFileName){                                                
         int flagAparicion = 0;
         int conteoApariciones = 0;
-        for (int i = 1; i < lengthOfUserPattern; i++){ 
-            for (int j = 1; j < lengthOfText; j++){                                           
+        for (int i = 1; i < pLengthOfUserPattern; i++){ 
+            for (int j = 1; j < pLengthOfText; j++){                                           
                 if(_UserPattern.charAt(i - 1) == pToken.charAt(j - 1)){                    
-                    table[i][j] = table[i-1][j-1];
+                    pTable[i][j] = pTable[i-1][j-1];
                 }
                 else{
-                    int menor = java.lang.Math.min(table[i-1][j],table[i][j-1]);
-                    table[i][j] = 1 + java.lang.Math.min(menor,table[i-1][j-1]);
+                    int menor = java.lang.Math.min(pTable[i-1][j],pTable[i][j-1]);
+                    pTable[i][j] = 1 + java.lang.Math.min(menor,pTable[i-1][j-1]);
                     }
-                if(i == lengthOfUserPattern - 1){
-                    if(table[i][j] <= _NumeroErrores && flagAparicion == 0){
+                if(i == pLengthOfUserPattern - 1){
+                    if(pTable[i][j] <= _NumeroErrores && flagAparicion == 0){
                     conteoApariciones++;                
-                    flagAparicion = 1;
+                    flagAparicion = 1;                    
                     }
                 else{
-                    if(table[i][j] <= _NumeroErrores){
+                    if(pTable[i][j] <= _NumeroErrores){
                         flagAparicion = 1;
                     }
                     else
                         flagAparicion = 0;
                     }
                 }
-           }
-            
-         }
+           }           
+         }        
+        //System.out.println("Archivo: " + pFileName);
         return conteoApariciones;
+        
     }
     
     public ArrayList<String> getMatchLineInfo() {
@@ -198,10 +194,6 @@ public class DinamicaControl {
 
     public int getWordAppearances() {
         return _WordAppearances;
-    }
-    
-    public int getMatchesInFileLine() {
-        return _MatchesInFileLine;
     }
 }
 

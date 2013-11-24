@@ -98,12 +98,12 @@ public class BusinessLogic {
                 } else if(this._DinamicaControl.getProcessOperationState() == 1){
                     executionResult = "Busqueda exitosa!";
                     this._MatchLineInfo = new ArrayList<String>();
-                    for(int j = 0; j < this._PatronSimpleControl.getMatchLineInfo().size(); j++){
+                    for(int j = 0; j < this._DinamicaControl.getMatchLineInfo().size(); j++){
                             this._MatchLineInfo.add(this._DinamicaControl.getMatchLineInfo().get(j));
                         }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
-                    this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
+                    //this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
