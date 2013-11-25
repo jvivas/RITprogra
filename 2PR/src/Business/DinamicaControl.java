@@ -42,7 +42,7 @@ public class DinamicaControl {
         this._DirectoryPath = pDirectoryPath;
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
         this._UserPattern = pUserPattern;
-        System.out.println("User Pattern: " + _UserPattern);
+        //System.out.println("User Pattern: " + _UserPattern);
     }
 
     public boolean ValidatePattern() {
@@ -54,10 +54,10 @@ public class DinamicaControl {
             String[] divisionPatron = _UserPattern.split("#");
             _NumeroErrores = Integer.parseInt(divisionPatron[1]);
             _UserPattern = divisionPatron[0];
-            System.out.println("Match Regex");
+            //System.out.println("Match Regex");
         } else {
             patternResult = false;
-            System.out.println("No Match");
+            //System.out.println("No Match");
         }
         return patternResult;
     }
@@ -179,9 +179,9 @@ public class DinamicaControl {
                     if (pTable[i][j] <= _NumeroErrores && flagAparicion == 0) {
                         conteoApariciones++;
                         flagAparicion = 1;
-                    //this._WordAppearances++;
+                        this._WordAppearances++;
                         //this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLineNumber + " on this line: " + pToken);
-                        _MatchesInFileLine++;
+                        this._MatchesInFileLine++;
                     } else {
                         if (pTable[i][j] <= _NumeroErrores) {
                             flagAparicion = 1;

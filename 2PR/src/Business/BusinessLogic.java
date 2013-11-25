@@ -23,11 +23,12 @@ public class BusinessLogic {
     PatronSimpleControl _PatronSimpleControl;
     DinamicaControl _DinamicaControl;
     PatronOpcionesControl _PatronOpcionesControl;
-    ArrayList<String> _MatchLineInfo = new ArrayList<String>();
-    int _ProcessOperationState = 0;
+    ArrayList<String> _MatchLineInfo = new ArrayList<String>();    
     ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
     ArrayList<Integer> _MatchesInFileLine = new ArrayList<Integer>();
+    int _ProcessOperationState = 0;
     int _AmountQueryProcess = 0;
+    int _PrefijoConsulta = 0;
     
     //Constructor
     public BusinessLogic() {
@@ -62,25 +63,27 @@ public class BusinessLogic {
                    executionResult = "Error en la busqueda.";
                    this._ProcessOperationState = -1;
                 } else if(this._PatronSimpleControl.getProcessOperationState() == 1){
-                    executionResult = "Busqueda exitosa!";
+                    executionResult = "Busqueda exitosa! Patrón Simple";
                     for(int j = 0; j < this._PatronSimpleControl.getMatchLineInfo().size(); j++){
                         this._MatchLineInfo.add(this._PatronSimpleControl.getMatchLineInfo().get(j));
                     }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._PatronSimpleControl.getWordAppearances());
                     this._MatchesInFileLine.add(this._PatronSimpleControl.getMatchesInFileLine());
-                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+ this._PrefijoConsulta +"_"+ this._PatronSimpleControl.getUserPattern() +".txt");
                     _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
                     _ExitFile.setFileLines(this._MatchLineInfo);
                     _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
+                    this._AmountQueryProcess++;
+                    return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
                     this._ProcessOperationState = -1;
                 }
             } else {
                 //El patron no es correcto
-                executionResult = "El patron no es el correcto";
+                executionResult = "El patron no es el correcto en Patron Simple";
                 this._ProcessOperationState = -1;
                 break;
             }
@@ -96,7 +99,7 @@ public class BusinessLogic {
         this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
-        String[] tokenPattern = this._UserPattern.split("\\s+");
+        String[] tokenPattern = this._UserPattern.split("\\s+");        
         for(int i = 0; i < tokenPattern.length; i++){    
             this._DinamicaControl = new DinamicaControl(_DirectoryPath,tokenPattern[i]);
             if(_DinamicaControl.ValidatePattern()){
@@ -105,7 +108,7 @@ public class BusinessLogic {
                    executionResult = "Error en la busqueda.";
                    this._ProcessOperationState = -1;
                 } else if(this._DinamicaControl.getProcessOperationState() == 1){
-                    executionResult = "Busqueda exitosa!";
+                    executionResult = "Busqueda exitosa! Programación Dinámica";
                     this._MatchLineInfo = new ArrayList<String>();
                     for(int j = 0; j < this._DinamicaControl.getMatchLineInfo().size(); j++){
                             this._MatchLineInfo.add(this._DinamicaControl.getMatchLineInfo().get(j));
@@ -113,18 +116,20 @@ public class BusinessLogic {
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
                     this._MatchesInFileLine.add(this._DinamicaControl.getMatchesInFileLine());
-                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+this._PrefijoConsulta+"_"+ this._UserPattern +".txt");
                     _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
                     _ExitFile.setFileLines(this._MatchLineInfo);
                     _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
+                    this._AmountQueryProcess++;
+                    return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
                     this._ProcessOperationState = -1;
                 }
             } else {
                 //El patron no es correcto
-                executionResult = "El patron no es el correcto";
+                executionResult = "El patron no es el correcto en Programación Dinámica";
                 this._ProcessOperationState = -1;
                 break;
             }
@@ -149,27 +154,65 @@ public class BusinessLogic {
                    executionResult = "Error en la busqueda.";
                    this._ProcessOperationState = -1;
                 } else if(this._PatronOpcionesControl.getProcessOperationState() == 1){
-                    executionResult = "Busqueda exitosa!";
+                    executionResult = "Busqueda exitosa! Patrón con Opciones";
                     for(int j = 0; j < this._PatronOpcionesControl.getMatchLineInfo().size(); j++){
                         this._MatchLineInfo.add(this._PatronOpcionesControl.getMatchLineInfo().get(j));
                     }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._PatronOpcionesControl.getWordAppearances());
                     this._MatchesInFileLine.add(this._PatronOpcionesControl.getMatchesInFileLine());
-                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    //System.out.println("Escribiendo Archivo");
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+this._PrefijoConsulta+"_"+ _PatronOpcionesControl.getUserPattern() +".txt");
                     _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
                     _ExitFile.setFileLines(this._MatchLineInfo);
                     _ExitFile.SaveFile();
+                    //System.out.println("Fin archivo");
                     this._ProcessOperationState = 1;
+                    this._AmountQueryProcess++;
+                    return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
                     this._ProcessOperationState = -1;
                 }
             } else {
                 //El patron no es correcto
-                executionResult = "El patron no es el correcto";
+                executionResult = "El patrón no es el correcto en Patrón con Opciones";
                 this._ProcessOperationState = -1;
                 break;
+            }
+        }
+        this._AmountQueryProcess++;
+        return executionResult;
+    }
+    
+    //Metodo para ejecutar el todos los controles de los patrones
+    public String EjecutarPatrones(int pPrefijoConsulta) throws IOException{
+        this._PrefijoConsulta = pPrefijoConsulta;
+        this._ProcessOperationState = 0;
+        this._WordAppeareances = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
+        this._MatchLineInfo = new ArrayList<String>();
+        String executionResult = "";
+        String[] tokenPattern = this._UserPattern.split(" ");
+        for(int i = 0; i < tokenPattern.length; i++){            
+            this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,tokenPattern[i]);
+            if(_PatronSimpleControl.ValidatePattern()){                
+                executionResult = EjecutarPatronSimple();                                
+                return executionResult;
+            }
+            else{
+                this._DinamicaControl = new DinamicaControl(_DirectoryPath,tokenPattern[i]);
+                if(_DinamicaControl.ValidatePattern()){                    
+                    executionResult = EjecutarProgDinamica();                                      
+                    return executionResult;
+                }                
+                else{
+                    this._PatronOpcionesControl = new PatronOpcionesControl(_DirectoryPath,tokenPattern[i]);
+                    if(_PatronOpcionesControl.ValidatePattern()){                        
+                        executionResult = EjecutarPatronOpciones();                                                
+                        return executionResult;
+                    }
+                }
             }
         }
         this._AmountQueryProcess++;

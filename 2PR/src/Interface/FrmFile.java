@@ -35,6 +35,7 @@ public class FrmFile extends javax.swing.JFrame {
     private File SelectFile;
     private BusinessLogic _BusinessLogic;
     Executor executor = java.util.concurrent.Executors.newSingleThreadExecutor();
+    int _PrefijoConsulta = 0;
     
 
     public FrmFile() {
@@ -67,6 +68,7 @@ public class FrmFile extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnPatronOpciones = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnAllPatterns = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +112,13 @@ public class FrmFile extends javax.swing.JFrame {
 
         jButton2.setText("Autómata");
 
+        btnAllPatterns.setText("Patrones");
+        btnAllPatterns.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllPatternsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,8 +138,11 @@ public class FrmFile extends javax.swing.JFrame {
                                 .addComponent(btnPatronOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblImg)))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(btnAllPatterns, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +168,9 @@ public class FrmFile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(btnAllPatterns))
                         .addGap(0, 20, Short.MAX_VALUE))))
         );
 
@@ -190,7 +204,7 @@ public class FrmFile extends javax.swing.JFrame {
                         FrmSearchResult frmSearchResult = new FrmSearchResult();
                         frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
                         frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
-                        frmSearchResult.setVisible(true);
+                        frmSearchResult.setVisible(true);                        
                     } else {
                         JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                     }
@@ -276,6 +290,48 @@ public class FrmFile extends javax.swing.JFrame {
         lblImg.setVisible(false);
     }//GEN-LAST:event_btnPatronOpcionesActionPerformed
 
+    private void btnAllPatternsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllPatternsActionPerformed
+        // TODO add your handling code here:
+        this.btnAllPatterns.setEnabled(false);
+        lblImg.setVisible(true);
+        
+        if(!_FilePath.getText().equals("")){
+            if(!txfPalabra.getText().equals("")){
+                System.out.println("Palbra = " + txfPalabra.getText());
+                String[] tokenPattern = txfPalabra.getText().split(" ");                
+                _BusinessLogic.setDirectoryPath(_FilePath.getText());
+                _PrefijoConsulta++;
+                for(int i = 0; i < tokenPattern.length;i++){               
+                    _BusinessLogic.setPatronUsuario(tokenPattern[i]);
+                try {
+                    String executionResult = _BusinessLogic.EjecutarPatrones(_PrefijoConsulta);
+                    if(this._BusinessLogic.getProcessOperationState() == 1){
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                        FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
+                        frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
+                        frmSearchResult.setVisible(true);                        
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                    }
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                }
+                }
+            }else {
+                JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");
+                _PrefijoConsulta--;
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar el campo del directorio.");
+            _PrefijoConsulta--;
+        }
+        this.btnAllPatterns.setEnabled(true);
+        lblImg.setVisible(false);
+        
+    }//GEN-LAST:event_btnAllPatternsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -314,6 +370,7 @@ public class FrmFile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField _FilePath;
     private javax.swing.JButton btnAbrir;
+    private javax.swing.JButton btnAllPatterns;
     private javax.swing.JButton btnPatronOpciones;
     private javax.swing.JButton btnPatronSimple;
     private javax.swing.ButtonGroup buttonGroup1;

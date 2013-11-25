@@ -64,7 +64,7 @@ public class DirectoryProcessor {
              System.out.println(_ListOfFiles[i].getName());
          }
         }
-        System.out.println("Amount of Files Found: " + _AmountFilesFound);
+        //System.out.println("Amount of Files Found: " + _AmountFilesFound);
     }
 
     public void SortFilesList(){

@@ -42,7 +42,7 @@ public class PatronSimpleControl {
         this._DirectoryProcessor = new DirectoryProcessor(this._DirectoryPath);
         this._UserPattern = pUserPattern;
         this._CaseSensitive = GetIgnoreCase();
-        System.out.println("User Pattern: " + _UserPattern);
+        //System.out.println("User Pattern: " + _UserPattern);
     }
     
     public boolean ValidatePattern(){
@@ -51,10 +51,10 @@ public class PatronSimpleControl {
         Matcher matcher = pattern.matcher(_UserPattern);
         if (matcher.matches()) {
             patternResult = true;
-            System.out.println("Match Regex");
+            //System.out.println("Match Regex");
         } else {
             patternResult = false;
-            System.out.println("No Match");
+            //System.out.println("No Match");
         }
         return patternResult;
     }
@@ -264,6 +264,10 @@ public class PatronSimpleControl {
 
     public int getMatchesInFileLine() {
         return _MatchesInFileLine;
+    }
+    
+    public String getUserPattern(){
+        return _UserPattern;
     }
     
 }

@@ -42,6 +42,7 @@ public class PatronOpcionesControl {
     String _PatternTail = "";
     String _PatternOptions = "";
     ArrayList<boolean[]> _MaskTableList = new ArrayList<boolean[]>();
+    String _PatternName = "";
 
     //Constructor
     public PatronOpcionesControl(String pDirectoryPath, String pUserPattern) {
@@ -74,6 +75,7 @@ public class PatronOpcionesControl {
                 this._PatternHead = head;
                 this._PatternTail = tail;
                 this._PatternOptions = options;
+                this._PatternName = this._UserPattern;                
                 patternResult = true;
             //System.out.println("Match Regex");
             } catch(Exception e){
@@ -324,5 +326,9 @@ public class PatronOpcionesControl {
 
     public int getMatchesInFileLine() {
         return _MatchesInFileLine;
+    }
+    
+    public String getUserPattern(){
+        return _PatternName;
     }
 }
