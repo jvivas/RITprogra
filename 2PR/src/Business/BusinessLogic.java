@@ -6,6 +6,7 @@
 
 package Business;
 
+import DataAccess.GenerateExitFile;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,13 +22,16 @@ public class BusinessLogic {
     //Control para el caso de buscar palabras en los directorios
     PatronSimpleControl _PatronSimpleControl;
     DinamicaControl _DinamicaControl;
+    PatronOpcionesControl _PatronOpcionesControl;
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
     ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
-    ArrayList<Integer> _MatchesInFileLIne = new ArrayList<Integer>();
+    ArrayList<Integer> _MatchesInFileLine = new ArrayList<Integer>();
+    int _AmountQueryProcess = 0;
     
     //Constructor
     public BusinessLogic() {
+        _AmountQueryProcess = 0;
     }
 
     public String getDirectoryPath() {
@@ -46,7 +50,7 @@ public class BusinessLogic {
     public String EjecutarPatronSimple() throws IOException{
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
-        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split("\\s+");
@@ -64,7 +68,11 @@ public class BusinessLogic {
                     }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._PatronSimpleControl.getWordAppearances());
-                    this._MatchesInFileLIne.add(this._PatronSimpleControl.getMatchesInFileLine());
+                    this._MatchesInFileLine.add(this._PatronSimpleControl.getMatchesInFileLine());
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -77,14 +85,15 @@ public class BusinessLogic {
                 break;
             }
         }
+        this._AmountQueryProcess++;
         return executionResult;
     }
 
-    //Metodo para ejecutar el control del patron simple
+    //Metodo para ejecutar el control de programacion dinamica
     public String EjecutarProgDinamica() throws IOException{
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
-        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split("\\s+");
@@ -104,6 +113,10 @@ public class BusinessLogic {
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
                     //this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
+                    /*GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();*/
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -116,8 +129,53 @@ public class BusinessLogic {
                 break;
             }
         }
+        this._AmountQueryProcess++;
         return executionResult;
     }
+    
+    //Metodo para ejecutar el control del patron con opciones
+    public String EjecutarPatronOpciones() throws IOException{
+        this._ProcessOperationState = 0;
+        this._WordAppeareances = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
+        this._MatchLineInfo = new ArrayList<String>();
+        String executionResult = "";
+        String[] tokenPattern = this._UserPattern.split("\\s+");
+        for(int i = 0; i < tokenPattern.length; i++){
+            this._PatronOpcionesControl = new PatronOpcionesControl(_DirectoryPath,tokenPattern[i]);
+            if(_PatronOpcionesControl.ValidatePattern()){
+                this._PatronOpcionesControl.EjecutarBusqueda();
+                if(this._PatronOpcionesControl.getProcessOperationState() == -1){
+                   executionResult = "Error en la busqueda.";
+                   this._ProcessOperationState = -1;
+                } else if(this._PatronOpcionesControl.getProcessOperationState() == 1){
+                    executionResult = "Busqueda exitosa!";
+                    for(int j = 0; j < this._PatronOpcionesControl.getMatchLineInfo().size(); j++){
+                        this._MatchLineInfo.add(this._PatronOpcionesControl.getMatchLineInfo().get(j));
+                    }
+                    this._MatchLineInfo.add("--");
+                    this._WordAppeareances.add(this._PatronOpcionesControl.getWordAppearances());
+                    this._MatchesInFileLine.add(this._PatronOpcionesControl.getMatchesInFileLine());
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();
+                    this._ProcessOperationState = 1;
+                } else {
+                    executionResult = "Error Desconocido.";
+                    this._ProcessOperationState = -1;
+                }
+            } else {
+                //El patron no es correcto
+                executionResult = "El patron no es el correcto";
+                this._ProcessOperationState = -1;
+                break;
+            }
+        }
+        this._AmountQueryProcess++;
+        return executionResult;
+    }
+    
     
     public int getProcessOperationState() {
         return _ProcessOperationState;
@@ -132,7 +190,7 @@ public class BusinessLogic {
     }
 
     public ArrayList<Integer> getMatchesInFileLIne() {
-        return _MatchesInFileLIne;
+        return _MatchesInFileLine;
     }
     
 }

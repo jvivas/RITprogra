@@ -121,7 +121,7 @@ public class DinamicaControl {
         //this._ListOfFiles.add(pFileName);  
         if(counterPerDoc != 0){     
             this._WordAppearances++;
-            this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName  + " on this word: " + _UserPattern +" " + counterPerDoc + " times.");
+            this._MatchLineInfo.add(pDirectoryName + "/" + pFileName  + " on this word: " + _UserPattern +" " + counterPerDoc + " times.");
         }
     }
     
