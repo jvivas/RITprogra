@@ -1,0 +1,39 @@
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/cfgetispeed.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/cfgetospeed.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/cfmakeraw.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/cfsetispeed.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/cfsetospeed.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/flex++.1.txt in line: 872 on this line: buffer  de  entrada  actual,  invocándola con un argumento
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/flex.1.txt in line: 872 on this line: buffer  de  entrada  actual,  invocándola con un argumento
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/lex.1.txt in line: 872 on this line: buffer  de  entrada  actual,  invocándola con un argumento
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcdrain.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcflow.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcflush.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcgetattr.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcgetpgrp.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcsendbreak.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcsetattr.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/tcsetpgrp.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+/home/jorge/Documentos/RIT/Proyecto 2/Tarea programada 2/man.utf8/termios.3.txt in line: 212 on this line: FLUSHO la salida se está volcando al dispositivo  de  sal­
+
+
+Grand Total: 17 match(es) found.
+************************
+
+

@@ -28,7 +28,7 @@ public class FrmSearchResult extends javax.swing.JFrame {
     public void InsertResult(ArrayList<String> pSearchResult){
         int appearancesIndex = 0;
         for(int i = 0; i < pSearchResult.size(); i++){
-            if(pSearchResult.get(i).equals("--")){
+            if(pSearchResult.get(i).equals("--")){                
                 this.txtAreaSearchResult.setText(this.txtAreaSearchResult.getText() + "\nGrand Total: " + this._MatchesInFileLIne.get(appearancesIndex) + " match(es) found."+ "\n************************\n\n");
                 appearancesIndex++;
             } else {

@@ -112,11 +112,11 @@ public class BusinessLogic {
                         }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
-                    //this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
-                    /*GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    this._MatchesInFileLine.add(this._DinamicaControl.getMatchesInFileLine());
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
                     _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
                     _ExitFile.setFileLines(this._MatchLineInfo);
-                    _ExitFile.SaveFile();*/
+                    _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";

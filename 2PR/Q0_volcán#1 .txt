@@ -1,0 +1,33 @@
+/home/jorge/Documentos/man/cfgetispeed.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/cfgetospeed.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/cfmakeraw.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/cfsetispeed.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/cfsetospeed.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcdrain.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcflow.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcflush.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcgetattr.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcgetpgrp.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcsendbreak.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcsetattr.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/tcsetpgrp.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+/home/jorge/Documentos/man/termios.3.txt in line: 212 on this line: FLUSHO la salida se est� volcando al dispositivo  de  sal�
+
+
+Grand Total: 14 match(es) found.
+************************
+
+
