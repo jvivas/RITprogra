@@ -27,22 +27,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="lblPalabra" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAbrir" min="-2" max="-2" attributes="0"/>
-                  <Component id="_FilePath" pref="329" max="32767" attributes="0"/>
-                  <Component id="txfPalabra" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="btnPatronSimple" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnPatronOpciones" alignment="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="lblPalabra" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAbrir" min="-2" max="-2" attributes="0"/>
+                      <Component id="_FilePath" pref="329" max="32767" attributes="0"/>
+                      <Component id="txfPalabra" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jButton1" max="32767" attributes="0"/>
+                              <Component id="btnPatronSimple" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnPatronOpciones" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblImg" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblImg" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="jButton2" min="-2" pref="175" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
           </Group>
@@ -63,7 +66,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="lblImg" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -72,7 +75,9 @@
                       <Component id="btnPatronOpciones" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -95,7 +100,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPatronSimple">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Patron Simple"/>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n Simple"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPatronSimpleActionPerformed"/>
@@ -125,11 +130,16 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnPatronOpciones">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Patron Opciones"/>
+        <Property name="text" type="java.lang.String" value="Patr&#xf3;n Opciones"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPatronOpcionesActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aut&#xf3;mata"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
