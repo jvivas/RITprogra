@@ -152,7 +152,7 @@ public class PatronSimpleControl {
                 }
             }
             if(cuantityOfMathcedTokens >= 1){
-                this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
+                this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
                 _MatchesInFileLine++;
             }
         }
@@ -245,7 +245,7 @@ public class PatronSimpleControl {
                 cuantityOfMatchesInLine++;
             }
             this._WordAppearances++;
-            //this._MatchLineInfo.add("Match found at: " + pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
+            //this._MatchLineInfo.add("pDirectoryName + "/" + pFileName + " in line: " + pFileLine + " on this word: " + pToken +" " + cuantityOfMatchesOnToken + " times.");
         }
         return cuantityOfMatchesInLine;
     }

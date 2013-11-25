@@ -6,6 +6,7 @@
 
 package Business;
 
+import DataAccess.GenerateExitFile;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,10 +26,12 @@ public class BusinessLogic {
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     int _ProcessOperationState = 0;
     ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
-    ArrayList<Integer> _MatchesInFileLIne = new ArrayList<Integer>();
+    ArrayList<Integer> _MatchesInFileLine = new ArrayList<Integer>();
+    int _AmountQueryProcess = 0;
     
     //Constructor
     public BusinessLogic() {
+        _AmountQueryProcess = 0;
     }
 
     public String getDirectoryPath() {
@@ -47,7 +50,7 @@ public class BusinessLogic {
     public String EjecutarPatronSimple() throws IOException{
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
-        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split("\\s+");
@@ -65,7 +68,11 @@ public class BusinessLogic {
                     }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._PatronSimpleControl.getWordAppearances());
-                    this._MatchesInFileLIne.add(this._PatronSimpleControl.getMatchesInFileLine());
+                    this._MatchesInFileLine.add(this._PatronSimpleControl.getMatchesInFileLine());
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -78,6 +85,7 @@ public class BusinessLogic {
                 break;
             }
         }
+        this._AmountQueryProcess++;
         return executionResult;
     }
 
@@ -85,7 +93,7 @@ public class BusinessLogic {
     public String EjecutarProgDinamica() throws IOException{
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
-        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split("\\s+");
@@ -105,6 +113,10 @@ public class BusinessLogic {
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._DinamicaControl.getWordAppearances());
                     //this._MatchesInFileLIne.add(this._DinamicaControl.getMatchesInFileLine());
+                    /*GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();*/
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -117,6 +129,7 @@ public class BusinessLogic {
                 break;
             }
         }
+        this._AmountQueryProcess++;
         return executionResult;
     }
     
@@ -124,7 +137,7 @@ public class BusinessLogic {
     public String EjecutarPatronOpciones() throws IOException{
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
-        this._MatchesInFileLIne = new ArrayList<Integer>();
+        this._MatchesInFileLine = new ArrayList<Integer>();
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split("\\s+");
@@ -142,7 +155,11 @@ public class BusinessLogic {
                     }
                     this._MatchLineInfo.add("--");
                     this._WordAppeareances.add(this._PatronOpcionesControl.getWordAppearances());
-                    this._MatchesInFileLIne.add(this._PatronOpcionesControl.getMatchesInFileLine());
+                    this._MatchesInFileLine.add(this._PatronOpcionesControl.getMatchesInFileLine());
+                    GenerateExitFile _ExitFile = new GenerateExitFile("Q"+_AmountQueryProcess+"_"+this._UserPattern+".txt");
+                    _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
+                    _ExitFile.setFileLines(this._MatchLineInfo);
+                    _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -155,6 +172,7 @@ public class BusinessLogic {
                 break;
             }
         }
+        this._AmountQueryProcess++;
         return executionResult;
     }
     
@@ -172,7 +190,7 @@ public class BusinessLogic {
     }
 
     public ArrayList<Integer> getMatchesInFileLIne() {
-        return _MatchesInFileLIne;
+        return _MatchesInFileLine;
     }
     
 }
