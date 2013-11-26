@@ -26,13 +26,13 @@ public class BusinessLogic {
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();    
     ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
     ArrayList<Integer> _MatchesInFileLine = new ArrayList<Integer>();
-    int _ProcessOperationState = 0;
-    int _AmountQueryProcess = 0;
+    int _ProcessOperationState = 0;    
     int _PrefijoConsulta = 0;
+    int _CantidadPatrones = 0;
     
     //Constructor
     public BusinessLogic() {
-        _AmountQueryProcess = 0;
+        _PrefijoConsulta = 0;
     }
 
     public String getDirectoryPath() {
@@ -74,8 +74,7 @@ public class BusinessLogic {
                     _ExitFile.setMatchesInFileLIne(this._MatchesInFileLine);
                     _ExitFile.setFileLines(this._MatchLineInfo);
                     _ExitFile.SaveFile();
-                    this._ProcessOperationState = 1;
-                    this._AmountQueryProcess++;
+                    this._ProcessOperationState = 1;                    
                     return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -88,7 +87,6 @@ public class BusinessLogic {
                 break;
             }
         }
-        this._AmountQueryProcess++;
         return executionResult;
     }
 
@@ -121,7 +119,6 @@ public class BusinessLogic {
                     _ExitFile.setFileLines(this._MatchLineInfo);
                     _ExitFile.SaveFile();
                     this._ProcessOperationState = 1;
-                    this._AmountQueryProcess++;
                     return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -134,7 +131,6 @@ public class BusinessLogic {
                 break;
             }
         }
-        this._AmountQueryProcess++;
         return executionResult;
     }
     
@@ -168,7 +164,6 @@ public class BusinessLogic {
                     _ExitFile.SaveFile();
                     //System.out.println("Fin archivo");
                     this._ProcessOperationState = 1;
-                    this._AmountQueryProcess++;
                     return executionResult;
                 } else {
                     executionResult = "Error Desconocido.";
@@ -181,12 +176,11 @@ public class BusinessLogic {
                 break;
             }
         }
-        this._AmountQueryProcess++;
         return executionResult;
     }
     
     //Metodo para ejecutar el todos los controles de los patrones
-    public String EjecutarPatrones(int pPrefijoConsulta) throws IOException{
+    public String EjecutarPatrones(int pPrefijoConsulta,int pCantidadPatrones) throws IOException{
         this._PrefijoConsulta = pPrefijoConsulta;
         this._ProcessOperationState = 0;
         this._WordAppeareances = new ArrayList<Integer>();
@@ -194,6 +188,7 @@ public class BusinessLogic {
         this._MatchLineInfo = new ArrayList<String>();
         String executionResult = "";
         String[] tokenPattern = this._UserPattern.split(" ");
+        this._CantidadPatrones = pCantidadPatrones;
         for(int i = 0; i < tokenPattern.length; i++){            
             this._PatronSimpleControl = new PatronSimpleControl(_DirectoryPath,tokenPattern[i]);
             if(_PatronSimpleControl.ValidatePattern()){                
@@ -215,7 +210,6 @@ public class BusinessLogic {
                 }
             }
         }
-        this._AmountQueryProcess++;
         return executionResult;
     }
     

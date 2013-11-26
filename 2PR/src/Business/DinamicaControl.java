@@ -109,30 +109,40 @@ public class DinamicaControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName) {
         //Por cada linea del archivo separarla para luego procesar los patrones
         int counterPerDoc = 0;
+        int counterTotal = 0;
         for (int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++) {
             String fileLine = pFileLines.get(fileLineNumber);
             if(!fileLine.equals("")){
-                fileLine = fileLine.trim();
-                //System.out.println("LINE: " + fileLine);
-                int cuantityOfMatchedTokens = 0;
+                fileLine = fileLine.trim();                                
                 counterPerDoc += DynamicTable(fileLine, pFileName, fileLineNumber, pDirectoryName);
+                counterTotal += counterPerDoc;
                 if (counterPerDoc >= 1) {
                     this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
                     counterPerDoc = 0;
                 }
-            }
-            
+            }            
         }
         if (counterPerDoc >= 1) {
             //this._WordAppearances++;
-            _MatchesInFileLine++;
+            _MatchesInFileLine++;            
             //this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);            
+        }
+        if(counterTotal >= 1){
+            double similitud = CalcularSimilitud(counterTotal);
+            System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterTotal);
         }
         //this._ListOfApariciones.add(contadorAparicionesPorDoc);
         //this._ListOfFiles.add(pFileName);  
 
     }
 
+    public double CalcularSimilitud(int pCounterPerDoc){
+        double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
+        System.out.println("Log " + logaritmo);
+        double similitud = 1 - (1 / logaritmo);
+        return similitud;
+    } 
+    
     // Imprimir matriz
     public void ImprimirMatriz(int[][] pTable, String pToken) {
         int lengthOfUserPattern = this._UserPattern.length() + 1;

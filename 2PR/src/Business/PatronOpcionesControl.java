@@ -34,7 +34,7 @@ public class PatronOpcionesControl {
     String _RegexTail = "\\][\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
     ArrayList<String> _ListOfLetters = new ArrayList<String>();
     ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
-    ArrayList<String> _MatchLineInfo = new ArrayList<String>();
+    ArrayList<String> _MatchLineInfo = new ArrayList<String>();    
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
     int _MatchesInFileLine = 0;
@@ -164,8 +164,10 @@ public class PatronOpcionesControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         String[] tokenOpcional = this._PatternOptions.split("");
+        int cuantityOfMatchedTokens = 0;
+        int counterPerDoc = 0;
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-            int cuantityOfMathcedTokens = 0;
+            cuantityOfMatchedTokens = 0;
             String[] tokenList;
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
@@ -176,18 +178,31 @@ public class PatronOpcionesControl {
                     for(int indexOfOption = 1; indexOfOption < tokenOpcional.length; indexOfOption++){
                         BuildMaskTable(tokenOpcional[indexOfOption]);
                         int matchedToken = ShiftAndMethod(this._PatternHead + tokenOpcional[indexOfOption] + this._PatternTail, tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
-                        if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
-                            cuantityOfMathcedTokens++;
-                        }
+                        if(cuantityOfMatchedTokens == 0 && matchedToken >= 1){
+                            cuantityOfMatchedTokens++;
+                            counterPerDoc++;
+                        }   
                     }
                 }
             }
-            if(cuantityOfMathcedTokens >= 1){
+            if(cuantityOfMatchedTokens >= 1){
                 this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
                 _MatchesInFileLine++;
             }
         }
+        if(counterPerDoc >= 1){
+            double similitud = CalcularSimilitud(counterPerDoc);
+            System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterPerDoc);
+        }
         //System.out.println(this._MatchLineInfo.toString());
+    }
+   
+    //Metodo para calcular la similitud de cada documento que encuentra el patron
+    public double CalcularSimilitud(int pCounterPerDoc){
+        double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
+        System.out.println("Log " + logaritmo);
+        double similitud = 1 - (1 / logaritmo);
+        return similitud;
     }
     
     //Metodo para pre procesar el token que se busca

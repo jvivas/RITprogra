@@ -133,10 +133,12 @@ public class PatronSimpleControl {
     public void ProcessFileLines(ArrayList<String> pFileLines, String pDirectoryName, String pFileName){
         //Por cada linea del archivo separarla para luego procesar los patrones
         HorsepoolTable();
+        int counterPerDoc = 0;
+        int cuantityOfMathcedTokens = 0;
         //System.out.println(this._ListOfLetters.toString());
         //System.out.println(this._RegressionIndex.toString());
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-            int cuantityOfMathcedTokens = 0;
+            cuantityOfMathcedTokens = 0;
             String[] tokenList;
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
@@ -148,15 +150,29 @@ public class PatronSimpleControl {
                     int matchedToken = HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
                     if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
                         cuantityOfMathcedTokens++;
+                        counterPerDoc++;
                     }
                 }
             }
             if(cuantityOfMathcedTokens >= 1){
                 this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
-                _MatchesInFileLine++;
+                _MatchesInFileLine++;                
             }
+            
+        }
+        if(cuantityOfMathcedTokens >= 1){
+            double similitud = CalcularSimilitud(counterPerDoc);
+                System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterPerDoc);
         }
         //System.out.println(this._MatchLineInfo.toString());
+    }
+    
+    //Metodo para calcular la similitud de cada documento que encuentra el patron
+    public double CalcularSimilitud(int pCounterPerDoc){
+        double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
+        System.out.println("Log " + logaritmo);
+        double similitud = 1 - (1 / logaritmo);
+        return similitud;
     }
     
     //Metodo para pre procesar el token que se busca
