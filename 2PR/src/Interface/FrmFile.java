@@ -157,7 +157,7 @@ public class FrmFile extends javax.swing.JFrame {
                     _BusinessLogic.setPatronUsuario(tokenPattern[i]);
                 try {
                     String executionResult = _BusinessLogic.EjecutarPatrones(_PrefijoConsulta,cantidadPatrones);
-                    if(this._BusinessLogic.getProcessOperationState() == 1){
+                    if(this._BusinessLogic.getProcessOperationState() == 1){                        
                         JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                         FrmSearchResult frmSearchResult = new FrmSearchResult();
                         frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
@@ -170,6 +170,13 @@ public class FrmFile extends javax.swing.JFrame {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
                 }
+                }
+                try {                
+                    _BusinessLogic.CalcularSimilitudes();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");

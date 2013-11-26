@@ -34,7 +34,10 @@ public class PatronOpcionesControl {
     String _RegexTail = "\\][\\w_ñÑáéíóúüÁÉÍÓÚÜ]+";
     ArrayList<String> _ListOfLetters = new ArrayList<String>();
     ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
-    ArrayList<String> _MatchLineInfo = new ArrayList<String>();    
+    ArrayList<String> _MatchLineInfo = new ArrayList<String>();   
+    ArrayList<Double> _Similitud = new ArrayList<Double>();
+    ArrayList<String> _FileNames = new ArrayList<String>();
+    ArrayList<Integer> _CountPerDoc = new ArrayList<Integer>();
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
     int _MatchesInFileLine = 0;
@@ -191,8 +194,10 @@ public class PatronOpcionesControl {
             }
         }
         if(counterPerDoc >= 1){
-            double similitud = CalcularSimilitud(counterPerDoc);
-            System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterPerDoc);
+            double similitud = CalcularSimilitud(counterPerDoc);          
+            this._Similitud.add(similitud);
+            this._FileNames.add(pFileName);
+            this._CountPerDoc.add(counterPerDoc);
         }
         //System.out.println(this._MatchLineInfo.toString());
     }
@@ -200,7 +205,7 @@ public class PatronOpcionesControl {
     //Metodo para calcular la similitud de cada documento que encuentra el patron
     public double CalcularSimilitud(int pCounterPerDoc){
         double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
-        System.out.println("Log " + logaritmo);
+        //System.out.println("Log " + logaritmo);
         double similitud = 1 - (1 / logaritmo);
         return similitud;
     }
@@ -345,5 +350,17 @@ public class PatronOpcionesControl {
     
     public String getUserPattern(){
         return _PatternName;
+    }
+    
+    public ArrayList<Double> getSimilitud(){
+        return _Similitud;
+    }
+    
+    public ArrayList<String> getFiles(){
+        return _FileNames;
+    }
+    
+    public ArrayList<Integer> getCounter(){
+        return _CountPerDoc;
     }
 }

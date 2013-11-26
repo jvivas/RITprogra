@@ -30,6 +30,9 @@ public class DinamicaControl {
     String _Regex = "[\\w_ñÑáéíóúüÁÉÍÓÚÜ]+#[0-9]";
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
     ArrayList<Integer> _ListOfApariciones = new ArrayList<Integer>();
+    ArrayList<Double> _Similitud = new ArrayList<Double>();
+    ArrayList<String> _FileNames = new ArrayList<String>();
+    ArrayList<Integer> _CountPerDoc = new ArrayList<Integer>();
     int _NumeroErrores = 0;
     int _ContadorApariciones = 0;
     int _ProcessOperationState = 0;
@@ -128,8 +131,10 @@ public class DinamicaControl {
             //this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);            
         }
         if(counterTotal >= 1){
-            double similitud = CalcularSimilitud(counterTotal);
-            System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterTotal);
+            double similitud = CalcularSimilitud(counterTotal);            
+            this._Similitud.add(similitud);
+            this._FileNames.add(pFileName);
+            this._CountPerDoc.add(counterTotal);
         }
         //this._ListOfApariciones.add(contadorAparicionesPorDoc);
         //this._ListOfFiles.add(pFileName);  
@@ -138,7 +143,7 @@ public class DinamicaControl {
 
     public double CalcularSimilitud(int pCounterPerDoc){
         double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
-        System.out.println("Log " + logaritmo);
+        //System.out.println("Log " + logaritmo);
         double similitud = 1 - (1 / logaritmo);
         return similitud;
     } 
@@ -221,6 +226,18 @@ public class DinamicaControl {
 
     public int getMatchesInFileLine() {
         return _MatchesInFileLine;
+    }
+    
+    public ArrayList<Double> getSimilitud(){
+        return _Similitud;
+    }
+    
+    public ArrayList<String> getFiles(){
+        return _FileNames;
+    }
+    
+    public ArrayList<Integer> getCounter(){
+        return _CountPerDoc;
     }
 
 }

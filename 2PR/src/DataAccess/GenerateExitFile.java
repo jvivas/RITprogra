@@ -8,7 +8,7 @@
  */
 
 package DataAccess;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+//import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class GenerateExitFile {
                 writer.println("\nGrand Total: " + this._MatchesInFileLIne.get(appearancesIndex) + " match(es) found."+ "\n************************\n\n");
                 appearancesIndex++;
             } else {
-                writer.println(_FileLines.get(i) + "\n");
+                writer.println(_FileLines.get(i));
             }
         }
         writer.close();

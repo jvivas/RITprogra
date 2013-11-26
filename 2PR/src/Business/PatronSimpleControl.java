@@ -32,6 +32,9 @@ public class PatronSimpleControl {
     ArrayList<String> _ListOfLetters = new ArrayList<String>();
     ArrayList<Integer> _RegressionIndex = new ArrayList<Integer>();
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();
+    ArrayList<Double> _Similitud = new ArrayList<Double>();
+    ArrayList<String> _FileNames = new ArrayList<String>();
+    ArrayList<Integer> _CountPerDocArray = new ArrayList<Integer>();
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
     int _MatchesInFileLine = 0;
@@ -90,7 +93,7 @@ public class PatronSimpleControl {
     public void EjecutarBusqueda() throws FileNotFoundException, IOException{
         this._ProcessOperationState = 0;
         this._WordAppearances = 0;
-        this._MatchesInFileLine = 0;
+        this._MatchesInFileLine = 0;        
         if(_UserPattern.length() > 0){
             int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
             if(openDirectorySuccess == 0){
@@ -134,11 +137,11 @@ public class PatronSimpleControl {
         //Por cada linea del archivo separarla para luego procesar los patrones
         HorsepoolTable();
         int counterPerDoc = 0;
-        int cuantityOfMathcedTokens = 0;
+        int cuantityOfMatchedTokens = 0;
         //System.out.println(this._ListOfLetters.toString());
         //System.out.println(this._RegressionIndex.toString());
         for(int fileLineNumber = 0; fileLineNumber < pFileLines.size(); fileLineNumber++){
-            cuantityOfMathcedTokens = 0;
+            cuantityOfMatchedTokens = 0;
             String[] tokenList;
             String fileLine = pFileLines.get(fileLineNumber);
             tokenList = fileLine.split("\\s++");
@@ -148,21 +151,22 @@ public class PatronSimpleControl {
                 if(tokenPrepared.length() >= _UserPattern.length()){
                     //System.out.println("token: " + tokenPrepared + "\n");
                     int matchedToken = HorsepoolMethod(tokenPrepared, pDirectoryName, pFileName, fileLineNumber);
-                    if(cuantityOfMathcedTokens == 0 && matchedToken >= 1){
-                        cuantityOfMathcedTokens++;
+                    if(cuantityOfMatchedTokens == 0 && matchedToken >= 1){
+                        cuantityOfMatchedTokens++;
                         counterPerDoc++;
                     }
                 }
             }
-            if(cuantityOfMathcedTokens >= 1){
+            if(cuantityOfMatchedTokens >= 1){
                 this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);
-                _MatchesInFileLine++;                
-            }
-            
+                _MatchesInFileLine++;                                
+            }            
         }
-        if(cuantityOfMathcedTokens >= 1){
-            double similitud = CalcularSimilitud(counterPerDoc);
-                System.out.println("Similitud del doc " + pFileName + "es " + similitud + " PerDoc " + counterPerDoc);
+        if(counterPerDoc >= 1){
+            double similitud = CalcularSimilitud(counterPerDoc);               
+            this._Similitud.add(similitud);
+            this._FileNames.add(pFileName);
+            this._CountPerDocArray.add(counterPerDoc);
         }
         //System.out.println(this._MatchLineInfo.toString());
     }
@@ -170,7 +174,7 @@ public class PatronSimpleControl {
     //Metodo para calcular la similitud de cada documento que encuentra el patron
     public double CalcularSimilitud(int pCounterPerDoc){
         double logaritmo = (Math.log(pCounterPerDoc + 1) / Math.log(2));        
-        System.out.println("Log " + logaritmo);
+        //System.out.println("Log " + logaritmo);
         double similitud = 1 - (1 / logaritmo);
         return similitud;
     }
@@ -286,4 +290,15 @@ public class PatronSimpleControl {
         return _UserPattern;
     }
     
+    public ArrayList<Double> getSimilitud(){
+        return _Similitud;
+    }
+    
+    public ArrayList<String> getFiles(){
+        return _FileNames;
+    }
+    
+    public ArrayList<Integer> getCounter(){
+        return _CountPerDocArray;
+    }
 }
