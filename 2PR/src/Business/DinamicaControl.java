@@ -132,7 +132,7 @@ public class DinamicaControl {
             _MatchesInFileLine++;            
             //this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);            
         }
-        if(counterPerDoc >= 1){
+        if(counterTotal >= 1){
             double similitud = CalcularSimilitud(counterTotal);            
             this._Similitud.add(similitud);
             this._FileNames.add(pFileName);

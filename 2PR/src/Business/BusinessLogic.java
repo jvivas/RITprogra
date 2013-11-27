@@ -236,7 +236,7 @@ public class BusinessLogic {
                 this._OrdenPatrones.add(1);
                 this._PatronUsado = 1;
                 System.out.println("El patron usado es" + _PatronUsado);
-                return executionResult;
+                //return executionResult;
             }
                 this._DinamicaControl = new DinamicaControl(_DirectoryPath,tokenPattern[i]);
                 if(_DinamicaControl.ValidatePattern()){                    
@@ -247,7 +247,7 @@ public class BusinessLogic {
                     this._OrdenPatrones.add(3);                    
                     this._PatronUsado = 3;
                     System.out.println("El patron usado es" + _PatronUsado);
-                    return executionResult;
+                    //return executionResult;
                 }                
                 
                     this._PatronOpcionesControl = new PatronOpcionesControl(_DirectoryPath,tokenPattern[i]);
@@ -259,7 +259,7 @@ public class BusinessLogic {
                         this._OrdenPatrones.add(2);
                         this._PatronUsado = 2;
                         System.out.println("El patron usado es" + _PatronUsado);
-                        return executionResult;
+                      //  return executionResult;
                     }
                 
         }        

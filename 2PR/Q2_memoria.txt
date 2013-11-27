@@ -1,0 +1,683 @@
+/home/jorge/man/_newselect.2.txt in line: 67 on this line:        ENOMEM  select no ha sido capaz de reservar  memoria  para
+/home/jorge/man/accept.2.txt in line: 114 on this line:               No hay suficiente memoria disponible.
+/home/jorge/man/access.2.txt in line: 80 on this line:        ENOMEM  No hay suficiente memoria disponible en el kernel.
+/home/jorge/man/acct.2.txt in line: 29 on this line:        ENOMEM  No hay memoria suficiente.
+/home/jorge/man/acct.2.txt in line: 39 on this line:                hay memoria suficiente.
+/home/jorge/man/addmntent.3.txt in line: 39 on this line:        �rea est�tica de memoria que  es  sobreescrita  en  subse�
+/home/jorge/man/adjtimex.2.txt in line: 81 on this line:        EFAULT buf no apunta a una zona de memoria escribible.
+/home/jorge/man/alloca.3.txt in line: 5 on this line:        alloca - concede memoria
+/home/jorge/man/awk.1.txt in line: 75 on this line:               Definir varios l�mites de memoria al valor NNN.  El
+/home/jorge/man/bash.1.txt in line: 4751 on this line:                      memoria (core)
+/home/jorge/man/bash.1.txt in line: 4757 on this line:                      memoria
+/home/jorge/man/bash.1.txt in line: 4759 on this line:                      (memoria)
+/home/jorge/man/bash.1.txt in line: 4770 on this line:               -v     La  m�xima  cantidad  de   memoria   virtual
+/home/jorge/man/bind.2.txt in line: 66 on this line:        ENOMEM  No hay suficiente memoria disponible en el n�cleo.
+/home/jorge/man/bootparam.7.txt in line: 177 on this line:        arranque  remoto;  `ram'  se refiere a un disco en memoria
+/home/jorge/man/bootparam.7.txt in line: 241 on this line:        que debe devolver la cantidad  de  memoria  instalada  fue
+/home/jorge/man/bootparam.7.txt in line: 244 on this line:        arranque  para determinar cu�nta memoria hay. Si Ud. tiene
+/home/jorge/man/bootparam.7.txt in line: 246 on this line:        mento  de  arranque  para  decirle  a Linux cu�nta memoria
+/home/jorge/man/bootparam.7.txt in line: 256 on this line:        Ud.  tiene 16 MB de memoria, por ejemplo. Para una m�quina
+/home/jorge/man/bootparam.7.txt in line: 260 on this line:        de arriba de la memoria para antememoria de la BIOS o para
+/home/jorge/man/bootparam.7.txt in line: 263 on this line:        dad: algunos chipsets har�n corresponder la memoria f�sica
+/home/jorge/man/bootparam.7.txt in line: 265 on this line:        del l�mite de la memoria, as� que el tope-de-memoria ser�a
+/home/jorge/man/bootparam.7.txt in line: 267 on this line:        Linux que tiene m�s memoria que la  que  realmente  tiene,
+/home/jorge/man/bootparam.7.txt in line: 350 on this line:        mem_grace  que controlan el manejo de memoria de b�fer del
+/home/jorge/man/bootparam.7.txt in line: 358 on this line:        disco RAM  en  Linux;  el  sistema  utilizar�  la  memoria
+/home/jorge/man/bootparam.7.txt in line: 368 on this line:        RAM.  Anteriormente, la memoria se asignaba est�ticamente,
+/home/jorge/man/bootparam.7.txt in line: 654 on this line:        spondencia en memoria que emplea la  tarjeta.  Normalmente
+/home/jorge/man/bootparam.7.txt in line: 740 on this line:        spondencia en memoria que emplea la  tarjeta.  Normalmente
+/home/jorge/man/bootparam.7.txt in line: 1051 on this line:        cosas como direcciones de memoria compartida, selecci�n de
+/home/jorge/man/bootparam.7.txt in line: 1208 on this line:        donde  membaseN  es la base de la memoria compartida de la
+/home/jorge/man/bootparam.7.txt in line: 1220 on this line:        jeta,  membase  es la direcci�n base de la memoria compar�
+/home/jorge/man/bootparam.7.txt in line: 1251 on this line:        tarjeta (en HEX.)), membase (base de la ventana de memoria
+/home/jorge/man/bootparam.7.txt in line: 1336 on this line:        moviendo  el origen de la pantalla en memoria de v�deo, en
+/home/jorge/man/btree.3.txt in line: 66 on this line:               Un tama�o m�ximo sugerido (en bytes) de la  memoria
+/home/jorge/man/btree.3.txt in line: 68 on this line:               de acceso reservar� m�s memoria antes  que  fallar.
+/home/jorge/man/bunzip2.1.txt in line: 115 on this line:        seguido,  como a la cantidad de memoria necesitada para la
+/home/jorge/man/bunzip2.1.txt in line: 122 on this line:        la memoria justa para descomprimir el fichero. Puesto  que
+/home/jorge/man/bunzip2.1.txt in line: 139 on this line:        es importante apreciar que los requerimientos  de  memoria
+/home/jorge/man/bunzip2.1.txt in line: 148 on this line:        mitad  de  esta  cantidad de memoria, unos 2300 kbytes. La
+/home/jorge/man/bunzip2.1.txt in line: 154 on this line:        permita  la  cantidad de memoria de tu sistema, puesto que
+/home/jorge/man/bunzip2.1.txt in line: 162 on this line:        La cantidad de memoria utilizada es proporcional al tama�o
+/home/jorge/man/bunzip2.1.txt in line: 166 on this line:        6700k de memoria, pero solo utilice 400k + 20000 * 7 = 540
+/home/jorge/man/bunzip2.1.txt in line: 172 on this line:        memoria  para los diferentes tama�os de bloque. Tambi�n se
+/home/jorge/man/bunzip2.1.txt in line: 229 on this line:               Reduce la utilizaci�n de memoria  para  la  compre�
+/home/jorge/man/bunzip2.1.txt in line: 235 on this line:               2300k de memoria, aunque a la mitad de la velocidad
+/home/jorge/man/bunzip2.1.txt in line: 239 on this line:               bloque de 200k, lo que limita el uso de  memoria  a
+/home/jorge/man/bunzip2.1.txt in line: 242 on this line:               m�quina  no  tiene  mucha  memoria  (8  megabytes o
+/home/jorge/man/bunzip2.1.txt in line: 337 on this line:        Normalmente bzip2 reserva varios megabytes de memoria para
+/home/jorge/man/bzcat.1.txt in line: 115 on this line:        seguido,  como a la cantidad de memoria necesitada para la
+/home/jorge/man/bzcat.1.txt in line: 122 on this line:        la memoria justa para descomprimir el fichero. Puesto  que
+/home/jorge/man/bzcat.1.txt in line: 139 on this line:        es importante apreciar que los requerimientos  de  memoria
+/home/jorge/man/bzcat.1.txt in line: 148 on this line:        mitad  de  esta  cantidad de memoria, unos 2300 kbytes. La
+/home/jorge/man/bzcat.1.txt in line: 154 on this line:        permita  la  cantidad de memoria de tu sistema, puesto que
+/home/jorge/man/bzcat.1.txt in line: 162 on this line:        La cantidad de memoria utilizada es proporcional al tama�o
+/home/jorge/man/bzcat.1.txt in line: 166 on this line:        6700k de memoria, pero solo utilice 400k + 20000 * 7 = 540
+/home/jorge/man/bzcat.1.txt in line: 172 on this line:        memoria  para los diferentes tama�os de bloque. Tambi�n se
+/home/jorge/man/bzcat.1.txt in line: 229 on this line:               Reduce la utilizaci�n de memoria  para  la  compre�
+/home/jorge/man/bzcat.1.txt in line: 235 on this line:               2300k de memoria, aunque a la mitad de la velocidad
+/home/jorge/man/bzcat.1.txt in line: 239 on this line:               bloque de 200k, lo que limita el uso de  memoria  a
+/home/jorge/man/bzcat.1.txt in line: 242 on this line:               m�quina  no  tiene  mucha  memoria  (8  megabytes o
+/home/jorge/man/bzcat.1.txt in line: 337 on this line:        Normalmente bzip2 reserva varios megabytes de memoria para
+/home/jorge/man/bzip2.1.txt in line: 115 on this line:        seguido,  como a la cantidad de memoria necesitada para la
+/home/jorge/man/bzip2.1.txt in line: 122 on this line:        la memoria justa para descomprimir el fichero. Puesto  que
+/home/jorge/man/bzip2.1.txt in line: 139 on this line:        es importante apreciar que los requerimientos  de  memoria
+/home/jorge/man/bzip2.1.txt in line: 148 on this line:        mitad  de  esta  cantidad de memoria, unos 2300 kbytes. La
+/home/jorge/man/bzip2.1.txt in line: 154 on this line:        permita  la  cantidad de memoria de tu sistema, puesto que
+/home/jorge/man/bzip2.1.txt in line: 162 on this line:        La cantidad de memoria utilizada es proporcional al tama�o
+/home/jorge/man/bzip2.1.txt in line: 166 on this line:        6700k de memoria, pero solo utilice 400k + 20000 * 7 = 540
+/home/jorge/man/bzip2.1.txt in line: 172 on this line:        memoria  para los diferentes tama�os de bloque. Tambi�n se
+/home/jorge/man/bzip2.1.txt in line: 229 on this line:               Reduce la utilizaci�n de memoria  para  la  compre�
+/home/jorge/man/bzip2.1.txt in line: 235 on this line:               2300k de memoria, aunque a la mitad de la velocidad
+/home/jorge/man/bzip2.1.txt in line: 239 on this line:               bloque de 200k, lo que limita el uso de  memoria  a
+/home/jorge/man/bzip2.1.txt in line: 242 on this line:               m�quina  no  tiene  mucha  memoria  (8  megabytes o
+/home/jorge/man/bzip2.1.txt in line: 337 on this line:        Normalmente bzip2 reserva varios megabytes de memoria para
+/home/jorge/man/cacheflush.2.txt in line: 21 on this line:        DCACHE Escribe  en  memoria e invalida las l�neas de cach�
+/home/jorge/man/calloc.3.txt in line: 5 on this line:        calloc,  malloc, free, realloc - Asignar y liberar memoria
+/home/jorge/man/calloc.3.txt in line: 17 on this line:        calloc() asigna memoria para una matriz de nmemb elementos
+/home/jorge/man/calloc.3.txt in line: 18 on this line:        de  size bytes cada uno y devuelve un puntero a la memoria
+/home/jorge/man/calloc.3.txt in line: 19 on this line:        asignada. La memoria es puesta a cero.
+/home/jorge/man/calloc.3.txt in line: 22 on this line:        memoria asignada. La memoria no es borrada.
+/home/jorge/man/calloc.3.txt in line: 24 on this line:        free()  libera el espacio de memoria apuntado por ptr, que
+/home/jorge/man/calloc.3.txt in line: 31 on this line:        realloc() cambia el tama�o del bloque de memoria  apuntado
+/home/jorge/man/calloc.3.txt in line: 42 on this line:        a la memoria asignada, que est� convenientemente  alineada
+/home/jorge/man/calloc.3.txt in line: 48 on this line:        realloc() devuelve un puntero a la  memoria  reci�n  asig�
+/home/jorge/man/calloc.3.txt in line: 71 on this line:        est�n relacionadas con la corrupci�n de la memoria  mont�n
+/home/jorge/man/calloc.3.txt in line: 84 on this line:        pueden producir p�rdidas de memoria.  Si se asigna a  MAL�
+/home/jorge/man/calloc.3.txt in line: 85 on this line:        LOC_CHECK_  el  valor  0,  cualquier corrupci�n de memoria
+/home/jorge/man/catclose.3.txt in line: 44 on this line:        entero en la memoria.
+/home/jorge/man/catclose.3.txt in line: 61 on this line:        nl_catd es actualmente un �rea mmap()'eada de memoria y no
+/home/jorge/man/catgets.3.txt in line: 21 on this line:        mensaje  est�  contenido  en  un �rea de memoria interna y
+/home/jorge/man/catgets.3.txt in line: 28 on this line:        memoria  interna  conteniendo la cadena del mensaje termi�
+/home/jorge/man/catopen.3.txt in line: 44 on this line:        entero en la memoria.
+/home/jorge/man/catopen.3.txt in line: 61 on this line:        nl_catd es actualmente un �rea mmap()'eada de memoria y no
+/home/jorge/man/chdir.2.txt in line: 37 on this line:        ENOMEM  No hay suficiente memoria disponible en el kernel.
+/home/jorge/man/chmod.2.txt in line: 101 on this line:        ENOMEM  No hubo suficiente memoria en el n�cleo.
+/home/jorge/man/chown.2.txt in line: 62 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/chroot.2.txt in line: 46 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/clone.2.txt in line: 17 on this line:        ceso  padre, tales como el espacio de memoria, la tabla de
+/home/jorge/man/clone.2.txt in line: 21 on this line:        ejecutan concurrentemente en un espacio de memoria compar�
+/home/jorge/man/clone.2.txt in line: 37 on this line:        hijo  pueden  compartir la memoria, no es posible, en gen�
+/home/jorge/man/clone.2.txt in line: 40 on this line:        preparar un �rea de memoria para la pila del hijo y  pasar
+/home/jorge/man/clone.2.txt in line: 45 on this line:        la zona de memoria preparada para la pila del hijo.
+/home/jorge/man/clone.2.txt in line: 56 on this line:               ejecutan en el mismo espacio de memoria. En partic�
+/home/jorge/man/clone.2.txt in line: 57 on this line:               ular,  la  escrituras  de memoria realizadas por el
+/home/jorge/man/clone.2.txt in line: 60 on this line:               ciaci�n o desasociaci�n de  memoria  realizada  con
+/home/jorge/man/clone.2.txt in line: 65 on this line:               en  una copia particular del espacio de memoria del
+/home/jorge/man/clone.2.txt in line: 67 on this line:               escrituras de memoria o la asociaci�n/desasociaci�n
+/home/jorge/man/clone.2.txt in line: 148 on this line:        ENOMEM __clone no puede reservar suficiente  memoria  para
+/home/jorge/man/clone.2.txt in line: 169 on this line:        control  en el mismo espacio de memoria) es mejor usar una
+/home/jorge/man/console.4.txt in line: 42 on this line:        la memoria reservada por los tampones de pantalla de aque�
+/home/jorge/man/console_codes.4.txt in line: 33 on this line:        �ndice de tipo de letra, y �ste se almacena en memoria  de
+/home/jorge/man/console_codes.4.txt in line: 385 on this line:        si  hay un s�mbolo c que se imprime, se env�a a la memoria
+/home/jorge/man/console_codes.4.txt in line: 502 on this line:        ESC l          Bloqueo de memoria (por terminales HP).
+/home/jorge/man/console_codes.4.txt in line: 503 on this line:                       Bloquea la memoria sobre el cursor.
+/home/jorge/man/console_codes.4.txt in line: 504 on this line:        ESC m          Desbloqueo de memoria (por terminales HP).
+/home/jorge/man/console_ioctl.4.txt in line: 453 on this line:               Desaloja  la  memoria  asociada  con  la  vt  argp.
+/home/jorge/man/creat.2.txt in line: 247 on this line:        ENOMEM  No hay disponible bastante memoria del n�cleo.
+/home/jorge/man/create_module.2.txt in line: 14 on this line:        y reserva la memoria del n�cleo  que  se  necesitar�  para
+/home/jorge/man/create_module.2.txt in line: 32 on this line:               memoria lo suficientemente grande para el m�dulo.
+/home/jorge/man/db.3.txt in line: 80 on this line:               estar en la memoria cach�, el dejar de  sincronizar
+/home/jorge/man/db.3.txt in line: 255 on this line:               datos  est� s�lo en memoria, la rutina sync no hace
+/home/jorge/man/db.3.txt in line: 291 on this line:        cualesquiera  dos de ellas deben caber en memoria al mismo
+/home/jorge/man/db.3.txt in line: 323 on this line:        ENOENT para las bases de datos residentes en memoria.
+/home/jorge/man/dbopen.3.txt in line: 80 on this line:               estar en la memoria cach�, el dejar de  sincronizar
+/home/jorge/man/dbopen.3.txt in line: 255 on this line:               datos  est� s�lo en memoria, la rutina sync no hace
+/home/jorge/man/dbopen.3.txt in line: 291 on this line:        cualesquiera  dos de ellas deben caber en memoria al mismo
+/home/jorge/man/dbopen.3.txt in line: 323 on this line:        ENOENT para las bases de datos residentes en memoria.
+/home/jorge/man/ddp.7.txt in line: 137 on this line:                No hay suficiente memoria disponible.
+/home/jorge/man/deallocvt.1.txt in line: 11 on this line:        El  programa  deallocvt  libera  memoria  y estructuras de
+/home/jorge/man/egrep.1.txt in line: 279 on this line:        y pueden hacer que grep se quede sin memoria.
+/home/jorge/man/endgrent.3.txt in line: 44 on this line:        ENOMEM No hay bastante memoria como para alojar la estruc�
+/home/jorge/man/endmntent.3.txt in line: 39 on this line:        �rea est�tica de memoria que  es  sobreescrita  en  subse�
+/home/jorge/man/errno.3.txt in line: 143 on this line:        tener  un  fichero  tanto asociado en memoria con VM_DENY�
+/home/jorge/man/execve.2.txt in line: 93 on this line:        ENOMEM  No hay suficiente memoria disponible en el n�cleo.
+/home/jorge/man/fchdir.2.txt in line: 37 on this line:        ENOMEM  No hay suficiente memoria disponible en el kernel.
+/home/jorge/man/fchmod.2.txt in line: 101 on this line:        ENOMEM  No hubo suficiente memoria en el n�cleo.
+/home/jorge/man/fchown.2.txt in line: 62 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/fcntl.2.txt in line: 165 on this line:               encolamiento depende de la memoria disponible).  Se
+/home/jorge/man/fcntl.2.txt in line: 207 on this line:                 sido asociado a memoria por otro proceso.
+/home/jorge/man/fdatasync.2.txt in line: 5 on this line:        fdatasync  - sincroniza los datos en memoria de un fichero
+/home/jorge/man/fdisk.8.txt in line: 138 on this line:        memoria tamp�n.
+/home/jorge/man/fdopen.3.txt in line: 79 on this line:        de  aplicar  fdopen  a  un objeto compartido de memoria es
+/home/jorge/man/fgetgrent.3.txt in line: 37 on this line:        ENOMEM No hay bastante memoria para alojar  la  estructura
+/home/jorge/man/fgrep.1.txt in line: 279 on this line:        y pueden hacer que grep se quede sin memoria.
+/home/jorge/man/file.1.txt in line: 28 on this line:        matos de ficheros bien  conocidos  (volcados  de  memoria,
+/home/jorge/man/flex++.1.txt in line: 538 on this line:        que  se  agote la memoria din�mica).  La desventaja es que
+/home/jorge/man/flex++.1.txt in line: 926 on this line:        de  memoria  en lugar de desde ficheros: yy_scan_string(),
+/home/jorge/man/flex++.1.txt in line: 1266 on this line:        Si la memoria se agota, se aborta la  ejecuci�n  del  pro�
+/home/jorge/man/flex++.1.txt in line: 1400 on this line:        entrada para el an�lisis de cadenas en memoria en lugar de
+/home/jorge/man/flex.1.txt in line: 538 on this line:        que  se  agote la memoria din�mica).  La desventaja es que
+/home/jorge/man/flex.1.txt in line: 926 on this line:        de  memoria  en lugar de desde ficheros: yy_scan_string(),
+/home/jorge/man/flex.1.txt in line: 1266 on this line:        Si la memoria se agota, se aborta la  ejecuci�n  del  pro�
+/home/jorge/man/flex.1.txt in line: 1400 on this line:        entrada para el an�lisis de cadenas en memoria en lugar de
+/home/jorge/man/fopen.3.txt in line: 79 on this line:        de  aplicar  fdopen  a  un objeto compartido de memoria es
+/home/jorge/man/fork.2.txt in line: 21 on this line:        izaci�n en que incurre fork es  en  el  tiempo  y  memoria
+/home/jorge/man/fork.2.txt in line: 35 on this line:        EAGAIN fork no puede  reservar  sufficiente  memoria  para
+/home/jorge/man/fork.2.txt in line: 40 on this line:               n�cleo porque la cantidad de memoria era escasa.
+/home/jorge/man/fpathconf.3.txt in line: 99 on this line:        cuados para pedir memoria.
+/home/jorge/man/fprintf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/free.1.txt in line: 5 on this line:        free - Muestara la cantidad de memoria libre y usada en el
+/home/jorge/man/free.1.txt in line: 12 on this line:        free muestra la cantidad total  de  memoria  fisica  y  de
+/home/jorge/man/free.1.txt in line: 13 on this line:        intercambio  presente  en  el sistema, asi como la memoria
+/home/jorge/man/free.1.txt in line: 17 on this line:        El modificador -b muestra la cantidad de memoria en bytes;
+/home/jorge/man/free.1.txt in line: 25 on this line:        memoria  buffer  desde/hacia   el   informe   de   memoria
+/home/jorge/man/free.1.txt in line: 38 on this line:        /proc/meminfo-- informacion acerca de la memoria
+/home/jorge/man/free.3.txt in line: 5 on this line:        calloc,  malloc, free, realloc - Asignar y liberar memoria
+/home/jorge/man/free.3.txt in line: 17 on this line:        calloc() asigna memoria para una matriz de nmemb elementos
+/home/jorge/man/free.3.txt in line: 18 on this line:        de  size bytes cada uno y devuelve un puntero a la memoria
+/home/jorge/man/free.3.txt in line: 19 on this line:        asignada. La memoria es puesta a cero.
+/home/jorge/man/free.3.txt in line: 22 on this line:        memoria asignada. La memoria no es borrada.
+/home/jorge/man/free.3.txt in line: 24 on this line:        free()  libera el espacio de memoria apuntado por ptr, que
+/home/jorge/man/free.3.txt in line: 31 on this line:        realloc() cambia el tama�o del bloque de memoria  apuntado
+/home/jorge/man/free.3.txt in line: 42 on this line:        a la memoria asignada, que est� convenientemente  alineada
+/home/jorge/man/free.3.txt in line: 48 on this line:        realloc() devuelve un puntero a la  memoria  reci�n  asig�
+/home/jorge/man/free.3.txt in line: 71 on this line:        est�n relacionadas con la corrupci�n de la memoria  mont�n
+/home/jorge/man/free.3.txt in line: 84 on this line:        pueden producir p�rdidas de memoria.  Si se asigna a  MAL�
+/home/jorge/man/free.3.txt in line: 85 on this line:        LOC_CHECK_  el  valor  0,  cualquier corrupci�n de memoria
+/home/jorge/man/freopen.3.txt in line: 79 on this line:        de  aplicar  fdopen  a  un objeto compartido de memoria es
+/home/jorge/man/fscanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/fstat.2.txt in line: 170 on this line:        ENOMEM Fuera de memoria (es decir, memoria del n�cleo).
+/home/jorge/man/fstatfs.2.txt in line: 104 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/fsync.2.txt in line: 5 on this line:        fsync  -  sincroniza  el  estado completo en memoria de un
+/home/jorge/man/fsync.2.txt in line: 14 on this line:        fsync copia todas las partes que est�n en  memoria  de  un
+/home/jorge/man/gawk.1.txt in line: 75 on this line:               Definir varios l�mites de memoria al valor NNN.  El
+/home/jorge/man/get_current_dir_name.3.txt in line: 36 on this line:        definida la macro __USE_GNU,  obtendr�  memoria  con  mal�
+/home/jorge/man/get_current_dir_name.3.txt in line: 43 on this line:        macro  __USE_BSD,  no obtendr� memoria con malloc(3) ni de
+/home/jorge/man/get_kernel_syms.2.txt in line: 45 on this line:        los, la memoria se corromper�.
+/home/jorge/man/getcwd.3.txt in line: 36 on this line:        definida la macro __USE_GNU,  obtendr�  memoria  con  mal�
+/home/jorge/man/getcwd.3.txt in line: 43 on this line:        macro  __USE_BSD,  no obtendr� memoria con malloc(3) ni de
+/home/jorge/man/getdents.2.txt in line: 18 on this line:        se�alado por el puntero fd en el �rea de memoria  se�alada
+/home/jorge/man/getdents.2.txt in line: 20 on this line:        memoria.
+/home/jorge/man/getgrent.3.txt in line: 44 on this line:        ENOMEM No hay bastante memoria como para alojar la estruc�
+/home/jorge/man/getmntent.3.txt in line: 39 on this line:        �rea est�tica de memoria que  es  sobreescrita  en  subse�
+/home/jorge/man/getopt.1.txt in line: 324 on this line:        error  interno ha ocurrido (como falta de memoria), y 4 si
+/home/jorge/man/getpeername.2.txt in line: 37 on this line:        EFAULT  El  par�metro  nombre apunta a memoria que no est�
+/home/jorge/man/getrlimit.2.txt in line: 32 on this line:                           en memoria*/
+/home/jorge/man/getrlimit.2.txt in line: 56 on this line:                     long    ru_ixrss;        /* tama�o total de la memoria
+/home/jorge/man/getrlimit.2.txt in line: 58 on this line:                     long    ru_idrss;        /* tama�o total de la memoria
+/home/jorge/man/getrusage.2.txt in line: 32 on this line:                           en memoria*/
+/home/jorge/man/getrusage.2.txt in line: 56 on this line:                     long    ru_ixrss;        /* tama�o total de la memoria
+/home/jorge/man/getrusage.2.txt in line: 58 on this line:                     long    ru_idrss;        /* tama�o total de la memoria
+/home/jorge/man/getsockname.2.txt in line: 33 on this line:        EFAULT  El parametro name apunta a una memoria que no est�
+/home/jorge/man/getwd.3.txt in line: 36 on this line:        definida la macro __USE_GNU,  obtendr�  memoria  con  mal�
+/home/jorge/man/getwd.3.txt in line: 43 on this line:        macro  __USE_BSD,  no obtendr� memoria con malloc(3) ni de
+/home/jorge/man/glob.3.txt in line: 6 on this line:        dan con un patr�n, libera la memoria ocupada por glob()
+/home/jorge/man/glob.3.txt in line: 39 on this line:        Los  resultados se almacenan en memoria obtenida din�mica�
+/home/jorge/man/glob.3.txt in line: 134 on this line:               si no tenemos bastante memoria,
+/home/jorge/man/globfree.3.txt in line: 6 on this line:        dan con un patr�n, libera la memoria ocupada por glob()
+/home/jorge/man/globfree.3.txt in line: 39 on this line:        Los  resultados se almacenan en memoria obtenida din�mica�
+/home/jorge/man/globfree.3.txt in line: 134 on this line:               si no tenemos bastante memoria,
+/home/jorge/man/gpm.8.txt in line: 20 on this line:        Linux usando dos botones del rat�n, as�, la memoria inter�
+/home/jorge/man/gpm.8.txt in line: 40 on this line:        memoria en pantalla.
+/home/jorge/man/gpm.8.txt in line: 223 on this line:               car�cteres  de control no aparecen en la memoria de
+/home/jorge/man/grep.1.txt in line: 279 on this line:        y pueden hacer que grep se quede sin memoria.
+/home/jorge/man/gunzip.1.txt in line: 348 on this line:                prime mejor y usa menos memoria.
+/home/jorge/man/gzip.1.txt in line: 348 on this line:                prime mejor y usa menos memoria.
+/home/jorge/man/hash.3.txt in line: 62 on this line:               acceso reserver� m�s memoria antes que fallar.
+/home/jorge/man/hasmntopt.3.txt in line: 39 on this line:        �rea est�tica de memoria que  es  sobreescrita  en  subse�
+/home/jorge/man/hcreate.3.txt in line: 29 on this line:        La  funci�n  correspondiente  hdestroy() libera la memoria
+/home/jorge/man/hcreate.3.txt in line: 58 on this line:        ciente memoria para expandir la tabla dispersa o si action
+/home/jorge/man/hdestroy.3.txt in line: 29 on this line:        La  funci�n  correspondiente  hdestroy() libera la memoria
+/home/jorge/man/hdestroy.3.txt in line: 58 on this line:        ciente memoria para expandir la tabla dispersa o si action
+/home/jorge/man/hsearch.3.txt in line: 29 on this line:        La  funci�n  correspondiente  hdestroy() libera la memoria
+/home/jorge/man/hsearch.3.txt in line: 58 on this line:        ciente memoria para expandir la tabla dispersa o si action
+/home/jorge/man/hwclock.8.txt in line: 227 on this line:        los registros de  la  "memoria  CMOS"  que  constituye  el
+/home/jorge/man/idle.2.txt in line: 14 on this line:        el arranque del sistema.  Marca las paginas de memoria del
+/home/jorge/man/ifconfig.8.txt in line: 102 on this line:               Establece la direcci�n inicial para la memoria com�
+/home/jorge/man/initrd.4.txt in line: 31 on this line:          y el contenido de /dev/initrd en memoria.
+/home/jorge/man/initrd.4.txt in line: 35 on this line:          tivo  /dev/ram0  y a continuaci�n libera la memoria uti�
+/home/jorge/man/initrd.4.txt in line: 99 on this line:               memoria por el 'boot loader' es  preservado.   Esta
+/home/jorge/man/initrd.4.txt in line: 282 on this line:        permanecer� en memoria.
+/home/jorge/man/initscript.5.txt in line: 29 on this line:                 # memoria.
+/home/jorge/man/ioctl_list.2.txt in line: 571 on this line:        memoria o acceso a puertos de E/S. No est�n implementadas en el n�cleo.
+/home/jorge/man/ip.7.txt in line: 131 on this line:               son  punteros  a  un buffer de memoria que contiene
+/home/jorge/man/ip.7.txt in line: 560 on this line:                No hay suficiente memoria disponible.
+/home/jorge/man/ipc.2.txt in line: 13 on this line:        madas  IPC  de System V para mensajes, sem�foros y memoria
+/home/jorge/man/ipc.5.txt in line: 19 on this line:        mensajes,  conjuntos  de  sem�foros y segmentos de memoria
+/home/jorge/man/ipc.5.txt in line: 168 on this line:        Un segmento de memoria compartida se  identifica  un�voca�
+/home/jorge/man/ipc.5.txt in line: 185 on this line:                   de acceso al segmento de memoria compartida.
+/home/jorge/man/ipc.5.txt in line: 187 on this line:        shm_segsz  Tama�o en bytes del segmento de memoria compar�
+/home/jorge/man/ipc.5.txt in line: 190 on this line:        shm_cpid   ID  del proceso que creo el segmento de memoria
+/home/jorge/man/ipc.5.txt in line: 197 on this line:                   este segmento de memoria compartida.
+/home/jorge/man/ipcs.8.txt in line: 22 on this line:        -m     segmentos de memoria compartida
+/home/jorge/man/kmem.4.txt in line: 5 on this line:        mem,  kmem, port - memoria del sistema, memoria del n�cleo
+/home/jorge/man/kmem.4.txt in line: 10 on this line:        senta  a la memoria principal del ordenador. Se puede uti�
+/home/jorge/man/kmem.4.txt in line: 15 on this line:        direcciones f�sicas de memoria. Las  referencias  a  posi�
+/home/jorge/man/kmem.4.txt in line: 18 on this line:        El examinar y parchear posiciones de memoria que contienen
+/home/jorge/man/kmem.4.txt in line: 29 on this line:        la memoria virtual del n�cleo, en  vez  de  a  la  memoria
+/home/jorge/man/lchown.2.txt in line: 62 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/ld.1.txt in line: 410 on this line:               locidad  en  detrimento del uso de la memoria medi�
+/home/jorge/man/ld.1.txt in line: 412 on this line:               s�mbolos de los ficheros de entrada en memoria. Es�
+/home/jorge/man/ld.1.txt in line: 414 on this line:               optimice  para uso de memoria, releyendo las tablas
+/home/jorge/man/ld.1.txt in line: 417 on this line:               memoria cuando enlace un ejecutable muy grande.
+/home/jorge/man/ld.1.txt in line: 459 on this line:               de memoria definidas en otros programas.
+/home/jorge/man/lex.1.txt in line: 538 on this line:        que  se  agote la memoria din�mica).  La desventaja es que
+/home/jorge/man/lex.1.txt in line: 926 on this line:        de  memoria  en lugar de desde ficheros: yy_scan_string(),
+/home/jorge/man/lex.1.txt in line: 1266 on this line:        Si la memoria se agota, se aborta la  ejecuci�n  del  pro�
+/home/jorge/man/lex.1.txt in line: 1400 on this line:        entrada para el an�lisis de cadenas en memoria en lugar de
+/home/jorge/man/lstat.2.txt in line: 170 on this line:        ENOMEM Fuera de memoria (es decir, memoria del n�cleo).
+/home/jorge/man/malloc.3.txt in line: 5 on this line:        calloc,  malloc, free, realloc - Asignar y liberar memoria
+/home/jorge/man/malloc.3.txt in line: 17 on this line:        calloc() asigna memoria para una matriz de nmemb elementos
+/home/jorge/man/malloc.3.txt in line: 18 on this line:        de  size bytes cada uno y devuelve un puntero a la memoria
+/home/jorge/man/malloc.3.txt in line: 19 on this line:        asignada. La memoria es puesta a cero.
+/home/jorge/man/malloc.3.txt in line: 22 on this line:        memoria asignada. La memoria no es borrada.
+/home/jorge/man/malloc.3.txt in line: 24 on this line:        free()  libera el espacio de memoria apuntado por ptr, que
+/home/jorge/man/malloc.3.txt in line: 31 on this line:        realloc() cambia el tama�o del bloque de memoria  apuntado
+/home/jorge/man/malloc.3.txt in line: 42 on this line:        a la memoria asignada, que est� convenientemente  alineada
+/home/jorge/man/malloc.3.txt in line: 48 on this line:        realloc() devuelve un puntero a la  memoria  reci�n  asig�
+/home/jorge/man/malloc.3.txt in line: 71 on this line:        est�n relacionadas con la corrupci�n de la memoria  mont�n
+/home/jorge/man/malloc.3.txt in line: 84 on this line:        pueden producir p�rdidas de memoria.  Si se asigna a  MAL�
+/home/jorge/man/malloc.3.txt in line: 85 on this line:        LOC_CHECK_  el  valor  0,  cualquier corrupci�n de memoria
+/home/jorge/man/mc.1.txt in line: 1546 on this line:        Midnight  Commander guarda en memoria la informaci�n rela�
+/home/jorge/man/mc.1.txt in line: 1554 on this line:        memoria  o  aumentar la velocidad de acceso a los sistemas
+/home/jorge/man/mc.1.txt in line: 1568 on this line:        fichero  tar  descomprimido  en  memoria o descomprimir el
+/home/jorge/man/mc.1.txt in line: 1575 on this line:        a nuestra preciada memoria.  La selecci�n por  defecto  es
+/home/jorge/man/mc.1.txt in line: 1578 on this line:        memoria,  si  no  es as� ser� creado un fichro tar descom�
+/home/jorge/man/mc.1.txt in line: 1593 on this line:        Commander mantendr� en memoria la informaci�n durante  una
+/home/jorge/man/mc.1.txt in line: 1595 on this line:        momento, todos los recursos de memoria  asociados  con  el
+/home/jorge/man/mem.4.txt in line: 5 on this line:        mem,  kmem, port - memoria del sistema, memoria del n�cleo
+/home/jorge/man/mem.4.txt in line: 10 on this line:        senta  a la memoria principal del ordenador. Se puede uti�
+/home/jorge/man/mem.4.txt in line: 15 on this line:        direcciones f�sicas de memoria. Las  referencias  a  posi�
+/home/jorge/man/mem.4.txt in line: 18 on this line:        El examinar y parchear posiciones de memoria que contienen
+/home/jorge/man/mem.4.txt in line: 29 on this line:        la memoria virtual del n�cleo, en  vez  de  a  la  memoria
+/home/jorge/man/memccpy.3.txt in line: 5 on this line:        memccpy - copia un �rea de memoria
+/home/jorge/man/memccpy.3.txt in line: 14 on this line:        �rea de memoria orig al  �rea  de  memoria  dest,  parando
+/home/jorge/man/memchr.3.txt in line: 5 on this line:        memchr - busca en memoria un car�cter
+/home/jorge/man/memchr.3.txt in line: 14 on this line:        de memoria apuntada por s  buscando  el  car�cter  c.   La
+/home/jorge/man/memcmp.3.txt in line: 5 on this line:        memcmp - compara areas de memoria
+/home/jorge/man/memcmp.3.txt in line: 14 on this line:        areas de memoria s1 y s2. Devuelve un entero menor,  igual
+/home/jorge/man/memcpy.3.txt in line: 5 on this line:        memcpy - copiar area de memoria
+/home/jorge/man/memcpy.3.txt in line: 13 on this line:        La funcion memcpy() copia n bytes desde el area de memoria
+/home/jorge/man/memcpy.3.txt in line: 14 on this line:        src al area dest.  Dichas areas de memoria no deben  tener
+/home/jorge/man/memfrob.3.txt in line: 5 on this line:        memfrob - cifra un �rea de memoria
+/home/jorge/man/memfrob.3.txt in line: 14 on this line:        de memoria s haciendo un XOR (O exclusivo) de cada  car�c�
+/home/jorge/man/memfrob.3.txt in line: 16 on this line:        ando de nuevo memfrob() en la zona de memoria cifrada.
+/home/jorge/man/memmem.3.txt in line: 16 on this line:        �rea de memoria haystack de longitud haystacklen.
+/home/jorge/man/memmove.3.txt in line: 5 on this line:        memmove - copia un �rea de memoria.
+/home/jorge/man/memmove.3.txt in line: 13 on this line:        La funci�n memmove() copia n bytes del �rea de memoria src
+/home/jorge/man/memmove.3.txt in line: 14 on this line:        al �rea de memoria dest.   Las  �reas  de  memoria  pueden
+/home/jorge/man/memset.3.txt in line: 5 on this line:        memset - rellena una zona de memoria con bytes repetidos
+/home/jorge/man/memset.3.txt in line: 14 on this line:        de memoria apuntada por s con el byte constante c.
+/home/jorge/man/memset.3.txt in line: 17 on this line:        La funci�n memset() devuelve un puntero al �rea de memoria
+/home/jorge/man/mkdir.2.txt in line: 60 on this line:        ENOMEM  No hay suficiente memoria del n�cleo.
+/home/jorge/man/mknod.2.txt in line: 85 on this line:        ENOMEM No  hay suficiente memoria disponible en el n�cleo.
+/home/jorge/man/mlock.2.txt in line: 14 on this line:        mlock desactiva el paginado para la memoria en el grupo de
+/home/jorge/man/mlock.2.txt in line: 26 on this line:        El  bloqueo  de  memoria  tiene dos aplicaciones fundamen�
+/home/jorge/man/mlock.2.txt in line: 42 on this line:        Los  bloqueos de memoria no son acumulativos, i.e., si una
+/home/jorge/man/mlockall.2.txt in line: 18 on this line:        ria compartida y ficheros asociados a memoria.  Se  garan�
+/home/jorge/man/mlockall.2.txt in line: 27 on this line:        El  bloqueo de memoria tiene dos aplicaciones principales:
+/home/jorge/man/mlockall.2.txt in line: 43 on this line:        s�lo  tienen que bloquearse partes peque�as de la memoria,
+/home/jorge/man/mlockall.2.txt in line: 58 on this line:                    a memoria o regiones de memoria compartida.
+/home/jorge/man/mlockall.2.txt in line: 73 on this line:        temente  grande  y  que  escriba en la memoria ocupada por
+/home/jorge/man/mlockall.2.txt in line: 80 on this line:        Los bloqueos de memoria no se apilan; esto es, las p�ginas
+/home/jorge/man/mmap.2.txt in line: 6 on this line:        memoria
+/home/jorge/man/mmap.2.txt in line: 20 on this line:        espeficicado  por  fd  en  memoria,  preferiblemente en la
+/home/jorge/man/mmap.2.txt in line: 24 on this line:        describe  la  protecci�n de memoria deseada. Lo forman los
+/home/jorge/man/mmap.2.txt in line: 37 on this line:        a la copia insertada en memoria son privadas al proceso  o
+/home/jorge/man/mmap.2.txt in line: 63 on this line:        cias a memoria inv�lidas.
+/home/jorge/man/mmap.2.txt in line: 91 on this line:               cantidad excesiva de memoria.
+/home/jorge/man/mmap.2.txt in line: 93 on this line:        ENOMEM No hay memoria disponible.
+/home/jorge/man/modify_ldt.2.txt in line: 18 on this line:        memoria  por proceso empleada por el procesador i386. Para
+/home/jorge/man/modify_ldt.2.txt in line: 23 on this line:        memoria apuntada por ptr.  El n�mero de bytes le�dos es el
+/home/jorge/man/mpool.3.txt in line: 5 on this line:        mpool - dep�sito de buffers de memoria compartida
+/home/jorge/man/mpool.3.txt in line: 38 on this line:        La  funci�n  mpool_open inicializa un dep�sito de memoria.
+/home/jorge/man/mpool.3.txt in line: 41 on this line:        los buffers de fichero se asocian  a  memoria  compartida,
+/home/jorge/man/mpool.3.txt in line: 44 on this line:        memoria  privada.   El  argumento  fd  es un descriptor de
+/home/jorge/man/mpool.3.txt in line: 100 on this line:        La funci�n mpool_close libera cualquier memoria  reservada
+/home/jorge/man/mpool.3.txt in line: 101 on this line:        asociada  con el dep�sito de memoria.  Las p�ginas modifi�
+/home/jorge/man/mprotect.2.txt in line: 6 on this line:        regi�n de memoria
+/home/jorge/man/mprotect.2.txt in line: 14 on this line:        mprotect controla la forma en que una secci�n  de  memoria
+/home/jorge/man/mprotect.2.txt in line: 21 on this line:        PROT_NONE  La  memoria  no  puede  ser accedida de ninguna
+/home/jorge/man/mprotect.2.txt in line: 24 on this line:        PROT_READ  La memoria puede ser le�da.
+/home/jorge/man/mprotect.2.txt in line: 26 on this line:        PROT_WRITE La memoria puede ser escrita.
+/home/jorge/man/mprotect.2.txt in line: 28 on this line:        PROT_EXEC  La memoria puede contener c�digo ejecutable.
+/home/jorge/man/mprotect.2.txt in line: 31 on this line:        tente.   Por ejemplo, si la memoria hab�a sido previamente
+/home/jorge/man/mprotect.2.txt in line: 44 on this line:        EFAULT  La memoria no puede ser accedida.
+/home/jorge/man/mprotect.2.txt in line: 46 on this line:        EACCES  La memoria  no  permite  el  acceso  especificado.
+/home/jorge/man/mprotect.2.txt in line: 48 on this line:                zona de memoria mediante  mmap(2)  un  fichero  al
+/home/jorge/man/mprotect.2.txt in line: 105 on this line:        regiones de memoria obtenidas desde mmap(2).
+/home/jorge/man/mremap.2.txt in line: 5 on this line:        mremap - re-asocia una direcci�n de memoria virtual
+/home/jorge/man/mremap.2.txt in line: 16 on this line:        memoria, movi�ndola potencialmente a la vez (seg�n se con�
+/home/jorge/man/mremap.2.txt in line: 20 on this line:        vieja_dir  es  la  direcci�n antigua del bloque de memoria
+/home/jorge/man/mremap.2.txt in line: 23 on this line:        viejo_tam es el antiguo tama�o del bloque de memoria  vir�
+/home/jorge/man/mremap.2.txt in line: 24 on this line:        tual.  nuevo_tam es el tama�o pedido del bloque de memoria
+/home/jorge/man/mremap.2.txt in line: 29 on this line:        En Linux la memoria se divide en p�ginas.  Un  proceso  de
+/home/jorge/man/mremap.2.txt in line: 30 on this line:        usuario  tiene (uno o) varios segmentos de memoria virtual
+/home/jorge/man/mremap.2.txt in line: 31 on this line:        lineales. Cada segmento de memoria virtual tiene una o m�s
+/home/jorge/man/mremap.2.txt in line: 32 on this line:        asociaciones  a  p�ginas  de  memoria real (en la tabla de
+/home/jorge/man/mremap.2.txt in line: 33 on this line:        p�ginas). Cada segmento de memoria virtual tiene su propia
+/home/jorge/man/mremap.2.txt in line: 35 on this line:        violaci�n de segmento si a la memoria se accede  incorrec�
+/home/jorge/man/mremap.2.txt in line: 37 on this line:        exclusiva). Acceder a memoria virtual fuera de los segmen�
+/home/jorge/man/mremap.2.txt in line: 42 on this line:        p�ginas  de memoria. Esto puede emplearse para implementar
+/home/jorge/man/mremap.2.txt in line: 55 on this line:        �rea de memoria virtual.  En caso de error, se devuelve -1
+/home/jorge/man/mremap.2.txt in line: 65 on this line:               vieja_dir+viejo_tam  es  una  direcci�n  de memoria
+/home/jorge/man/mremap.2.txt in line: 71 on this line:        EAGAIN El  segmento  de  memoria est� bloqueado y no puede
+/home/jorge/man/mremap.2.txt in line: 74 on this line:        ENOMEM El �rea de memoria no puede expandirse en la direc�
+/home/jorge/man/mremap.2.txt in line: 77 on this line:               memoria (virtual) disponible.
+/home/jorge/man/mremap.2.txt in line: 91 on this line:        informaci�n  sobre  la memoria paginada. Por ejemplo: Sis�
+/home/jorge/man/msgget.2.txt in line: 82 on this line:                   sistema  no contiene suficiente memoria para la
+/home/jorge/man/msgop.2.txt in line: 164 on this line:        ENOMEM     El sistema no tiene bastante memoria para hacer
+/home/jorge/man/msgrcv.2.txt in line: 164 on this line:        ENOMEM     El sistema no tiene bastante memoria para hacer
+/home/jorge/man/msgsnd.2.txt in line: 164 on this line:        ENOMEM     El sistema no tiene bastante memoria para hacer
+/home/jorge/man/msync.2.txt in line: 5 on this line:        msync - sincroniza un fichero con un mapa de memoria
+/home/jorge/man/msync.2.txt in line: 22 on this line:        memoria  de  un  fichero  que  ha  sido mapeado en memoria
+/home/jorge/man/msync.2.txt in line: 27 on this line:        al �rea de memoria que empieza  en  comienzo  y  tiene  de
+/home/jorge/man/msync.2.txt in line: 46 on this line:        EFAULT La  memoria  indicada  (o parte de ella) no ha sido
+/home/jorge/man/munlock.2.txt in line: 6 on this line:        partes de la memoria
+/home/jorge/man/munlock.2.txt in line: 15 on this line:        memoria  que  cae en el rango que comienza en la direcci�n
+/home/jorge/man/munlock.2.txt in line: 17 on this line:        tienen  una parte del rango de memoria especificado pueden
+/home/jorge/man/munlock.2.txt in line: 21 on this line:        Los bloqueos de memoria no se apilan; esto es, las p�ginas
+/home/jorge/man/munlockall.2.txt in line: 18 on this line:        Los bloqueos de memoria no se apilan; esto es, las p�ginas
+/home/jorge/man/munmap.2.txt in line: 6 on this line:        memoria
+/home/jorge/man/munmap.2.txt in line: 20 on this line:        espeficicado  por  fd  en  memoria,  preferiblemente en la
+/home/jorge/man/munmap.2.txt in line: 24 on this line:        describe  la  protecci�n de memoria deseada. Lo forman los
+/home/jorge/man/munmap.2.txt in line: 37 on this line:        a la copia insertada en memoria son privadas al proceso  o
+/home/jorge/man/munmap.2.txt in line: 63 on this line:        cias a memoria inv�lidas.
+/home/jorge/man/munmap.2.txt in line: 91 on this line:               cantidad excesiva de memoria.
+/home/jorge/man/munmap.2.txt in line: 93 on this line:        ENOMEM No hay memoria disponible.
+/home/jorge/man/netdevice.7.txt in line: 44 on this line:        memoria.
+/home/jorge/man/netlink.7.txt in line: 82 on this line:        ciente memoria o se produce cualquier otro error. Para una
+/home/jorge/man/objcopy.1.txt in line: 58 on this line:        produce esencialmente un volcado de memoria de los
+/home/jorge/man/objcopy.1.txt in line: 61 on this line:        volcado de memoria comenzar� en la direcci�n virtual de la
+/home/jorge/man/open.2.txt in line: 247 on this line:        ENOMEM  No hay disponible bastante memoria del n�cleo.
+/home/jorge/man/packet.7.txt in line: 208 on this line:               No hay suficiente memoria para colocar el  paquete.
+/home/jorge/man/packet.7.txt in line: 211 on this line:        EFAULT El  usuario  ha  pasado  una  direcci�n  de memoria
+/home/jorge/man/pathconf.3.txt in line: 99 on this line:        cuados para pedir memoria.
+/home/jorge/man/pclose.3.txt in line: 50 on this line:        a pipe(2) fallan, o si no puede reservar memoria.
+/home/jorge/man/pclose.3.txt in line: 57 on this line:        reserva  de memoria. Si las funciones subyacentes fork() o
+/home/jorge/man/popen.3.txt in line: 50 on this line:        a pipe(2) fallan, o si no puede reservar memoria.
+/home/jorge/man/popen.3.txt in line: 57 on this line:        reserva  de memoria. Si las funciones subyacentes fork() o
+/home/jorge/man/port.4.txt in line: 5 on this line:        mem,  kmem, port - memoria del sistema, memoria del n�cleo
+/home/jorge/man/port.4.txt in line: 10 on this line:        senta  a la memoria principal del ordenador. Se puede uti�
+/home/jorge/man/port.4.txt in line: 15 on this line:        direcciones f�sicas de memoria. Las  referencias  a  posi�
+/home/jorge/man/port.4.txt in line: 18 on this line:        El examinar y parchear posiciones de memoria que contienen
+/home/jorge/man/port.4.txt in line: 29 on this line:        la memoria virtual del n�cleo, en  vez  de  a  la  memoria
+/home/jorge/man/printf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/proc.5.txt in line: 118 on this line:               maps   Fichero que contiene las regiones de memoria
+/home/jorge/man/proc.5.txt in line: 144 on this line:               memoria, como ocurrir�a con la regi�n bss del
+/home/jorge/man/proc.5.txt in line: 153 on this line:                      /dev/mem es la memoria f�sica antes de que
+/home/jorge/man/proc.5.txt in line: 155 on this line:                      pero aqu� el fichero mem es la memoria a la
+/home/jorge/man/proc.5.txt in line: 229 on this line:                              memoria desde disco.
+/home/jorge/man/proc.5.txt in line: 241 on this line:                              memoria desde disco.
+/home/jorge/man/proc.5.txt in line: 295 on this line:                              Tama�o de la memoria virtual.
+/home/jorge/man/proc.5.txt in line: 299 on this line:                              tiene en memoria real, menos 3 (para
+/home/jorge/man/proc.5.txt in line: 375 on this line:               directo a memoria) ISA registrados en uso.
+/home/jorge/man/proc.5.txt in line: 395 on this line:        kcore  Este fichero representa la memoria f�sica del
+/home/jorge/man/proc.5.txt in line: 403 on this line:               la memoria f�sica (RAM) m�s 4KB.
+/home/jorge/man/proc.5.txt in line: 434 on this line:               cantidad de memoria libre y usada en el sistema
+/home/jorge/man/proc.5.txt in line: 436 on this line:               memoria compartida y los buffers usados por el
+/home/jorge/man/proc.5.txt in line: 505 on this line:                      en t�rminos de uso de memoria del n�cleo.
+/home/jorge/man/proc.5.txt in line: 531 on this line:                      memoria del n�cleo. Los campos 'tr',
+/home/jorge/man/proc.5.txt in line: 548 on this line:                      t�rminos de uso de memoria del n�cleo. Los
+/home/jorge/man/procmailrc.5.txt in line: 465 on this line:                    mente no est� dispoible (memoria, fork, etc.);
+/home/jorge/man/profil.3.txt in line: 16 on this line:        argumento buf apunta a tambuf bytes de  memoria.  Cada  10
+/home/jorge/man/ps.1.txt in line: 58 on this line:        m    muestra informaci�n de memoria (comb�nese con p  para
+/home/jorge/man/ps.1.txt in line: 158 on this line:        s    size        memoria usada en kilobytes
+/home/jorge/man/ps.1.txt in line: 179 on this line:             en memoria.
+/home/jorge/man/ps.1.txt in line: 257 on this line:        de memoria que siempre est� residente.  SIZE es el  tama�o
+/home/jorge/man/ptrace.2.txt in line: 15 on this line:        nar  y  cambiar su imagen de memoria. Su uso primordial es
+/home/jorge/man/ptrace.2.txt in line: 20 on this line:        parado, su memoria puede ser le�da  y  escrita.  El  padre
+/home/jorge/man/raw.7.txt in line: 168 on this line:        EFAULT  Se ha pasado una direcci�n de memoria inv�lida.
+/home/jorge/man/read.2.txt in line: 15 on this line:        memoria que empieza en buf.
+/home/jorge/man/readdir.2.txt in line: 24 on this line:        apunta fd y lo mete en el �rea de memoria  al  que  apunta
+/home/jorge/man/readlink.2.txt in line: 52 on this line:        ENOMEM  No hay suficiente memoria en el n�cleo.
+/home/jorge/man/readv.2.txt in line: 22 on this line:        los resultados en la zona de memoria descrita por  vector.
+/home/jorge/man/readv.2.txt in line: 23 on this line:        El  n�mero  de  bloques de memoria se especifica en count.
+/home/jorge/man/readv.2.txt in line: 26 on this line:        lugar de en una zona contigua de memoria.
+/home/jorge/man/readv.2.txt in line: 29 on this line:        la  zona de memoria descrita por vector. El n�mero de blo�
+/home/jorge/man/readv.2.txt in line: 30 on this line:        ques de memoria se especifica en count.  Los  bloques  son
+/home/jorge/man/readv.2.txt in line: 33 on this line:        una zona contigua de memoria.
+/home/jorge/man/readv.2.txt in line: 51 on this line:                de memoria que no est� correctamente reservada.
+/home/jorge/man/readv.2.txt in line: 69 on this line:        ENOMEM  No hay suficiente memoria del n�cleo disponible.
+/home/jorge/man/realloc.3.txt in line: 5 on this line:        calloc,  malloc, free, realloc - Asignar y liberar memoria
+/home/jorge/man/realloc.3.txt in line: 17 on this line:        calloc() asigna memoria para una matriz de nmemb elementos
+/home/jorge/man/realloc.3.txt in line: 18 on this line:        de  size bytes cada uno y devuelve un puntero a la memoria
+/home/jorge/man/realloc.3.txt in line: 19 on this line:        asignada. La memoria es puesta a cero.
+/home/jorge/man/realloc.3.txt in line: 22 on this line:        memoria asignada. La memoria no es borrada.
+/home/jorge/man/realloc.3.txt in line: 24 on this line:        free()  libera el espacio de memoria apuntado por ptr, que
+/home/jorge/man/realloc.3.txt in line: 31 on this line:        realloc() cambia el tama�o del bloque de memoria  apuntado
+/home/jorge/man/realloc.3.txt in line: 42 on this line:        a la memoria asignada, que est� convenientemente  alineada
+/home/jorge/man/realloc.3.txt in line: 48 on this line:        realloc() devuelve un puntero a la  memoria  reci�n  asig�
+/home/jorge/man/realloc.3.txt in line: 71 on this line:        est�n relacionadas con la corrupci�n de la memoria  mont�n
+/home/jorge/man/realloc.3.txt in line: 84 on this line:        pueden producir p�rdidas de memoria.  Si se asigna a  MAL�
+/home/jorge/man/realloc.3.txt in line: 85 on this line:        LOC_CHECK_  el  valor  0,  cualquier corrupci�n de memoria
+/home/jorge/man/recno.3.txt in line: 82 on this line:               Tama�o m�ximo sugerido, en  bytes,  de  la  memoria
+/home/jorge/man/recno.3.txt in line: 84 on this line:               de acceso reservar� m�s memoria antes  que  fallar.
+/home/jorge/man/recno.3.txt in line: 89 on this line:               identes  en  memoria  de sus registros en un �rbolB
+/home/jorge/man/recno.3.txt in line: 117 on this line:               identes  en  memoria de sus registros en un �rbolB.
+/home/jorge/man/recno.3.txt in line: 126 on this line:        clave deber�a ser un puntero a una posici�n de memoria del
+/home/jorge/man/regcomp.3.txt in line: 139 on this line:        dos, preg, liberar� la memoria   del  buffer  de  patrones
+/home/jorge/man/regcomp.3.txt in line: 202 on this line:               fuera de sus l�mites de memoria.
+/home/jorge/man/regerror.3.txt in line: 139 on this line:        dos, preg, liberar� la memoria   del  buffer  de  patrones
+/home/jorge/man/regerror.3.txt in line: 202 on this line:               fuera de sus l�mites de memoria.
+/home/jorge/man/regex.3.txt in line: 139 on this line:        dos, preg, liberar� la memoria   del  buffer  de  patrones
+/home/jorge/man/regex.3.txt in line: 202 on this line:               fuera de sus l�mites de memoria.
+/home/jorge/man/regexec.3.txt in line: 139 on this line:        dos, preg, liberar� la memoria   del  buffer  de  patrones
+/home/jorge/man/regexec.3.txt in line: 202 on this line:               fuera de sus l�mites de memoria.
+/home/jorge/man/regfree.3.txt in line: 139 on this line:        dos, preg, liberar� la memoria   del  buffer  de  patrones
+/home/jorge/man/regfree.3.txt in line: 202 on this line:               fuera de sus l�mites de memoria.
+/home/jorge/man/remove.3.txt in line: 62 on this line:        ENOMEM  No hay disponible suficiente memoria de n�cleo.
+/home/jorge/man/rename.2.txt in line: 111 on this line:        ENOMEM No  hab�a  suficiente  memoria  disponible  en   el
+/home/jorge/man/resizecons.8.txt in line: 22 on this line:        tuales,  y  puede  fallar  si no hay bastante memoria. (En
+/home/jorge/man/rmdir.2.txt in line: 54 on this line:        ENOMEM  Insuficiente memoria kernel estaba disponible.
+/home/jorge/man/scanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/sched_getscheduler.2.txt in line: 157 on this line:        Usualmente se necesita un bloqueo de memoria para que  los
+/home/jorge/man/sched_setscheduler.2.txt in line: 157 on this line:        Usualmente se necesita un bloqueo de memoria para que  los
+/home/jorge/man/select.2.txt in line: 67 on this line:        ENOMEM  select no ha sido capaz de reservar  memoria  para
+/home/jorge/man/semget.2.txt in line: 93 on this line:                   el sistema no tiene suficiente memoria para  la
+/home/jorge/man/semop.2.txt in line: 141 on this line:                   y el sistema no tiene suficiente  memoria  para
+/home/jorge/man/send.2.txt in line: 117 on this line:        ENOMEM  No hay memoria disponible.
+/home/jorge/man/sendfile.2.txt in line: 51 on this line:        ENOMEM  No hay memoria suficiente para leer de in_fd.
+/home/jorge/man/sendmsg.2.txt in line: 117 on this line:        ENOMEM  No hay memoria disponible.
+/home/jorge/man/sendto.2.txt in line: 117 on this line:        ENOMEM  No hay memoria disponible.
+/home/jorge/man/setfont.8.txt in line: 17 on this line:        fichero  y  lo carga en la memoria del generador de carac�
+/home/jorge/man/setgrent.3.txt in line: 44 on this line:        ENOMEM No hay bastante memoria como para alojar la estruc�
+/home/jorge/man/setmntent.3.txt in line: 39 on this line:        �rea est�tica de memoria que  es  sobreescrita  en  subse�
+/home/jorge/man/setrlimit.2.txt in line: 32 on this line:                           en memoria*/
+/home/jorge/man/setrlimit.2.txt in line: 56 on this line:                     long    ru_ixrss;        /* tama�o total de la memoria
+/home/jorge/man/setrlimit.2.txt in line: 58 on this line:                     long    ru_idrss;        /* tama�o total de la memoria
+/home/jorge/man/setuid.2.txt in line: 60 on this line:        se le prohibir� dejar volcados de memoria.
+/home/jorge/man/shmat.2.txt in line: 5 on this line:        shmop - operaciones cno memoria compartida
+/home/jorge/man/shmat.2.txt in line: 17 on this line:        La  funci�n  shmat  pega el segmento de memoria compartida
+/home/jorge/man/shmat.2.txt in line: 39 on this line:        de memoria compartida de escritura exclusiva.
+/home/jorge/man/shmat.2.txt in line: 50 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmat.2.txt in line: 60 on this line:        de memoria compartida se marca como para ser borrado.
+/home/jorge/man/shmat.2.txt in line: 63 on this line:        que  la llama el segmento de memoria compartida localizado
+/home/jorge/man/shmat.2.txt in line: 65 on this line:        memoria  compartida  despegado  debe  ser uno de entre los
+/home/jorge/man/shmat.2.txt in line: 72 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmat.2.txt in line: 89 on this line:               de memoria compartidos pegados.
+/home/jorge/man/shmat.2.txt in line: 91 on this line:        exec() Tras  un exec() todos los segmentos de memoria com�
+/home/jorge/man/shmat.2.txt in line: 95 on this line:        exit() Tras  exit() todos los segmentos de memoria compar�
+/home/jorge/man/shmat.2.txt in line: 102 on this line:        ci�n del segmento de memoria compartido  pegado,  y  shmdt
+/home/jorge/man/shmat.2.txt in line: 117 on this line:        ENOMEM     No se pudo reservar memoria para el  descriptor
+/home/jorge/man/shmat.2.txt in line: 121 on this line:        memoria compartida pegada en  shmaddr,  en  cuyo  caso  al
+/home/jorge/man/shmat.2.txt in line: 126 on this line:        todos los segmentos de memoria compartida pegados.
+/home/jorge/man/shmat.2.txt in line: 128 on this line:        Los segmentos de memoria compartida pegados a  un  proceso
+/home/jorge/man/shmat.2.txt in line: 141 on this line:        n�mero  m�ximo de segmentos de memoria compartida por pro�
+/home/jorge/man/shmctl.2.txt in line: 5 on this line:        shmctl - control de memoria compartida
+/home/jorge/man/shmctl.2.txt in line: 16 on this line:        segmento de memoria compartida, establecer el due�o, grupo
+/home/jorge/man/shmctl.2.txt in line: 52 on this line:                    segmento de memoria compartida en  la  memoria
+/home/jorge/man/shmctl.2.txt in line: 54 on this line:                    de lectura del segmento de memoria compartida.
+/home/jorge/man/shmctl.2.txt in line: 72 on this line:        que se cargaron en memoria al producir un fallo de p�gina,
+/home/jorge/man/shmctl.2.txt in line: 73 on this line:        permanecer�n en memoria o en el fichero de intercambio.
+/home/jorge/man/shmctl.2.txt in line: 76 on this line:        segmento  de  memoria compartida pase al fichero de inter�
+/home/jorge/man/shmctl.2.txt in line: 79 on this line:        SHM_LOCK    impide que un segmento de  memoria  compartida
+/home/jorge/man/shmctl.2.txt in line: 81 on this line:                    debe cargar  en  memoria  mediante  fallos  de
+/home/jorge/man/shmctl.2.txt in line: 87 on this line:                    segmento de memoria compartida.
+/home/jorge/man/shmctl.2.txt in line: 98 on this line:               de memoria compartida unidos.
+/home/jorge/man/shmctl.2.txt in line: 100 on this line:        exec() Despu�s de un exec() todos los segmentos de memoria
+/home/jorge/man/shmctl.2.txt in line: 103 on this line:        exit() A trav�s de exit() todos los segmentos  de  memoria
+/home/jorge/man/shmdt.2.txt in line: 5 on this line:        shmop - operaciones cno memoria compartida
+/home/jorge/man/shmdt.2.txt in line: 17 on this line:        La  funci�n  shmat  pega el segmento de memoria compartida
+/home/jorge/man/shmdt.2.txt in line: 39 on this line:        de memoria compartida de escritura exclusiva.
+/home/jorge/man/shmdt.2.txt in line: 50 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmdt.2.txt in line: 60 on this line:        de memoria compartida se marca como para ser borrado.
+/home/jorge/man/shmdt.2.txt in line: 63 on this line:        que  la llama el segmento de memoria compartida localizado
+/home/jorge/man/shmdt.2.txt in line: 65 on this line:        memoria  compartida  despegado  debe  ser uno de entre los
+/home/jorge/man/shmdt.2.txt in line: 72 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmdt.2.txt in line: 89 on this line:               de memoria compartidos pegados.
+/home/jorge/man/shmdt.2.txt in line: 91 on this line:        exec() Tras  un exec() todos los segmentos de memoria com�
+/home/jorge/man/shmdt.2.txt in line: 95 on this line:        exit() Tras  exit() todos los segmentos de memoria compar�
+/home/jorge/man/shmdt.2.txt in line: 102 on this line:        ci�n del segmento de memoria compartido  pegado,  y  shmdt
+/home/jorge/man/shmdt.2.txt in line: 117 on this line:        ENOMEM     No se pudo reservar memoria para el  descriptor
+/home/jorge/man/shmdt.2.txt in line: 121 on this line:        memoria compartida pegada en  shmaddr,  en  cuyo  caso  al
+/home/jorge/man/shmdt.2.txt in line: 126 on this line:        todos los segmentos de memoria compartida pegados.
+/home/jorge/man/shmdt.2.txt in line: 128 on this line:        Los segmentos de memoria compartida pegados a  un  proceso
+/home/jorge/man/shmdt.2.txt in line: 141 on this line:        n�mero  m�ximo de segmentos de memoria compartida por pro�
+/home/jorge/man/shmget.2.txt in line: 5 on this line:        shmget - asigna un segmento de memoria compartida
+/home/jorge/man/shmget.2.txt in line: 17 on this line:        crea  un  nuevo  segmento de memoria compartida, de tama�o
+/home/jorge/man/shmget.2.txt in line: 20 on this line:        IPC_PRIVATE, no hay ning�n segmento de memoria  compartida
+/home/jorge/man/shmget.2.txt in line: 91 on this line:        Si el segmento de memoria compartida ya existe, se verifi�
+/home/jorge/man/shmget.2.txt in line: 98 on this line:                de memoria compartida unidos.
+/home/jorge/man/shmget.2.txt in line: 104 on this line:        exit()  A  trav�s de exit() todos los segmentos de memoria
+/home/jorge/man/shmget.2.txt in line: 126 on this line:                    ficativos  posibles  de   memoria   compartida
+/home/jorge/man/shmget.2.txt in line: 129 on this line:                    su   propio   l�mite   de  memoria  compartida
+/home/jorge/man/shmget.2.txt in line: 136 on this line:                    para acceder al segmento  de  memoria  compar�
+/home/jorge/man/shmget.2.txt in line: 140 on this line:                    memoria para el segmento requerido.
+/home/jorge/man/shmget.2.txt in line: 146 on this line:        un  nuevo  segmento  de  memoria  compartida  (en  caso de
+/home/jorge/man/shmget.2.txt in line: 150 on this line:        mento  de  memoria  compartida  afectados  por una llamada
+/home/jorge/man/shmget.2.txt in line: 153 on this line:        SHMALL     M�ximo n�mero de p�ginas de memoria  compartida
+/home/jorge/man/shmget.2.txt in line: 166 on this line:        SHMMNI     M�ximo  n�mero  de segmentos de memoria compar�
+/home/jorge/man/shmget.2.txt in line: 171 on this line:        m�ximo n�mero de segmentos de memoria compartida por  pro�
+/home/jorge/man/shmget.2.txt in line: 176 on this line:        al segmento de memoria compartida asignado.
+/home/jorge/man/shmget.2.txt in line: 180 on this line:        asegurarse acceso exclusivo a un segmento de memoria  com�
+/home/jorge/man/shmget.2.txt in line: 183 on this line:        segmento  de  memoria compartida. No implica acesso exclu�
+/home/jorge/man/shmop.2.txt in line: 5 on this line:        shmop - operaciones cno memoria compartida
+/home/jorge/man/shmop.2.txt in line: 17 on this line:        La  funci�n  shmat  pega el segmento de memoria compartida
+/home/jorge/man/shmop.2.txt in line: 39 on this line:        de memoria compartida de escritura exclusiva.
+/home/jorge/man/shmop.2.txt in line: 50 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmop.2.txt in line: 60 on this line:        de memoria compartida se marca como para ser borrado.
+/home/jorge/man/shmop.2.txt in line: 63 on this line:        que  la llama el segmento de memoria compartida localizado
+/home/jorge/man/shmop.2.txt in line: 65 on this line:        memoria  compartida  despegado  debe  ser uno de entre los
+/home/jorge/man/shmop.2.txt in line: 72 on this line:        memoria compartida como sigue:
+/home/jorge/man/shmop.2.txt in line: 89 on this line:               de memoria compartidos pegados.
+/home/jorge/man/shmop.2.txt in line: 91 on this line:        exec() Tras  un exec() todos los segmentos de memoria com�
+/home/jorge/man/shmop.2.txt in line: 95 on this line:        exit() Tras  exit() todos los segmentos de memoria compar�
+/home/jorge/man/shmop.2.txt in line: 102 on this line:        ci�n del segmento de memoria compartido  pegado,  y  shmdt
+/home/jorge/man/shmop.2.txt in line: 117 on this line:        ENOMEM     No se pudo reservar memoria para el  descriptor
+/home/jorge/man/shmop.2.txt in line: 121 on this line:        memoria compartida pegada en  shmaddr,  en  cuyo  caso  al
+/home/jorge/man/shmop.2.txt in line: 126 on this line:        todos los segmentos de memoria compartida pegados.
+/home/jorge/man/shmop.2.txt in line: 128 on this line:        Los segmentos de memoria compartida pegados a  un  proceso
+/home/jorge/man/shmop.2.txt in line: 141 on this line:        n�mero  m�ximo de segmentos de memoria compartida por pro�
+/home/jorge/man/sigaction.2.txt in line: 110 on this line:                   void *   si_addr;   /* Direcci�n de memoria que ha producido el fallo */
+/home/jorge/man/sigaction.2.txt in line: 194 on this line:        |SEGV_ACCERR | permisos inv�lidos para un objeto presente en memoria |
+/home/jorge/man/sigaction.2.txt in line: 289 on this line:               memoria  que  no  forma parte v�lida del espacio de
+/home/jorge/man/signal.7.txt in line: 24 on this line:        SIGSEGV      11        C      Referencia inv�lida a memoria
+/home/jorge/man/sigpending.2.txt in line: 110 on this line:                   void *   si_addr;   /* Direcci�n de memoria que ha producido el fallo */
+/home/jorge/man/sigpending.2.txt in line: 194 on this line:        |SEGV_ACCERR | permisos inv�lidos para un objeto presente en memoria |
+/home/jorge/man/sigpending.2.txt in line: 289 on this line:               memoria  que  no  forma parte v�lida del espacio de
+/home/jorge/man/sigprocmask.2.txt in line: 110 on this line:                   void *   si_addr;   /* Direcci�n de memoria que ha producido el fallo */
+/home/jorge/man/sigprocmask.2.txt in line: 194 on this line:        |SEGV_ACCERR | permisos inv�lidos para un objeto presente en memoria |
+/home/jorge/man/sigprocmask.2.txt in line: 289 on this line:               memoria  que  no  forma parte v�lida del espacio de
+/home/jorge/man/sigsuspend.2.txt in line: 110 on this line:                   void *   si_addr;   /* Direcci�n de memoria que ha producido el fallo */
+/home/jorge/man/sigsuspend.2.txt in line: 194 on this line:        |SEGV_ACCERR | permisos inv�lidos para un objeto presente en memoria |
+/home/jorge/man/sigsuspend.2.txt in line: 289 on this line:               memoria  que  no  forma parte v�lida del espacio de
+/home/jorge/man/skill.1.txt in line: 84 on this line:        que ha de buscarse la informaci�n necesaria en la  memoria
+/home/jorge/man/skill.1.txt in line: 102 on this line:        /dev/mem       memoria f�sica
+/home/jorge/man/skill.1.txt in line: 103 on this line:        /dev/kmem      memoria virtual del kernel
+/home/jorge/man/snice.1.txt in line: 84 on this line:        que ha de buscarse la informaci�n necesaria en la  memoria
+/home/jorge/man/snice.1.txt in line: 102 on this line:        /dev/mem       memoria f�sica
+/home/jorge/man/snice.1.txt in line: 103 on this line:        /dev/kmem      memoria virtual del kernel
+/home/jorge/man/socket.2.txt in line: 175 on this line:        ENFILE  No hay suficiente memoria en el n�cleo para reser�
+/home/jorge/man/socket.2.txt in line: 184 on this line:                No  hay suficiente memoria disponible. El conector
+/home/jorge/man/sprintf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/sscanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/st.4.txt in line: 68 on this line:        tama�o de bloque al mayor bloque contiguo de  memoria  que
+/home/jorge/man/st.4.txt in line: 69 on this line:        el  c�digo  de asignaci�n de memoria del n�cleo puede pro�
+/home/jorge/man/st.4.txt in line: 84 on this line:        contiguos de memoria puede fallar y es aconsejable no con�
+/home/jorge/man/st.4.txt in line: 633 on this line:        EFAULT        Los par�metros de la orden apuntan a memoria
+/home/jorge/man/stat.2.txt in line: 170 on this line:        ENOMEM Fuera de memoria (es decir, memoria del n�cleo).
+/home/jorge/man/statfs.2.txt in line: 104 on this line:        ENOMEM  No  hab�a  suficiente  memoria  disponible  en  el
+/home/jorge/man/stdio.3.txt in line: 45 on this line:        contenido  de  la memoria intermedia que no fue escrita al
+/home/jorge/man/stdio.3.txt in line: 77 on this line:        tivos de tipo terminal, siempre utilizan memorias interme�
+/home/jorge/man/stdio.3.txt in line: 84 on this line:        la memoria intermedia en la corriente de  salida  est�ndar
+/home/jorge/man/stdio.3.txt in line: 111 on this line:        Las  funciones  est�ndar  para  el  tratamiento de memoria
+/home/jorge/man/stdio.3.txt in line: 135 on this line:        fflush descarga  la  memoria  intermedia  de una corriente
+/home/jorge/man/stdio.3.txt in line: 214 on this line:        setbuf operaciones de corriente con memoria intermedia
+/home/jorge/man/stdio.3.txt in line: 217 on this line:               operaciones de corriente con memoria intermedia
+/home/jorge/man/stdio.3.txt in line: 220 on this line:               operaciones de corriente con memoria intermedia
+/home/jorge/man/stdio.3.txt in line: 223 on this line:               operaciones de corriente con memoria intermedia
+/home/jorge/man/strdup.3.txt in line: 15 on this line:        por  s.   La  memoria  para  la  nueva  cadena  se obtiene
+/home/jorge/man/strdup.3.txt in line: 21 on this line:        cada, o NULL si no hab�a bastante memoria.
+/home/jorge/man/stty.1.txt in line: 108 on this line:               la memoria intermedia de entrada del  sistema  est�
+/home/jorge/man/stty.1.txt in line: 110 on this line:               memoria vuelve a estar casi vac�a de nuevo.
+/home/jorge/man/stty.1.txt in line: 122 on this line:               Emitir  un pitido y no vaciar la memoria intermedia
+/home/jorge/man/stty.1.txt in line: 212 on this line:               No permitir el vaciado  de  la  memoria  intermedia
+/home/jorge/man/swapoff.2.txt in line: 73 on this line:        ENOMEM  se  devuelve  si no hay bastante memoria como para
+/home/jorge/man/swapon.2.txt in line: 73 on this line:        ENOMEM  se  devuelve  si no hay bastante memoria como para
+/home/jorge/man/symlink.2.txt in line: 66 on this line:        ENOMEM  No hab�a bastante memoria del n�cleo.
+/home/jorge/man/sysconf.3.txt in line: 165 on this line:        apropiados para reservar memoria.
+/home/jorge/man/sysinfo.2.txt in line: 20 on this line:                    unsigned long freeram;    /* Tama�o de memoria disponible */
+/home/jorge/man/sysinfo.2.txt in line: 21 on this line:                    unsigned long sharedram;  /* Cantidad de memoria compartida */
+/home/jorge/man/tdelete.3.txt in line: 66 on this line:        al  elemento a�adido, o NULL si no hubo suficiente memoria
+/home/jorge/man/tdelete.3.txt in line: 88 on this line:        tdelete libera la memoria necesaria para el elemento en el
+/home/jorge/man/tdelete.3.txt in line: 89 on this line:        �rbol.  El usuario es el responsable de liberar la memoria
+/home/jorge/man/tempnam.3.txt in line: 37 on this line:        ENOMEM Ha fallado la reserva de memoria.
+/home/jorge/man/termcap.5.txt in line: 104 on this line:        lm      L�neas de memoria
+/home/jorge/man/termcap.5.txt in line: 190 on this line:        CM      Mover el cursor a la fila %1 y la columna %2 (de la memoria)
+/home/jorge/man/tfind.3.txt in line: 66 on this line:        al  elemento a�adido, o NULL si no hubo suficiente memoria
+/home/jorge/man/tfind.3.txt in line: 88 on this line:        tdelete libera la memoria necesaria para el elemento en el
+/home/jorge/man/tfind.3.txt in line: 89 on this line:        �rbol.  El usuario es el responsable de liberar la memoria
+/home/jorge/man/time.2.txt in line: 19 on this line:        guarda en la zona de memoria a la que apunte t.
+/home/jorge/man/top.1.txt in line: 16 on this line:        de CPU, uso de memoria y tiempo de ejecuci�n.  puede  con�
+/home/jorge/man/top.1.txt in line: 90 on this line:        Mem  Datos sobre el empleo de memoria, incluyendo la memo�
+/home/jorge/man/top.1.txt in line: 91 on this line:             ria disponible en total, la memoria libre, la  usada,
+/home/jorge/man/top.1.txt in line: 93 on this line:             de la informaci�n de memoria puede ponerse o quitarse
+/home/jorge/man/top.1.txt in line: 135 on this line:        RSS  Se  muestra  aqu� la cantidad total de memoria f�sica
+/home/jorge/man/top.1.txt in line: 141 on this line:             Se muestra en esta columna  la  cantidad  de  memoria
+/home/jorge/man/top.1.txt in line: 173 on this line:        %MEM La porci�n de la memoria f�sica ocupada por la tarea.
+/home/jorge/man/top.1.txt in line: 178 on this line:             Las tareas en memoria tendr�n una  l�nea  de  �rdenes
+/home/jorge/man/top.1.txt in line: 265 on this line:             memoria.
+/home/jorge/man/top.1.txt in line: 273 on this line:        M    Clasifica las tareas por empleo de memoria residente.
+/home/jorge/man/top.1.txt in line: 326 on this line:        suprimen el despliegue de la  informaci�n  sobre  memoria,
+/home/jorge/man/top.1.txt in line: 345 on this line:        memoria que est� siempre residente.   SIZE  es  el  tama�o
+/home/jorge/man/tsearch.3.txt in line: 66 on this line:        al  elemento a�adido, o NULL si no hubo suficiente memoria
+/home/jorge/man/tsearch.3.txt in line: 88 on this line:        tdelete libera la memoria necesaria para el elemento en el
+/home/jorge/man/tsearch.3.txt in line: 89 on this line:        �rbol.  El usuario es el responsable de liberar la memoria
+/home/jorge/man/twalk.3.txt in line: 66 on this line:        al  elemento a�adido, o NULL si no hubo suficiente memoria
+/home/jorge/man/twalk.3.txt in line: 88 on this line:        tdelete libera la memoria necesaria para el elemento en el
+/home/jorge/man/twalk.3.txt in line: 89 on this line:        �rbol.  El usuario es el responsable de liberar la memoria
+/home/jorge/man/unix.7.txt in line: 153 on this line:        ENOMEM No hay suficiente memoria.
+/home/jorge/man/unix.7.txt in line: 213 on this line:        EFAULT La direcci�n de memoria de usuario no es v�lida.
+/home/jorge/man/unlink.2.txt in line: 64 on this line:        ENOMEM  No hay suficiente memoria disponible en el n�cleo.
+/home/jorge/man/vcs.4.txt in line: 5 on this line:        vcs, vcsa - memoria de la consola virtual
+/home/jorge/man/vcs.4.txt in line: 10 on this line:        propietario  root.tty.  Designa la memoria del terminal de
+/home/jorge/man/vcsa.4.txt in line: 5 on this line:        vcs, vcsa - memoria de la consola virtual
+/home/jorge/man/vcsa.4.txt in line: 10 on this line:        propietario  root.tty.  Designa la memoria del terminal de
+/home/jorge/man/vfork.2.txt in line: 21 on this line:        izaci�n en que incurre fork es  en  el  tiempo  y  memoria
+/home/jorge/man/vfork.2.txt in line: 35 on this line:        EAGAIN fork no puede  reservar  sufficiente  memoria  para
+/home/jorge/man/vfork.2.txt in line: 40 on this line:               n�cleo porque la cantidad de memoria era escasa.
+/home/jorge/man/vfprintf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/vfscanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/vmstat.8.txt in line: 5 on this line:        vmstat - Proporciona datos sobre la memoria virtual
+/home/jorge/man/vmstat.8.txt in line: 12 on this line:        vmstat da informaci�n sobre procesos, memoria, paginaci�n,
+/home/jorge/man/vmstat.8.txt in line: 18 on this line:        informes de proceso y memoria son instant�neos.
+/home/jorge/man/vmstat.8.txt in line: 47 on this line:        swpd: la cantidad de memoria virtual empleada (kB).
+/home/jorge/man/vmstat.8.txt in line: 48 on this line:        free: la cantidad de memoria inactiva (kB).
+/home/jorge/man/vmstat.8.txt in line: 49 on this line:        buff: la cantidad de memoria empleada como b�feres (kB).
+/home/jorge/man/vmstat.8.txt in line: 53 on this line:        si: Cantidad de memoria tra�da del espacio de trasiego desde disco (kB/s).
+/home/jorge/man/vmstat.8.txt in line: 54 on this line:        so: Cantidad de memoria trasegada al disco (kB/s).
+/home/jorge/man/vprintf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/vscanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/vsprintf.3.txt in line: 306 on this line:        p�rdidas de memoria.
+/home/jorge/man/vsscanf.3.txt in line: 62 on this line:               memoria  necesario para la cadena se obtendr� medi�
+/home/jorge/man/wait.2.txt in line: 63 on this line:        ci�n de estado en la memoria apuntada por status.
+/home/jorge/man/wait3.2.txt in line: 68 on this line:        de estado en la memoria apuntada por status.
+/home/jorge/man/wait4.2.txt in line: 68 on this line:        de estado en la memoria apuntada por status.
+/home/jorge/man/waitpid.2.txt in line: 63 on this line:        ci�n de estado en la memoria apuntada por status.
+/home/jorge/man/writev.2.txt in line: 22 on this line:        los resultados en la zona de memoria descrita por  vector.
+/home/jorge/man/writev.2.txt in line: 23 on this line:        El  n�mero  de  bloques de memoria se especifica en count.
+/home/jorge/man/writev.2.txt in line: 26 on this line:        lugar de en una zona contigua de memoria.
+/home/jorge/man/writev.2.txt in line: 29 on this line:        la  zona de memoria descrita por vector. El n�mero de blo�
+/home/jorge/man/writev.2.txt in line: 30 on this line:        ques de memoria se especifica en count.  Los  bloques  son
+/home/jorge/man/writev.2.txt in line: 33 on this line:        una zona contigua de memoria.
+/home/jorge/man/writev.2.txt in line: 51 on this line:                de memoria que no est� correctamente reservada.
+/home/jorge/man/writev.2.txt in line: 69 on this line:        ENOMEM  No hay suficiente memoria del n�cleo disponible.
+/home/jorge/man/x25.7.txt in line: 36 on this line:        otras  limitaciones  (como  la memoria de los conectores o
+/home/jorge/man/zcat.1.txt in line: 348 on this line:                prime mejor y usa menos memoria.
+
+Grand Total: 678 match(es) found.
+************************
+
+

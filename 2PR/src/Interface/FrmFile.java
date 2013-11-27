@@ -167,11 +167,11 @@ public class FrmFile extends javax.swing.JFrame {
                     String executionResult = _BusinessLogic.EjecutarPatrones(_PrefijoConsulta,cantidadPatrones);
                     if(this._BusinessLogic.getProcessOperationState() == 1){                        
                         array.add(_BusinessLogic);
-                        JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
-                        FrmSearchResult frmSearchResult = new FrmSearchResult();
-                        frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
-                        frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
-                        frmSearchResult.setVisible(true);                        
+                        //JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
+                        //FrmSearchResult frmSearchResult = new FrmSearchResult();
+                        //frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
+                        //frmSearchResult.InsertResult(this._BusinessLogic.getMatchLineInfo());
+                        //frmSearchResult.setVisible(true);                        
                     } else {
                         JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                     }
@@ -192,24 +192,25 @@ public class FrmFile extends javax.swing.JFrame {
                 }
                 double similitudSimple = 0.0;
                 double similitudOpciones = 0.0;
-                double similitudDinamica = 0.0;
+                double similitudDinamica = 0.0;                
                 int counter = 0;
                 HashMap<String,Float> hashResultado = new HashMap<String,Float>();
                 for (int i = 0; i < nombresArchivos.size(); i++) {
                     int contadorPatron = 0;
-                    String fileName = nombresArchivos.get(i);
-                    contadorPatron = 0;
+                    //sumatoria = 0;
+                    String fileName = nombresArchivos.get(i);                    
                     for (int j = 0; j < array.size(); j++) {  
                         int valor = array.get(j)._PatronUsado;
                         switch(valor){
                             case 1:
                                     if(array.get(j)._PatronSimpleControl.getFiles().contains(fileName)){
                                         int positionSimple = array.get(j)._PatronSimpleControl.getFiles().indexOf(fileName);
-                                        similitudSimple = array.get(j)._PatronSimpleControl.getSimilitud().get(positionSimple);
+                                        similitudSimple = array.get(j)._PatronSimpleControl.getSimilitud().get(positionSimple);                                        
                                         int counterPerDoc = array.get(j)._PatronSimpleControl.getCounter().get(positionSimple);
-                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        //System.out.println("Patron " + array.get(j)._PatronUsado);
                                         counter += counterPerDoc;
                                         contadorPatron++;
+                                        //System.out.println("Cont " + contadorPatron);
                                     }
                                     break;
                             case 2:
@@ -218,8 +219,9 @@ public class FrmFile extends javax.swing.JFrame {
                                         similitudOpciones = array.get(j)._PatronOpcionesControl.getSimilitud().get(positionSimple);
                                         int counterPerDoc = array.get(j)._PatronOpcionesControl.getCounter().get(positionSimple);
                                         counter += counterPerDoc;
-                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        //System.out.println("Patron " + array.get(j)._PatronUsado);
                                         contadorPatron++;
+                                        //System.out.println("Cont " + contadorPatron);
                                     }
                                     break;
                             case 3:
@@ -228,22 +230,30 @@ public class FrmFile extends javax.swing.JFrame {
                                         similitudDinamica = array.get(j)._DinamicaControl.getSimilitud().get(positionSimple);
                                         int counterPerDoc = array.get(j)._DinamicaControl.getCounter().get(positionSimple);
                                         counter += counterPerDoc;
-                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        //System.out.println("Patron " + array.get(j)._PatronUsado);
                                         contadorPatron++;
+                                        //System.out.println("Cont " + contadorPatron);
                                     }
                                     break;
                         }
-                    }
-                    double suma = similitudSimple + similitudOpciones + similitudDinamica;                                                
-                    float divi = (float) 1 / this._BusinessLogic._CantidadPatrones;                        
+                        //System.out.println("Cont " + contadorPatron);
+                        double suma = similitudSimple + similitudOpciones + similitudDinamica;                                                
+                    float divi = (float) 1 / cantidadPatrones;                        
                     float similitud = contadorPatron + (float)(divi * suma);                                                
                     hashResultado.put(fileName,similitud);
-                    if(suma > 0){
+                    if(contadorPatron > 0){
                         System.out.println("Suma " + similitudSimple +  " " + similitudOpciones + " "  + similitudDinamica);
-                        System.out.println("El contador es " + contadorPatron);
-                        System.out.println("Similitud del archivo " + fileName + " es " + similitud);
+                        //System.out.println("Sumatoria " + sumatoria);
+                        //System.out.println("Sumado " + suma);
+                        //System.out.println("Patrones " + this._BusinessLogic._CantidadPatrones);
+                        //System.out.println("Patrones2 " + cantidadPatrones);
+                        //System.out.println("Division " + divi);
+                        //System.out.println("El contador es " + contadorPatron);
+                        System.out.println("Similitud del archivo " + fileName + " es " + similitud);                        
                     }
-                    contadorPatron = 0;
+                    }
+                    
+                    //contadorPatron = 0;
                 }
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");
