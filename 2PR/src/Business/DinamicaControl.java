@@ -33,6 +33,7 @@ public class DinamicaControl {
     ArrayList<Double> _Similitud = new ArrayList<Double>();
     ArrayList<String> _FileNames = new ArrayList<String>();
     ArrayList<Integer> _CountPerDoc = new ArrayList<Integer>();
+    public ArrayList<String> NOMBRES_ARCHIVOS_SIM = new ArrayList<String>();
     int _NumeroErrores = 0;
     int _ContadorApariciones = 0;
     int _ProcessOperationState = 0;
@@ -75,6 +76,7 @@ public class DinamicaControl {
                 //Tuvo éxito
                 this._DirectoryProcessor.ReadDirectory();
                 ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
+                this.NOMBRES_ARCHIVOS_SIM = subFiles;
                 //Por cada archivo en el directorio                
                 for (int subFile = 0; subFile < subFiles.size(); subFile++) {
                     //System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
@@ -130,11 +132,12 @@ public class DinamicaControl {
             _MatchesInFileLine++;            
             //this._MatchLineInfo.add(pDirectoryName + "/" + pFileName + " in line: " + fileLineNumber + " on this line: " + fileLine);            
         }
-        if(counterTotal >= 1){
+        if(counterPerDoc >= 1){
             double similitud = CalcularSimilitud(counterTotal);            
             this._Similitud.add(similitud);
             this._FileNames.add(pFileName);
             this._CountPerDoc.add(counterTotal);
+            System.out.println("Similitud en Dinamica archivo " + pFileName + " es " + similitud);
         }
         //this._ListOfApariciones.add(contadorAparicionesPorDoc);
         //this._ListOfFiles.add(pFileName);  

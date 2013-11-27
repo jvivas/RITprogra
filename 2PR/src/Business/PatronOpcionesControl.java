@@ -45,6 +45,7 @@ public class PatronOpcionesControl {
     String _PatternTail = "";
     String _PatternOptions = "";
     ArrayList<boolean[]> _MaskTableList = new ArrayList<boolean[]>();
+    public ArrayList<String> NOMBRES_ARCHIVOS_SIM = new ArrayList<String>();
     String _PatternName = "";
 
     //Constructor
@@ -125,12 +126,15 @@ public class PatronOpcionesControl {
         this._ProcessOperationState = 0;
         this._WordAppearances = 0;
         this._MatchesInFileLine = 0;
+        this._Similitud = new ArrayList<Double>();
         if(_UserPattern.length() > 0){
             int openDirectorySuccess = _DirectoryProcessor.getOpenDirectorySuccess();
             if(openDirectorySuccess == 0){
                 //Tuvo éxito
                 this._DirectoryProcessor.ReadDirectory();
                 ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
+                this.NOMBRES_ARCHIVOS_SIM = subFiles;
+                
                 //Por cada archivo en el directorio
                 for(int subFile = 0; subFile < subFiles.size(); subFile++){
                     //System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
@@ -198,6 +202,7 @@ public class PatronOpcionesControl {
             this._Similitud.add(similitud);
             this._FileNames.add(pFileName);
             this._CountPerDoc.add(counterPerDoc);
+            System.out.println("Similitud en Opciones archivo " + pFileName + " es " + similitud);
         }
         //System.out.println(this._MatchLineInfo.toString());
     }

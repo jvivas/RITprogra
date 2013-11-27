@@ -34,9 +34,9 @@ public class BusinessLogic {
     String _DirectoryPath = ".";
     String _UserPattern = "";
     //Control para el caso de buscar palabras en los directorios
-    PatronSimpleControl _PatronSimpleControl;
-    DinamicaControl _DinamicaControl;
-    PatronOpcionesControl _PatronOpcionesControl;
+    public PatronSimpleControl _PatronSimpleControl;
+    public DinamicaControl _DinamicaControl;
+    public PatronOpcionesControl _PatronOpcionesControl;
     ArrayList<String> _MatchLineInfo = new ArrayList<String>();    
     ArrayList<Integer> _WordAppeareances = new ArrayList<Integer>();
     ArrayList<Integer> _MatchesInFileLine = new ArrayList<Integer>();
@@ -49,13 +49,14 @@ public class BusinessLogic {
     ArrayList<Double> _SimilitudOpciones = new ArrayList<Double>();
     ArrayList<String> _FileNamesOpciones = new ArrayList<String>();
     ArrayList<Integer> _CountPerDocOpciones = new ArrayList<Integer>();
-    ArrayList<Integer> _OrdenPatrones = new ArrayList<Integer>();
+    public ArrayList<Integer> _OrdenPatrones = new ArrayList<Integer>();
+    public int _PatronUsado = -1;
     
     ArrayList<Float> _SimilitudesObtenidas = new ArrayList<Float>();
     ArrayList<String> _ArchivosObtenidos = new ArrayList<String>();
     int _ProcessOperationState = 0;    
     int _PrefijoConsulta = 0;
-    int _CantidadPatrones = 0;
+    public int _CantidadPatrones = 0;
     
     //Constructor
     public BusinessLogic() {
@@ -233,19 +234,22 @@ public class BusinessLogic {
                 this._FileNamesSimple = _PatronSimpleControl.getFiles();
                 this._CountPerDocSimple = _PatronSimpleControl.getCounter();
                 this._OrdenPatrones.add(1);
+                this._PatronUsado = 1;
+                System.out.println("El patron usado es" + _PatronUsado);
                 return executionResult;
             }
-            else{
                 this._DinamicaControl = new DinamicaControl(_DirectoryPath,tokenPattern[i]);
                 if(_DinamicaControl.ValidatePattern()){                    
                     executionResult = EjecutarProgDinamica();                                      
-                    this._SimilitudDinamica = _DinamicaControl.getSimilitud();
-                    this._FileNamesDinamica = _DinamicaControl.getFiles();
-                    this._CountPerDocDinamica = _DinamicaControl.getCounter();
-                    this._OrdenPatrones.add(3);
+                    this._SimilitudDinamica = this._DinamicaControl.getSimilitud();
+                    this._FileNamesDinamica = this._DinamicaControl.getFiles();
+                    this._CountPerDocDinamica = this._DinamicaControl.getCounter();
+                    this._OrdenPatrones.add(3);                    
+                    this._PatronUsado = 3;
+                    System.out.println("El patron usado es" + _PatronUsado);
                     return executionResult;
                 }                
-                else{
+                
                     this._PatronOpcionesControl = new PatronOpcionesControl(_DirectoryPath,tokenPattern[i]);
                     if(_PatronOpcionesControl.ValidatePattern()){                        
                         executionResult = EjecutarPatronOpciones();                                                
@@ -253,10 +257,11 @@ public class BusinessLogic {
                         this._FileNamesOpciones = _PatronOpcionesControl.getFiles();
                         this._CountPerDocOpciones = _PatronOpcionesControl.getCounter();
                         this._OrdenPatrones.add(2);
+                        this._PatronUsado = 2;
+                        System.out.println("El patron usado es" + _PatronUsado);
                         return executionResult;
                     }
-                }
-            }
+                
         }        
         return executionResult;
     }
@@ -279,18 +284,24 @@ public class BusinessLogic {
             ArrayList<Double> similitudDinamicaAux = this._SimilitudDinamica;
             ArrayList<Integer> countPerDocDinamicaAux = this._CountPerDocDinamica;            
             int counter = 0;
+            int contadorPatron = 0;
             HashMap<String,Float> hashResultado = new HashMap<String,Float>();
             for(int i = 0; i < fileNamesSimpleAux.size();i++){
                     counter = 0;
+                    //contadorPatron = 0;
                     fileName = fileNamesSimpleAux.get(i);
                     System.out.println("Archivo procesando " + fileName);
                     if(fileNamesSimpleAux.contains(fileName)){
                         int positionSimple = fileNamesSimpleAux.indexOf(fileName);                            
                         similitudSimple = similitudSimpleAux.get(positionSimple);
-                        counter += countPerDocSimpleAux.get(positionSimple);
+                        int counterPerDoc = countPerDocSimpleAux.get(positionSimple);
+                        counter += counterPerDoc;
                         fileNamesSimpleAux.remove(positionSimple);
                         similitudSimpleAux.remove(positionSimple);                              
                         countPerDocSimpleAux.remove(positionSimple);
+                        
+                            contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesOpcionesAux.contains(fileName)){
@@ -298,8 +309,12 @@ public class BusinessLogic {
                         similitudOpciones = similitudOpcionesAux.get(positionOpciones);
                         fileNamesOpcionesAux.remove(positionOpciones);
                         similitudOpcionesAux.remove(positionOpciones);
-                        counter += countPerDocOpcionesAux.get(positionOpciones);
+                        int counterPerDoc = countPerDocOpcionesAux.get(positionOpciones);
+                        counter += counterPerDoc;
                         countPerDocOpcionesAux.remove(positionOpciones);
+                        
+                            contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesDinamicaAux.contains(fileName)){
@@ -307,28 +322,43 @@ public class BusinessLogic {
                         similitudDinamica = similitudDinamicaAux.get(positionDinamica);
                         fileNamesDinamicaAux.remove(positionDinamica);
                         similitudDinamicaAux.remove(positionDinamica);
-                        counter += countPerDocDinamicaAux.get(positionDinamica);
+                        int counterPerDoc = countPerDocDinamicaAux.get(positionDinamica);
+                        counter += counterPerDoc;
                         countPerDocDinamicaAux.remove(positionDinamica);
+                        
+                            contadorPatron++;
+                        
                         i--;    
-                    }                        
+                    }                 
+                        
                         double suma = similitudSimple + similitudOpciones + similitudDinamica;                                                
                         System.out.println("Suma " + similitudSimple +  " " + similitudOpciones + " "  + similitudDinamica);
                         float divi = (float) 1 / this._CantidadPatrones;                        
-                        float similitud = 1 + (float)(divi * suma);                                                
+                        System.out.println("El contador es " + contadorPatron);
+                        float similitud = contadorPatron + (float)(divi * suma);                                                
                         hashResultado.put(fileName,similitud);
                         System.out.println("Similitud del archivo " + fileName + " es " + similitud);
-            }
+                        contadorPatron = 0;
+                        System.out.println("El contador actualizado" + contadorPatron);
+                        
+               }
+            contadorPatron = 0;
             for(int i = 0; i < fileNamesOpcionesAux.size();i++){
                     counter = 0;
+                    //contadorPatron = 0;
                     fileName = fileNamesOpcionesAux.get(i);
                     //System.out.println("Archivo procesando " + fileName);
                     if(fileNamesSimpleAux.contains(fileName)){
                         int positionSimple = fileNamesSimpleAux.indexOf(fileName);                            
-                        similitudSimple = similitudSimpleAux.get(positionSimple);
-                        counter += countPerDocSimpleAux.get(positionSimple);
+                        similitudSimple = similitudSimpleAux.get(positionSimple);                        
+                        int counterPerDoc = countPerDocSimpleAux.get(positionSimple);
+                        counter += counterPerDoc;                        
                         fileNamesSimpleAux.remove(positionSimple);
                         similitudSimpleAux.remove(positionSimple);                              
                         countPerDocSimpleAux.remove(positionSimple);
+                        
+                            contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesOpcionesAux.contains(fileName)){
@@ -336,63 +366,91 @@ public class BusinessLogic {
                         similitudOpciones = similitudOpcionesAux.get(positionOpciones);
                         fileNamesOpcionesAux.remove(positionOpciones);
                         similitudOpcionesAux.remove(positionOpciones);
-                        counter += countPerDocOpcionesAux.get(positionOpciones);
+                        int counterPerDoc = countPerDocOpcionesAux.get(positionOpciones);
+                        counter += counterPerDoc;                        
                         countPerDocOpcionesAux.remove(positionOpciones);
+                        
+                            contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesDinamicaAux.contains(fileName)){
                         int positionDinamica = fileNamesDinamicaAux.indexOf(fileName);
                         similitudDinamica = similitudDinamicaAux.get(positionDinamica);
                         fileNamesDinamicaAux.remove(positionDinamica);
-                        similitudDinamicaAux.remove(positionDinamica);
-                        counter += countPerDocDinamicaAux.get(positionDinamica);
+                        similitudDinamicaAux.remove(positionDinamica);                        
+                        int counterPerDoc = countPerDocDinamicaAux.get(positionDinamica);
+                        counter += counterPerDoc;                                             
                         countPerDocDinamicaAux.remove(positionDinamica);
+                        
+                            contadorPatron++;
+                        
                         i--;    
                     }
                         double suma = similitudSimple + similitudOpciones + similitudDinamica;                        
                         System.out.println("Suma " + similitudSimple +  " " + similitudOpciones + " "  + similitudDinamica);
                         float divi = (float) 1 / this._CantidadPatrones;                        
-                        float similitud = 1 + (float)(divi * suma);                        
+                        System.out.println("El contador es " + contadorPatron);
+                        float similitud = contadorPatron + (float)(divi * suma);                        
                         hashResultado.put(fileName,similitud);
                         System.out.println("Similitud del archivo " + fileName + " es " + similitud);
+                        contadorPatron = 0;
+                        System.out.println("El contador actualizado" + contadorPatron);
             }
+            contadorPatron = 0;
             for(int i = 0; i < fileNamesDinamicaAux.size();i++){
                     counter = 0;
+                    //contadorPatron = 0;
                     fileName = fileNamesDinamicaAux.get(i);
                     //System.out.println("Archivo procesando " + fileName);
                     if(fileNamesSimpleAux.contains(fileName)){
                         int positionSimple = fileNamesSimpleAux.indexOf(fileName);                            
                         similitudSimple = similitudSimpleAux.get(positionSimple);
-                        counter += countPerDocSimpleAux.get(positionSimple);
+                        int counterPerDoc = countPerDocSimpleAux.get(positionSimple);
+                        counter += counterPerDoc;
                         fileNamesSimpleAux.remove(positionSimple);
                         similitudSimpleAux.remove(positionSimple);                              
                         countPerDocSimpleAux.remove(positionSimple);
+                        
+                            contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesOpcionesAux.contains(fileName)){
                         int positionOpciones = fileNamesOpcionesAux.indexOf(fileName);
                         similitudOpciones = similitudOpcionesAux.get(positionOpciones);
                         fileNamesOpcionesAux.remove(positionOpciones);
-                        similitudOpcionesAux.remove(positionOpciones);
-                        counter += countPerDocOpcionesAux.get(positionOpciones);
+                        similitudOpcionesAux.remove(positionOpciones);                        
+                        int counterPerDoc = countPerDocOpcionesAux.get(positionOpciones);
+                        counter += counterPerDoc;                     
                         countPerDocOpcionesAux.remove(positionOpciones);
+                        
+                        contadorPatron++;
+                        
                         i--;
                     }
                     if(fileNamesDinamicaAux.contains(fileName)){
                         int positionDinamica = fileNamesDinamicaAux.indexOf(fileName);
                         similitudDinamica = similitudDinamicaAux.get(positionDinamica);
                         fileNamesDinamicaAux.remove(positionDinamica);
-                        similitudDinamicaAux.remove(positionDinamica);
-                        counter += countPerDocDinamicaAux.get(positionDinamica);
+                        similitudDinamicaAux.remove(positionDinamica);                        
+                        int counterPerDoc = countPerDocDinamicaAux.get(positionDinamica);
+                        counter += counterPerDoc;                                             
                         countPerDocDinamicaAux.remove(positionDinamica);
+                        
+                            contadorPatron++;
+                        
                         i--;    
                     }
                         double suma = similitudSimple + similitudOpciones + similitudDinamica;                        
                         System.out.println("Suma " + similitudSimple +  " " + similitudOpciones + " "  + similitudDinamica);
-                        float divi = (float) 1 / this._CantidadPatrones;                        
-                        float similitud = 1 + (float)(divi * suma);                        
+                        float divi = (float) 1 / this._CantidadPatrones;       
+                        System.out.println("El contador es " + contadorPatron);
+                        float similitud = contadorPatron + (float)(divi * suma);                        
                         hashResultado.put(fileName,similitud);
                         System.out.println("Similitud del archivo " + fileName + " es " + similitud);
+                        contadorPatron = 0;
+                        System.out.println("El contador actualizado" + contadorPatron);
             }
             OrdenarHash(hashResultado);
     }
@@ -400,11 +458,7 @@ public class BusinessLogic {
     public void OrdenarHash(HashMap pHashResultado) throws FileNotFoundException, UnsupportedEncodingException{        
         ValueComparator bvc =  new ValueComparator(pHashResultado);
         TreeMap<String,Float> sorted_map = new TreeMap<String,Float>(bvc);
-        sorted_map.putAll(pHashResultado);        
-        /*for (Map.Entry entry : sorted_map.entrySet()) {
-            System.out.println("Key = " + entry.getKey() + ", Value = " +
-                               entry.getValue());
-        }*/
+        sorted_map.putAll(pHashResultado);                
         EscribirRanking(sorted_map);
     }
        
@@ -412,17 +466,13 @@ public class BusinessLogic {
         PrintWriter writer = new PrintWriter("Q"+this._PrefijoConsulta+"_salida" +".txt", "UTF-8");
         int posicion = 1;
         
-        for (Map.Entry entry : sorted_map.entrySet()) {
-            /*System.out.println("Key = " + entry.getKey() + ", Value = " +
-                               entry.getValue());*/
+        for (Map.Entry entry : sorted_map.entrySet()) {            
             String nombreArchivo = entry.getKey().toString();
             Float similitud =  (float)entry.getValue();
             writer.println("Q" + this._PrefijoConsulta + " " + posicion + " " + nombreArchivo + " "  + similitud);
             posicion++;
         }        
         writer.close();
-        //_ExitFile.SaveFile();
-        
     }
     
     public int getProcessOperationState() {

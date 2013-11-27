@@ -11,6 +11,9 @@ package Interface;
 import Business.BusinessLogic;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,11 +156,17 @@ public class FrmFile extends javax.swing.JFrame {
                 _BusinessLogic.setDirectoryPath(_FilePath.getText());
                 int cantidadPatrones = tokenPattern.length;
                 _PrefijoConsulta++;
-                for(int i = 0; i < tokenPattern.length;i++){               
+                ArrayList<BusinessLogic> array = new ArrayList<BusinessLogic>();
+                for(int i = 0; i < tokenPattern.length;i++){ 
+                    
+                    _BusinessLogic = new BusinessLogic();
+                    _BusinessLogic.setDirectoryPath(_FilePath.getText());
                     _BusinessLogic.setPatronUsuario(tokenPattern[i]);
+
                 try {
                     String executionResult = _BusinessLogic.EjecutarPatrones(_PrefijoConsulta,cantidadPatrones);
                     if(this._BusinessLogic.getProcessOperationState() == 1){                        
+                        array.add(_BusinessLogic);
                         JOptionPane.showMessageDialog(rootPane, executionResult, "Finalizacion de la busqueda.", 1);
                         FrmSearchResult frmSearchResult = new FrmSearchResult();
                         frmSearchResult.setMatchesInFileLIne(this._BusinessLogic.getMatchesInFileLIne());
@@ -170,13 +179,71 @@ public class FrmFile extends javax.swing.JFrame {
                     Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
                 }
+                
                 }
-                try {                
-                    _BusinessLogic.CalcularSimilitudes();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(FrmFile.class.getName()).log(Level.SEVERE, null, ex);
+                _BusinessLogic = new BusinessLogic();
+                ArrayList<String> nombresArchivos = new ArrayList<String>();
+                if(array.get(0)._PatronSimpleControl.getFiles().size() > 0){
+                    nombresArchivos = array.get(0)._PatronSimpleControl.NOMBRES_ARCHIVOS_SIM;
+                } else if(array.get(0)._PatronOpcionesControl.getFiles().size() > 0){
+                    nombresArchivos = array.get(0)._PatronOpcionesControl.NOMBRES_ARCHIVOS_SIM;
+                } else if(array.get(0)._DinamicaControl.getFiles().size() > 0){
+                    nombresArchivos = array.get(0)._DinamicaControl.NOMBRES_ARCHIVOS_SIM;
+                }
+                double similitudSimple = 0.0;
+                double similitudOpciones = 0.0;
+                double similitudDinamica = 0.0;
+                int counter = 0;
+                HashMap<String,Float> hashResultado = new HashMap<String,Float>();
+                for (int i = 0; i < nombresArchivos.size(); i++) {
+                    int contadorPatron = 0;
+                    String fileName = nombresArchivos.get(i);
+                    contadorPatron = 0;
+                    for (int j = 0; j < array.size(); j++) {  
+                        int valor = array.get(j)._PatronUsado;
+                        switch(valor){
+                            case 1:
+                                    if(array.get(j)._PatronSimpleControl.getFiles().contains(fileName)){
+                                        int positionSimple = array.get(j)._PatronSimpleControl.getFiles().indexOf(fileName);
+                                        similitudSimple = array.get(j)._PatronSimpleControl.getSimilitud().get(positionSimple);
+                                        int counterPerDoc = array.get(j)._PatronSimpleControl.getCounter().get(positionSimple);
+                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        counter += counterPerDoc;
+                                        contadorPatron++;
+                                    }
+                                    break;
+                            case 2:
+                                    if(array.get(j)._PatronOpcionesControl.getFiles().contains(fileName)){
+                                        int positionSimple = array.get(j)._PatronOpcionesControl.getFiles().indexOf(fileName);
+                                        similitudOpciones = array.get(j)._PatronOpcionesControl.getSimilitud().get(positionSimple);
+                                        int counterPerDoc = array.get(j)._PatronOpcionesControl.getCounter().get(positionSimple);
+                                        counter += counterPerDoc;
+                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        contadorPatron++;
+                                    }
+                                    break;
+                            case 3:
+                                    if(array.get(j)._DinamicaControl.getFiles().contains(fileName)){
+                                        int positionSimple = array.get(j)._DinamicaControl.getFiles().indexOf(fileName);
+                                        similitudDinamica = array.get(j)._DinamicaControl.getSimilitud().get(positionSimple);
+                                        int counterPerDoc = array.get(j)._DinamicaControl.getCounter().get(positionSimple);
+                                        counter += counterPerDoc;
+                                        System.out.println("Patron " + array.get(j)._PatronUsado);
+                                        contadorPatron++;
+                                    }
+                                    break;
+                        }
+                    }
+                    double suma = similitudSimple + similitudOpciones + similitudDinamica;                                                
+                    float divi = (float) 1 / this._BusinessLogic._CantidadPatrones;                        
+                    float similitud = contadorPatron + (float)(divi * suma);                                                
+                    hashResultado.put(fileName,similitud);
+                    if(suma > 0){
+                        System.out.println("Suma " + similitudSimple +  " " + similitudOpciones + " "  + similitudDinamica);
+                        System.out.println("El contador es " + contadorPatron);
+                        System.out.println("Similitud del archivo " + fileName + " es " + similitud);
+                    }
+                    contadorPatron = 0;
                 }
             }else {
                 JOptionPane.showMessageDialog(rootPane, "Digite la palabra o patron que desea buscar.");

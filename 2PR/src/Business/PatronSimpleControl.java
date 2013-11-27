@@ -35,6 +35,7 @@ public class PatronSimpleControl {
     ArrayList<Double> _Similitud = new ArrayList<Double>();
     ArrayList<String> _FileNames = new ArrayList<String>();
     ArrayList<Integer> _CountPerDocArray = new ArrayList<Integer>();
+    public ArrayList<String> NOMBRES_ARCHIVOS_SIM = new ArrayList<String>();
     int _ProcessOperationState = 0;
     int _WordAppearances = 0;
     int _MatchesInFileLine = 0;
@@ -100,6 +101,7 @@ public class PatronSimpleControl {
                 //Tuvo éxito
                 this._DirectoryProcessor.ReadDirectory();
                 ArrayList<String> subFiles = _DirectoryProcessor.getFilesInDirectory();
+                this.NOMBRES_ARCHIVOS_SIM = subFiles;
                 //Por cada archivo en el directorio
                 for(int subFile = 0; subFile < subFiles.size(); subFile++){
                     //System.out.println("Procesar Archivo:" + subFiles.get(subFile) + " " +subFile);
@@ -167,6 +169,7 @@ public class PatronSimpleControl {
             this._Similitud.add(similitud);
             this._FileNames.add(pFileName);
             this._CountPerDocArray.add(counterPerDoc);
+            System.out.println("Similitud en Simple archivo " + pFileName + " es " + similitud);
         }
         //System.out.println(this._MatchLineInfo.toString());
     }
